@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbepwy3vsxlks"]
+
+[ext_resource type="Script" path="res://player/PlayerMaster.gd" id="1_1rg85"]
+[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="2_apxuj"]
+[ext_resource type="Script" path="res://core/Shooter.gd" id="3_worlo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2t7nn"]
+radius = 32.0
+height = 120.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource( "1_1rg85" )
+speed_max = 250.0
+acceleration_rate = 0.026
+deceleration_rate = 0.11
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.875)
+texture = ExtResource( "2_apxuj" )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( "CapsuleShape2D_2t7nn" )
+
+[node name="Shooter" type="Position2D" parent="."]
+script = ExtResource( "3_worlo" )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Cooldown" type="Timer" parent="."]

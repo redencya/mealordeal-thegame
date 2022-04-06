@@ -1,0 +1,122 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "CharacterBody2D",
+"class": &"Actor",
+"language": &"GDScript",
+"path": "res://core/Actor.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Bullet",
+"language": &"GDScript",
+"path": "res://core/Bullet.gd"
+}, {
+"base": "Item",
+"class": &"Food",
+"language": &"GDScript",
+"path": "res://core/item/ItemFood.gd"
+}, {
+"base": "Node",
+"class": &"Health",
+"language": &"GDScript",
+"path": "res://core/item/Health.gd"
+}, {
+"base": "Node",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://core/item/Item.gd"
+}, {
+"base": "Actor",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://player/PlayerMaster.gd"
+}, {
+"base": "Food",
+"class": &"Sandwich",
+"language": &"GDScript",
+"path": "res://core/item/ItemSandwich.gd"
+}, {
+"base": "Position2D",
+"class": &"Shooter",
+"language": &"GDScript",
+"path": "res://core/Shooter.gd"
+}, {
+"base": "Node",
+"class": &"Stamina",
+"language": &"GDScript",
+"path": "res://player/Stamina.gd"
+}, {
+"base": "Node",
+"class": &"Storage",
+"language": &"GDScript",
+"path": "res://core/item/Storage.gd"
+}, {
+"base": "Item",
+"class": &"Weapon",
+"language": &"GDScript",
+"path": "res://core/item/ItemWeapon.gd"
+}]
+_global_script_class_icons={
+"Actor": "",
+"Bullet": "",
+"Food": "",
+"Health": "",
+"Item": "",
+"Player": "",
+"Sandwich": "",
+"Shooter": "",
+"Stamina": "",
+"Storage": "",
+"Weapon": ""
+}
+
+[application]
+
+config/name="mealordeal-thegame"
+config/icon="res://icon.png"
+config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[input]
+
+go_left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"unicode":0,"echo":false,"script":null)
+]
+}
+go_right={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"unicode":0,"echo":false,"script":null)
+]
+}
+go_up={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"unicode":0,"echo":false,"script":null)
+]
+}
+go_down={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
+]
+}
+game_shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
+}
+inv_hotswap={
+"deadzone": 0.5,
+"events": []
+}
+run={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777237,"unicode":0,"echo":false,"script":null)
+]
+}

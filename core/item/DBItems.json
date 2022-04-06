@@ -1,0 +1,25 @@
+{
+		"ingredients" : [
+			{
+				"title"   : "Slice of Bread",
+				"desc"    : "A slice of white bread, soft and untoasted.",
+				"ID"      : 1,
+				"texture" : "bread.png",
+				"expiry"  : 2
+			},
+			{
+				"title" : "Slice of Cheese",
+				"desc"  : "A slice of cheese, freshly made.",
+				"ID"    : 2,
+				"texture" : "cheese.png",
+				"expiry"  : 2
+			},
+			{
+				"title" : "Cheese Sauce",
+				"desc"  : "A bottle of cheese sauce, freshly made.",
+				"ID"    : 3,
+				"texture" : "cheese_sauce.png",
+				"expiry"  : 2
+			}
+		]
+}

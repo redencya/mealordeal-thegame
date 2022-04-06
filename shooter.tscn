@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qs7fsn176wrh"]
+
+[ext_resource type="Script" path="res://core/Shooter.gd" id="1_sgtvg"]
+
+[node name="Position2D" type="Position2D"]
+script = ExtResource( "1_sgtvg" )
+__meta__ = {
+"_gizmo_extents_": 20.0
+}
