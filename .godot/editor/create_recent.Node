@@ -1,9 +1,12 @@
+Stamina (Stamina.gd)
+Storage (Storage.gd)
+Health (Health.gd)
+Node
 Timer
 AnimationPlayer
 Shooter (Shooter.gd)
 Position2D
 CollisionShape2D
-Node
 VBoxContainer
 Button
 ProgressBar

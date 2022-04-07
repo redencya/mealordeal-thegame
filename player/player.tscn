@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbepwy3vsxlks"]
+[gd_scene load_steps=8 format=3 uid="uid://bbepwy3vsxlks"]
 
 [ext_resource type="Script" path="res://player/PlayerMaster.gd" id="1_1rg85"]
 [ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="2_apxuj"]
+[ext_resource type="Script" path="res://core/item/Storage.gd" id="2_sjrt8"]
+[ext_resource type="Script" path="res://core/item/Health.gd" id="3_httwp"]
 [ext_resource type="Script" path="res://core/Shooter.gd" id="3_worlo"]
+[ext_resource type="Script" path="res://player/Stamina.gd" id="4_om1y7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2t7nn"]
 radius = 32.0
@@ -14,6 +17,15 @@ script = ExtResource( "1_1rg85" )
 speed_max = 250.0
 acceleration_rate = 0.026
 deceleration_rate = 0.11
+
+[node name="Storage" type="Node" parent="."]
+script = ExtResource( "2_sjrt8" )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( "3_httwp" )
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource( "4_om1y7" )
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1, 1.875)

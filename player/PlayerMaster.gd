@@ -5,12 +5,6 @@ class_name Player
 @export_range(0, 1, 0.001) var acceleration_rate : float
 @export_range(0, 1, 0.001) var deceleration_rate : float
 
-# This is used to evaluate stamina, and can be changed from inspector
-@export var stamina_max : float
-@export_range(0, 1, 0.001) var stamina_gain_rate : float
-@export_range(0, 1, 0.001) var stamina_drain_rate : float
-@onready var stamina := Stamina.new(self)
-
 # this is based on percentile acc/dec rates
 @onready var acceleration := acceleration_rate * speed_max
 @onready var deceleration := deceleration_rate * speed_max
@@ -34,7 +28,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func speed_calculate():
-	if Input.is_action_pressed("run") && !stamina.depleted:
+	if Input.is_action_pressed("run") && !$Stamina.depleted:
 		#stamina.run()
 		speed_max = 500
 	else:
