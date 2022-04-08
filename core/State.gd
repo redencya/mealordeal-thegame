@@ -1,13 +1,18 @@
 class_name State extends Node
 
-func enter(_machine : StateMachine):
+var state_machine: StateMachine = null
+
+func handle_input(_event: InputEvent) -> void:
   pass
 
-func physics(_machine : StateMachine, _base):
+func update(_delta: float) -> void:
   pass
 
-func run(_machine : StateMachine):
+func physics_update(_delta: float) -> void:
   pass
 
-func exit(_base):
+func enter(_msg := {}) -> void:
+  pass
+
+func exit() -> void:
   pass

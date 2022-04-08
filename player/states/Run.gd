@@ -1,20 +1,23 @@
-extends State
+extends PlayerState
 
-func enter(_machine : StateMachine):
-	# Play the running animation with the matching run direction
+var speed_max_real : float
+
+@export var walk : String
+
+func physics_update(_delta: float) -> void:
+	player.direction = (player.direction 
+	if Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO
+	else Input.get_vector("go_left", "go_right", "go_up", "go_down"))
+	player.move()
+
+	if (Input.is_action_just_released("run") 
+		|| Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO):
+		state_machine.change_state(walk)
+
+func exit() -> void:
+	player.speed_max = speed_max_real
+
+func enter(_msg := {}) -> void:
+	speed_max_real = player.speed_max
+	player.speed_max = speed_max_real + 65.0
 	pass
-
-func physics(machine : StateMachine, _base):
-	if (Input.is_action_just_released("run")):
-		machine.change_state("Walk")
-	# WHILE the run key is pressed and Stamina isn't depleted, stay in this state
-		# Work similarily to the WALK state, with slower deceleration in place and higher base speed
-	# IF the run key is released or Stamina is depleted, transition to WALK state
-	# If the dodge key is pressed and there's enough stamina for a dodge, transition to DODGE state
-
-func run(_machine : StateMachine):
-	# Passively deplete Stamina values
-	pass
-
-func exit(_base):
-		pass

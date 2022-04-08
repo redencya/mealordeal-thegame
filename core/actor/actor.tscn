@@ -52,6 +52,6 @@ script = ExtResource( "5_ou6ln" )
 [node name="Health" type="Node" parent="."]
 script = ExtResource( "6_rcd0l" )
 
-[node name="States" type="Node" parent="."]
+[node name="BaseSM" type="Node" parent="."]
 
 [connection signal="body_entered" from="Hitbox" to="Health" method="_on_hitbox_body_entered"]

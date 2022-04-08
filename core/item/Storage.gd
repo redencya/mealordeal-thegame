@@ -29,7 +29,7 @@ func remove_cell(_cell: Cell):
 	# Erase this Cell out of the Storage
 	pass
 
-func add_cell(item):
+func add_cell(item) -> void:
 	if !(item is Cell):
 		var added_successfully : bool = add_to_existing_cell(item)
 		if (!added_successfully):
@@ -37,7 +37,7 @@ func add_cell(item):
 			if item is null: return
 	cells.append(item)
 
-func add_to_existing_cell(item : Item):
+func add_to_existing_cell(item : Item) -> bool:
 	var matching_cells : Array[Cell] = cells.filter(has_id(item.ID))
 	if matching_cells.size() > 0: 
 		matching_cells.sort_custom(sort_by_quantity)
@@ -52,7 +52,7 @@ func sort_by_quantity():
 	pass
 
 # A free position is found: convert the Item into a Cell with the free position.
-func generate_cell(item: Item):
+func generate_cell(item: Item) -> Cell:
 	var cell = Cell.new
 	for row in range(table.row + 1):
 		for column in range(table.column + 1):

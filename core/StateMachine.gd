@@ -1,26 +1,31 @@
 class_name StateMachine extends Node
 
-@export_node_path(Node) var base_path
-@export_node_path(Node) var current_state_path
-@export_node_path(Node) var states_path
-@onready var _base = get_node(base_path)
-@onready var _current_state = get_node(current_state_path)
-@onready var _states = get_node(states_path).get_children()
+signal transitioned_to(state_name)
 
-func change_state(state_name: String):
-	var new_state = get_state_from_states(_states, state_name)
-	_current_state = _current_state if (new_state == null) else new_state
+@export_node_path(Node) var default_state_path
+@onready var current_state = get_node(default_state_path)
 
-func get_state_from_states(states: Array[Node], string_name : String):
-	for state in states:
-		if (state.name == StringName(string_name)):
-			return state
-	return null
+func _ready() -> void:
+	await owner.ready
+	for child in get_children():
+		child.state_machine = self
+	current_state.enter()
 
-func _physics_process(_delta):
-	if (_current_state != null):
-		_current_state.physics(self, _base)
+func _unhandled_input(event: InputEvent) -> void:
+	current_state.handle_input(event)
 
-func _process(_delta):
-	#_current_state.run(self)
-	pass
+func _process(delta: float) -> void:
+	current_state.update(delta)
+
+func _physics_process(delta : float) -> void:
+	current_state.physics_update(delta)
+
+func change_state(target_state: String, msg: Dictionary = {}) -> void:
+	if not has_node(target_state):
+		return
+
+	current_state.exit()
+	current_state = get_node(target_state)
+	current_state.enter(msg)
+	print(current_state.name)
+	emit_signal("transitioned_to", current_state.name)

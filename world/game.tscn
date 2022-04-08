@@ -7,3 +7,6 @@ position = Vector2(2, -1)
 
 [node name="Player" parent="." instance=ExtResource( "1_ollxo" )]
 position = Vector2(254, 522)
+speed_max = 200.0
+acceleration_rate = 0.23
+deceleration_rate = 0.15
