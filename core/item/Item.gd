@@ -7,4 +7,3 @@ var ID : int
 var stack : int
 
 var texture : Texture2D
-var chosen : bool

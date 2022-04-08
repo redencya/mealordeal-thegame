@@ -12,7 +12,7 @@ _global_script_classes=[{
 "base": "CharacterBody2D",
 "class": &"Actor",
 "language": &"GDScript",
-"path": "res://core/Actor.gd"
+"path": "res://core/actor/Actor.gd"
 }, {
 "base": "CharacterBody2D",
 "class": &"Bullet",
@@ -24,35 +24,60 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://core/item/ItemFood.gd"
 }, {
+"base": "Node2D",
+"class": &"Gun",
+"language": &"GDScript",
+"path": "res://core/Gun.gd"
+}, {
+"base": "Area2D",
+"class": &"Hazard",
+"language": &"GDScript",
+"path": "res://core/Hazard.gd"
+}, {
 "base": "Node",
 "class": &"Health",
 "language": &"GDScript",
-"path": "res://core/item/Health.gd"
+"path": "res://core/actor/Health.gd"
+}, {
+"base": "Area2D",
+"class": &"Hitbox",
+"language": &"GDScript",
+"path": "res://core/item/Hitbox.gd"
 }, {
 "base": "Node",
 "class": &"Item",
 "language": &"GDScript",
 "path": "res://core/item/Item.gd"
 }, {
+"base": "CharacterBody2D",
+"class": &"NonPlayer",
+"language": &"GDScript",
+"path": "res://NonPlayer.gd"
+}, {
 "base": "Actor",
 "class": &"Player",
 "language": &"GDScript",
-"path": "res://player/PlayerMaster.gd"
+"path": "res://player/Player.gd"
 }, {
 "base": "Food",
 "class": &"Sandwich",
 "language": &"GDScript",
 "path": "res://core/item/ItemSandwich.gd"
 }, {
-"base": "Position2D",
-"class": &"Shooter",
-"language": &"GDScript",
-"path": "res://core/Shooter.gd"
-}, {
 "base": "Node",
 "class": &"Stamina",
 "language": &"GDScript",
 "path": "res://player/Stamina.gd"
+}, {
+"base": "Node",
+"class": &"State",
+"language": &"GDScript",
+"path": "res://core/State.gd"
+}, {
+"base": "Node",
+"class": &"StateMachine",
+"language": &"GDScript",
+"path": "res://core/StateMachine.gd"
 }, {
 "base": "Node",
 "class": &"Storage",
@@ -66,15 +91,20 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "Actor": "",
-"Bullet": "",
+"Bullet": "res://svg/bullet.svg",
 "Food": "",
-"Health": "",
+"Gun": "res://svg/gun.svg",
+"Hazard": "",
+"Health": "res://svg/health.svg",
+"Hitbox": "",
 "Item": "",
+"NonPlayer": "",
 "Player": "",
 "Sandwich": "",
-"Shooter": "",
 "Stamina": "",
-"Storage": "",
+"State": "",
+"StateMachine": "",
+"Storage": "res://svg/storage.svg",
 "Weapon": ""
 }
 
@@ -106,17 +136,23 @@ go_down={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
 ]
 }
-game_shoot={
+shoot={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
 ]
-}
-inv_hotswap={
-"deadzone": 0.5,
-"events": []
 }
 run={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777237,"unicode":0,"echo":false,"script":null)
 ]
 }
+inv_hotswap={
+"deadzone": 0.5,
+"events": []
+}
+
+[layer_names]
+
+2d_physics/layer_1="Land Collision"
+2d_physics/layer_2="Water Collision"
+2d_physics/layer_7="Hitboxes"
