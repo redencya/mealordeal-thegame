@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://6n25hjhdr7xt"]
 
-[ext_resource type="Script" path="res://core/Actor.gd" id="1_yoqmj"]
+[ext_resource type="Script" path="res://core/actor/Actor.gd" id="1_wxo1a"]
 [ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="3_vf6jy"]
 [ext_resource type="Script" path="res://core/item/Hitbox.gd" id="4_agysn"]
 [ext_resource type="Script" path="res://core/item/Storage.gd" id="5_ou6ln"]
@@ -17,7 +17,7 @@ height = 58.0
 [node name="Actor" type="CharacterBody2D"]
 position = Vector2(1, 0)
 motion_mode = 1
-script = ExtResource( "1_yoqmj" )
+script = ExtResource( "1_wxo1a" )
 
 [node name="StateName" type="Label" parent="."]
 offset_left = -40.0

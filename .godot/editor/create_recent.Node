@@ -1,7 +1,8 @@
+StateMachine (StateMachine.gd)
+PlayerSM (PlayerStateMachine.gd)
 State (State.gd)
 Node
 Label
-StateMachine (StateMachine.gd)
 Control
 Button
 ColorRect

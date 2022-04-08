@@ -47,6 +47,5 @@ func spawn_bullet_relative_to(subject: Vector2):
 
 
 func _process(delta):
-	print(current_gun_state)
 	if current_gun_state == GunState.EMPTY:
 		reload(delta)

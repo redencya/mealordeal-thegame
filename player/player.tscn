@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ppiub4yiean0"]
+[gd_scene load_steps=11 format=3 uid="uid://ppiub4yiean0"]
 
 [ext_resource type="PackedScene" uid="uid://6n25hjhdr7xt" path="res://core/actor/actor.tscn" id="1_xmiuf"]
 [ext_resource type="Script" path="res://player/Player.gd" id="2_pshp3"]
 [ext_resource type="Script" path="res://core/Gun.gd" id="4_ki40m"]
 [ext_resource type="Script" path="res://player/Aim.gd" id="5_3ibs6"]
+[ext_resource type="Script" path="res://core/StateMachine.gd" id="6_cgwx7"]
 [ext_resource type="Script" path="res://core/State.gd" id="6_w8jfv"]
+[ext_resource type="Script" path="res://player/states/Idle.gd" id="6_ywql5"]
+[ext_resource type="Script" path="res://player/states/Walk.gd" id="8_otb2k"]
+[ext_resource type="Script" path="res://player/states/Run.gd" id="9_0qwli"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km5eb"]
 radius = 28.0
@@ -17,10 +21,11 @@ acceleration_rate = 0.176
 deceleration_rate = 0.164
 
 [node name="StateName" parent="." index="0"]
-offset_left = -39.5
+offset_left = -45.0
 offset_top = -87.0
-offset_right = 39.5
+offset_right = 45.0
 offset_bottom = -64.0
+horizontal_alignment = 1
 
 [node name="InteractionArea" type="Area2D" parent="." index="1"]
 position = Vector2(-0.499998, -32)
@@ -44,7 +49,13 @@ script = ExtResource( "5_3ibs6" )
 
 [node name="Reload" type="Timer" parent="Loadout" index="2"]
 
-[node name="States" type="Node" parent="Loadout" index="3"]
+[node name="GunSM" type="Node" parent="Loadout" index="3"]
+script = ExtResource( "6_cgwx7" )
+base_path = NodePath("..")
+current_state_path = NodePath("../States/Usable")
+states_path = NodePath("../States")
+
+[node name="States" type="Node" parent="Loadout" index="4"]
 
 [node name="Usable" type="Node" parent="Loadout/States" index="0"]
 script = ExtResource( "6_w8jfv" )
@@ -55,14 +66,21 @@ script = ExtResource( "6_w8jfv" )
 [node name="Reload" type="Node" parent="Loadout/States" index="2"]
 script = ExtResource( "6_w8jfv" )
 
+[node name="PlayerSM" type="Node" parent="." index="9"]
+editor_description = "test"
+script = ExtResource( "6_cgwx7" )
+base_path = NodePath("..")
+current_state_path = NodePath("../States/Idle")
+states_path = NodePath("../States")
+
 [node name="Idle" type="Node" parent="States" index="0"]
-script = ExtResource( "6_w8jfv" )
+script = ExtResource( "6_ywql5" )
 
 [node name="Walk" type="Node" parent="States" index="1"]
-script = ExtResource( "6_w8jfv" )
+script = ExtResource( "8_otb2k" )
 
 [node name="Run" type="Node" parent="States" index="2"]
-script = ExtResource( "6_w8jfv" )
+script = ExtResource( "9_0qwli" )
 
 [node name="Dodge" type="Node" parent="States" index="3"]
 script = ExtResource( "6_w8jfv" )

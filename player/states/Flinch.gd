@@ -1,4 +1,4 @@
-class_name State extends Node
+extends State
 
 func enter(_machine : StateMachine):
   pass
@@ -10,4 +10,4 @@ func run(_machine : StateMachine):
   pass
 
 func exit(_base):
-  pass
+    pass

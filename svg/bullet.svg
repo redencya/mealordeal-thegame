@@ -2,13 +2,6 @@
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="Layer_1"
    x="0px"
@@ -17,7 +10,14 @@
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="bullet.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   inkscape:version="1.2-alpha (0bd5040e63, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><metadata
    id="metadata5924"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -30,51 +30,53 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="747"
-   inkscape:window-height="418"
+   inkscape:window-width="1920"
+   inkscape:window-height="1057"
    id="namedview5920"
    showgrid="false"
    inkscape:zoom="0.4609375"
    inkscape:cx="256"
    inkscape:cy="256"
-   inkscape:window-x="719"
-   inkscape:window-y="277"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="Layer_1" />
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1"
+   inkscape:pagecheckerboard="0"
+   inkscape:blackoutopacity="0.0" />
 <g
    id="g5875"
-   style="fill:#c87137">
+   style="fill:#5a9cfe">
 	<g
    id="g5873"
-   style="fill:#c87137">
+   style="fill:#5a9cfe">
 		<polygon
    points="297.236,327.676 184.324,214.763 35.455,363.632 21.849,350.027 0,371.876 13.605,385.481 126.518,498.395     126.519,498.395 140.124,512 161.973,490.151 148.368,476.545   "
    id="polygon5871"
-   style="fill:#c87137" />
+   style="fill:#5a9cfe" />
 	</g>
 </g>
 <g
    id="g5881"
-   style="fill:#c87137">
+   style="fill:#5a9cfe">
 	<g
    id="g5879"
-   style="fill:#c87137">
+   style="fill:#5a9cfe">
 		<path
    d="M479.49,12.536c-3.024,1.166-70.873,27.806-141.442,93.595l67.821,67.821c65.787-70.565,92.429-138.417,93.595-141.441    L512,0L479.49,12.536z"
    id="path5877"
-   style="fill:#c87137" />
+   style="fill:#5a9cfe" />
 	</g>
 </g>
 <g
    id="g5887"
-   style="fill:#c87137">
+   style="fill:#5a9cfe">
 	<g
    id="g5885"
-   style="fill:#c87137">
+   style="fill:#5a9cfe">
 		<polygon
    points="306.914,118.696 261.546,164.064 206.494,193.234 318.765,305.505 347.935,250.455 393.303,205.086   "
    id="polygon5883"
-   style="fill:#c87137" />
+   style="fill:#5a9cfe" />
 	</g>
 </g>
 <g
