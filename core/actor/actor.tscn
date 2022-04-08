@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://6n25hjhdr7xt"]
+
+[ext_resource type="Script" path="res://core/Actor.gd" id="1_yoqmj"]
+[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="3_vf6jy"]
+[ext_resource type="Script" path="res://core/item/Hitbox.gd" id="4_agysn"]
+[ext_resource type="Script" path="res://core/item/Storage.gd" id="5_ou6ln"]
+[ext_resource type="Script" path="res://core/actor/Health.gd" id="6_rcd0l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5i6eo"]
+radius = 20.0
+height = 62.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64x2r"]
+radius = 18.0
+height = 58.0
+
+[node name="Actor" type="CharacterBody2D"]
+position = Vector2(1, 0)
+motion_mode = 1
+script = ExtResource( "1_yoqmj" )
+
+[node name="StateName" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -88.0
+offset_right = 39.0
+offset_bottom = -65.0
+theme_override_font_sizes/font_size = 14
+text = "state_name"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(0.640625, 1)
+texture = ExtResource( "3_vf6jy" )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.499998, -32)
+shape = SubResource( "CapsuleShape2D_5i6eo" )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-0.499998, -32)
+script = ExtResource( "4_agysn" )
+
+[node name="Collider" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color(1, 0, 0.529412, 1)
+shape = SubResource( "CapsuleShape2D_64x2r" )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Storage" type="Node" parent="."]
+script = ExtResource( "5_ou6ln" )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( "6_rcd0l" )
+
+[node name="States" type="Node" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="Health" method="_on_hitbox_body_entered"]

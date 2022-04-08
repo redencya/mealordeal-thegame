@@ -22,15 +22,13 @@ func calculate_movement() -> Vector2:
 	return current_direction * speed_current
 
 func _physics_process(_delta):
-	print(velocity)
 	speed_calculate()
 	velocity = calculate_movement()
 	move_and_slide()
 
 func speed_calculate():
-	if Input.is_action_pressed("run") && !$Stamina.depleted:
+	if Input.is_action_pressed("run"):
 		#stamina.run()
 		speed_max = 500
 	else:
 		speed_max = 250
-	

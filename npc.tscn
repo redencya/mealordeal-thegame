@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://qu65xk2a506s"]
+
+[ext_resource type="PackedScene" uid="uid://6n25hjhdr7xt" path="res://core/actor/actor.tscn" id="1_430no"]
+[ext_resource type="Script" path="res://NonPlayer.gd" id="2_snow6"]
+
+[node name="NonPlayer" instance=ExtResource( "1_430no" )]
+position = Vector2(0, 0)
+collision_layer = 12
+collision_mask = 12
+script = ExtResource( "2_snow6" )
+
+[node name="Vision" type="RayCast2D" parent="." index="0"]
+position = Vector2(0, -32)
+target_position = Vector2(0, 300)
+
+[node name="NavAgent" type="NavigationAgent2D" parent="." index="1"]
+target_desired_distance = 10.0
+
+[node name="Sprite" parent="." index="3"]
+modulate = Color(0.172549, 1, 0, 1)
+rotation = -0.00412635
+
+[connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]
