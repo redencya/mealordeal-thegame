@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjqiswctfi44g"]
+
+[ext_resource type="Script" path="res://core/Bullet.gd" id="1_8pbcd"]
+[ext_resource type="Script" path="res://core/Hazard.gd" id="2_vmc75"]
+[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="3_aajip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f67kn"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5hka"]
+radius = 9.0
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 8
+floor_block_on_wall = false
+script = ExtResource( "1_8pbcd" )
+
+[node name="Hazard" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+monitorable = false
+script = ExtResource( "2_vmc75" )
+
+[node name="Collider" type="CollisionShape2D" parent="Hazard"]
+shape = SubResource( "CircleShape2D_f67kn" )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_o5hka" )
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource( "3_aajip" )
+
+[connection signal="body_entered" from="Hazard" to="." method="_on_hazard_body_entered"]
