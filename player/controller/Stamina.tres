@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b38nn7j3bymjy"]
+
+[ext_resource type="Script" path="res://player/controller/Stamina.gd" id="1_5p25v"]
+
+[resource]
+script = ExtResource( "1_5p25v" )
+base = 200.0
+drain = 0.09
+gain = 0.046

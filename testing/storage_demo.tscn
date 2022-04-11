@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3b3hmf1ov4l2"]
+
+[ext_resource type="PackedScene" uid="uid://l04nx4u0l61m" path="res://storage/ui/storage.tscn" id="1_1lsgb"]
+[ext_resource type="Script" path="res://core/item/Storage.gd" id="1_s2ojk"]
+[ext_resource type="Script" path="res://storage/base/TransactionManager.gd" id="2_2ndxb"]
+[ext_resource type="PackedScene" uid="uid://bobksr0orlc4g" path="res://storage/ui/grabber.tscn" id="2_sokri"]
+
+[sub_resource type="Resource" id="Resource_kwxdr"]
+script = ExtResource( "1_s2ojk" )
+dimensions = Vector2i(3, 5)
+
+[sub_resource type="Resource" id="Resource_b27sv"]
+script = ExtResource( "1_s2ojk" )
+dimensions = Vector2i(4, 2)
+
+[node name="StorageDemo" type="Node2D"]
+
+[node name="TransactionManager" type="Node" parent="."]
+script = ExtResource( "2_2ndxb" )
+
+[node name="Grabber" parent="." instance=ExtResource( "2_sokri" )]
+offset_left = 0.0
+offset_right = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_custom_anchors": false
+}
+
+[node name="Label" type="Label" parent="."]
+offset_left = 219.0
+offset_top = 65.0
+offset_right = 360.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 32
+text = "StorageA"
+__meta__ = {
+"_edit_layout_mode": 0,
+"_edit_use_custom_anchors": false
+}
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 725.0
+offset_top = 65.0
+offset_right = 866.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 32
+text = "StorageB
+"
+__meta__ = {
+"_edit_layout_mode": 0,
+"_edit_use_custom_anchors": false
+}
+
+[node name="StorageInterface" parent="." instance=ExtResource( "1_1lsgb" )]
+offset_left = 287.0
+offset_top = 334.0
+offset_right = 287.0
+offset_bottom = 334.0
+storage = SubResource( "Resource_kwxdr" )
+
+[node name="StorageInterface2" parent="." instance=ExtResource( "1_1lsgb" )]
+offset_left = 800.0
+offset_top = 205.0
+offset_right = 800.0
+offset_bottom = 205.0
+storage = SubResource( "Resource_b27sv" )

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dkp5fv0l45a8k"]
+
+[ext_resource type="Script" path="res://core/item/Sandwich.gd" id="1_h7ims"]
+
+[resource]
+script = ExtResource( "1_h7ims" )
+id = 22
+name = "Grilled Cheese"
+stack_amount = 1
+description = null
+expiry_time = 3
+consumable = true
+sell_value = 150

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bplw8qm8ywkdn"]
+
+[ext_resource type="Script" path="res://core/item/Storage.gd" id="1_aofqq"]
+
+[resource]
+script = ExtResource( "1_aofqq" )
+dimensions = Vector2i(1, 1)

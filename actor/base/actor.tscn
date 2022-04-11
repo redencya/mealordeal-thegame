@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://40npssfr32h3"]
+
+[ext_resource type="Script" path="res://actor/base/Actor.gd" id="1_wff5v"]
+[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="2_y2prj"]
+[ext_resource type="Script" path="res://core/item/Hitbox.gd" id="3_50l0b"]
+[ext_resource type="Script" path="res://actor/states/StateMachine.gd" id="5_kvian"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5i6eo"]
+radius = 20.0
+height = 62.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64x2r"]
+radius = 18.0
+height = 58.0
+
+[node name="Actor" type="CharacterBody2D"]
+position = Vector2(1, 0)
+motion_mode = 1
+script = ExtResource( "1_wff5v" )
+
+[node name="StateName" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -88.0
+offset_right = 39.0
+offset_bottom = -65.0
+theme_override_font_sizes/font_size = 14
+text = "state_name"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(0.640625, 1)
+texture = ExtResource( "2_y2prj" )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.499998, -32)
+shape = SubResource( "CapsuleShape2D_5i6eo" )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-0.499998, -32)
+script = ExtResource( "3_50l0b" )
+
+[node name="Collider" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color(1, 0, 0.529412, 1)
+shape = SubResource( "CapsuleShape2D_64x2r" )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="BaseSM" type="Node" parent="."]
+script = ExtResource( "5_kvian" )

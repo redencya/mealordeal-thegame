@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cncmsugg8xixs"]
+
+[ext_resource type="Script" path="res://player/controller/Controller.gd" id="1_ysyql"]
+[ext_resource type="Resource" uid="uid://5pchnnrwlekt" path="res://player/controller/Speed.tres" id="2_l1i33"]
+[ext_resource type="Resource" uid="uid://b38nn7j3bymjy" path="res://player/controller/Stamina.tres" id="3_si1sn"]
+
+[resource]
+script = ExtResource( "1_ysyql" )
+stamina = ExtResource( "3_si1sn" )
+speed = ExtResource( "2_l1i33" )

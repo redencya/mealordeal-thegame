@@ -1,9 +1,8 @@
-extends Node
+extends Resource
 class_name Item
 
-var title : String
-var description : String
-var ID : int
-var stack : int
-
-var texture : Texture2D
+@export var id : int
+@export var name : String
+@export var stack_amount : int
+@export var texture : Texture2D
+@export_multiline var description

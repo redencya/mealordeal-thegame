@@ -8,7 +8,7 @@ func physics_update(_delta: float) -> void:
 	player.direction = (player.direction 
 	if Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO
 	else Input.get_vector("go_left", "go_right", "go_up", "go_down"))
-	player.move()
+	player.controller.move()
 
 	if (Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO):
 		state_machine.change_state(idle)

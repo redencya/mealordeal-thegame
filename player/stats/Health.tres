@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ddoca6rlh1045"]
+
+[ext_resource type="Script" path="res://actor/stats/Health.gd" id="1_j2awi"]
+
+[resource]
+resource_name = "Health"
+script = ExtResource( "1_j2awi" )
+base = 3
+invulnerable = false

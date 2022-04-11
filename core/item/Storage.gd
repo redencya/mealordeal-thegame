@@ -1,7 +1,7 @@
 # The Storage class is a collection of Cells which contain Item data. It's used to manage states of items between multiple environments.
 # 
 # The class finds most use in player inventories, but it is also used to determine the drops of mobs and props, as well as contents of specific chests. 
-extends Node
+extends Resource
 class_name Storage, "res://svg/storage.svg"
 
 # A Table is an integer only 2D space (like [Vector2D]) that's optimized for human readability.
@@ -23,7 +23,7 @@ class Cell extends Item:
 	var position : Table
 
 var cells : Array[Cell]
-var table : Table
+@export var dimensions : Vector2i
 
 func remove_cell(_cell: Cell):
 	# Erase this Cell out of the Storage
@@ -54,18 +54,15 @@ func sort_by_quantity():
 # A free position is found: convert the Item into a Cell with the free position.
 func generate_cell(item: Item) -> Cell:
 	var cell = Cell.new
-	for row in range(table.row + 1):
-		for column in range(table.column + 1):
+	for row in range(dimensions.x + 1):
+		for column in range(dimensions.y + 1):
 			if get_cell_by_position(Table.new(row, column)) == null:
 				cell.position = Table.new(row, column)
 				cell.item = item
 				return cell
 	return null
 
-func find_free_position():
-	return Table.new
-
-func get_cell_by_position(_space: Table):
+func get_cell_by_position(_space: Table) -> Cell:
 	return Cell.new
 
 # Should be on the player base, regardless of the direction of the transaction.

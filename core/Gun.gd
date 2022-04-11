@@ -6,7 +6,7 @@ enum GunState {
 }
 @onready var reload_timer : Timer = $Reload
 @onready var muzzle : Position2D  = $Muzzle
-const Bullet : PackedScene = preload("res://bullet.tscn/")
+const Bullet : PackedScene = preload("res://shooter/bullet.tscn")
 var ammo_max : int = 10
 var ammo_current : int = ammo_max
 var current_gun_state : GunState = GunState.USEABLE

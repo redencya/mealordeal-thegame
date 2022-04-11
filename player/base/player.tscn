@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://ti565g01ddc7"]
+
+[ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
+[ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
+[ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_xcu3p"]
+[ext_resource type="Resource" uid="uid://cncmsugg8xixs" path="res://player/controller/Controller.tres" id="4_kxk8i"]
+[ext_resource type="Script" path="res://player/states/Idle.gd" id="5_eko4w"]
+[ext_resource type="Script" path="res://player/states/Run.gd" id="6_kiesq"]
+[ext_resource type="Script" path="res://player/states/Walk.gd" id="7_2jkl4"]
+
+[node name="Player" instance=ExtResource( "1_2wee3" )]
+script = ExtResource( "2_vrh4i" )
+__meta__ = {
+"_edit_vertical_guides_": []
+}
+health = ExtResource( "3_xcu3p" )
+controller = ExtResource( "4_kxk8i" )
+loadout = null
+
+[node name="StateName" parent="." index="0"]
+offset_top = -75.0
+offset_bottom = -52.0
+horizontal_alignment = 1
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2(0, -19)
+
+[node name="Collider" parent="." index="2"]
+position = Vector2(-0.499996, -19)
+
+[node name="Hitbox" parent="." index="3"]
+position = Vector2(-0.499996, -19)
+
+[node name="BaseSM" parent="." index="6"]
+default_state_path = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="BaseSM" index="0"]
+script = ExtResource( "5_eko4w" )
+walk = "Walk"
+
+[node name="Run" type="Node" parent="BaseSM" index="1"]
+script = ExtResource( "6_kiesq" )
+walk = "Walk"
+
+[node name="Walk" type="Node" parent="BaseSM" index="2"]
+script = ExtResource( "7_2jkl4" )
+idle = "Idle"
+run = "Run"

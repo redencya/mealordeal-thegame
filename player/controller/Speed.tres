@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://5pchnnrwlekt"]
+
+[ext_resource type="Script" path="res://player/controller/Speed.gd" id="1_ke1wm"]
+
+[resource]
+script = ExtResource( "1_ke1wm" )
+base = 180.0
+run_modifier = 85.0
+acceleration = 0.15
+deceleration = 0.12
+run_acceleration = 0.1
+run_deceleration = 0.065
