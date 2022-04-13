@@ -1,0 +1,194 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcm2vyyrwmi3q"]
+
+[ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="2_2ygyp"]
+[ext_resource type="PackedScene" uid="uid://l04nx4u0l61m" path="res://storage/ui/storage.tscn" id="2_egvbv"]
+[ext_resource type="PackedScene" uid="uid://b7kh6xbvip3wa" path="res://items/item_display.tscn" id="3_efpr7"]
+
+[sub_resource type="Font" id="Font_aabel"]
+data/0 = ExtResource( "2_2ygyp" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wy27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_spb0h"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ruma4"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pi0e"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.141176, 0.141176, 0.141176, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[node name="PlayerDisplay" type="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+theme_override_fonts/font = SubResource( "Font_aabel" )
+theme_override_styles/tab_disabled = SubResource( "StyleBoxEmpty_2wy27" )
+theme_override_styles/tab_selected = SubResource( "StyleBoxEmpty_spb0h" )
+theme_override_styles/tab_unselected = SubResource( "StyleBoxEmpty_ruma4" )
+tab_alignment = 1
+
+[node name="Storage" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+
+[node name="Grid" parent="Storage" instance=ExtResource( "2_egvbv" )]
+offset_left = -298.217
+offset_top = -137.41
+offset_right = -192.217
+offset_bottom = -57.4103
+columns = 5
+metadata/_edit_layout_mode = 1
+
+[node name="Item" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216935" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 22.0
+offset_right = 40.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216936" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 44.0
+offset_right = 62.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216937" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 66.0
+offset_right = 84.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216938" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 88.0
+offset_right = 106.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216939" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_top = 22.0
+offset_right = 18.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216940" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216941" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 44.0
+offset_top = 22.0
+offset_right = 62.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216942" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 66.0
+offset_top = 22.0
+offset_right = 84.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216943" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 88.0
+offset_top = 22.0
+offset_right = 106.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216944" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_top = 44.0
+offset_right = 18.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216945" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 22.0
+offset_top = 44.0
+offset_right = 40.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216946" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 44.0
+offset_top = 44.0
+offset_right = 62.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216947" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 66.0
+offset_top = 44.0
+offset_right = 84.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="@Item@216948" type="PanelContainer" parent="Storage/Grid" instance=ExtResource( "3_efpr7" )]
+texture_filter = 1
+offset_left = 88.0
+offset_top = 44.0
+offset_right = 106.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4pi0e" )
+
+[node name="Cookbook" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 62.0
+offset_bottom = 31.0
+
+[node name="Armament" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+
+[node name="Creaturelog" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0

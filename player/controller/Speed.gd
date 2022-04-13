@@ -1,41 +1,22 @@
 extends Resource
 class_name Speed
 
-signal speed_changed(new_speed: float)
-
 @export var base : float
-@export var run_modifier : float
+@export_range(0, 2, 0.01) var run_modifier : float:
+	set(v): run_modifier = v * base
+@onready var base_adjusted : float:
+	get: 
+		if running:
+			return base + run_modifier
+		else:
+			return base
+var running : bool = false
 
 @export_range(0, 1, 0.001) var acceleration : float:
-	get: return acceleration
-	set(v): acceleration = v * base
-
+	set(v): acceleration = v * base_adjusted
 @export_range(0, 1, 0.001) var deceleration : float:
-	get: return deceleration
-	set(v): deceleration = v * base
+	set(v): deceleration = -v * base_adjusted
 
-@export_range(0, 1, 0.001) var run_acceleration : float:
-		get: return run_acceleration
-		set(v): run_acceleration = v * base
-
-@export_range(0, 1, 0.001) var run_deceleration : float:
-		get: return run_deceleration
-		set(v): run_deceleration = v * base
-
-var current : float = 0.0
-
-
-func move(step: float, limit: float) -> void:
-	if current == limit:
-		return
-	current = min(current + step, limit)
-	emit_signal("speed_changed", current)
-
-func stop(step: float, limit: float) -> void:
-	if current == limit:
-		return
-	current = max(current - step, limit)
-	emit_signal("speed_changed", current)
-	
-
-
+var current : float = 0.0:
+	set(v):
+		current = clamp(v, 0, base_adjusted)

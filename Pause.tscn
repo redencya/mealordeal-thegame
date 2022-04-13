@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ddqxvfraxvr4y"]
+
+[node name="Control" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rotation = -0.00200861
+use_top_left = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -63.0
+offset_top = -68.0
+offset_right = 62.0
+offset_bottom = 68.0
+alignment = 1
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+offset_right = 125.0
+offset_bottom = 31.0
+text = "Resume"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+offset_top = 35.0
+offset_right = 125.0
+offset_bottom = 66.0
+text = "Settings
+"
+
+[node name="ExitToMenu" type="Button" parent="VBoxContainer"]
+offset_top = 70.0
+offset_right = 125.0
+offset_bottom = 101.0
+text = "Exit to Menu"
+
+[node name="ExitToDesktop" type="Button" parent="VBoxContainer"]
+offset_top = 105.0
+offset_right = 125.0
+offset_bottom = 136.0
+text = "Exit to Desktop"

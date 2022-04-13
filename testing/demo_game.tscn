@@ -1,9 +1,195 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctxbacx75rj6j"]
+[gd_scene load_steps=20 format=3 uid="uid://ctxbacx75rj6j"]
 
+[ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://ti565g01ddc7" path="res://player/base/player.tscn" id="1_qxtgh"]
+[ext_resource type="Script" path="res://testing/HUD.gd" id="2_3e81i"]
+[ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_1fw8h"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://M3X6.TTF" id="3_pjw5a"]
+[ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
+[ext_resource type="Resource" uid="uid://bfx474530kkv1" path="res://items/ingredient/Bread.tres" id="7_hmq03"]
+[ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
+[ext_resource type="Resource" uid="uid://bn54u2kh8jkgt" path="res://items/ingredient/Greens.tres" id="8_jskgi"]
+[ext_resource type="Resource" uid="uid://dgwo5vn2sund" path="res://items/ingredient/Cheese.tres" id="9_omd21"]
+[ext_resource type="Resource" uid="uid://byxnuixhrfufi" path="res://items/ingredient/Meat.tres" id="10_jahhy"]
+[ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
+
+[sub_resource type="Font" id="Font_yepoo"]
+data/0 = ExtResource( "3_pjw5a" )
+
+[sub_resource type="Font" id="Font_5ak5i"]
+data/0 = ExtResource( "3_pjw5a" )
+
+[sub_resource type="Font" id="Font_eq35c"]
+data/0 = ExtResource( "3_pjw5a" )
+
+[sub_resource type="Gradient" id="Gradient_cgpnl"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 0.486625, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wd150"]
+gradient = SubResource( "Gradient_cgpnl" )
+fill = 1
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_p8ufu"]
+script = ExtResource( "7_iwg3t" )
+items = [ExtResource( "7_hmq03" ), ExtResource( "7_hmq03" ), null, null, ExtResource( "8_jskgi" ), ExtResource( "9_omd21" ), null, ExtResource( "10_jahhy" ), null, null, null, ExtResource( "9_omd21" )]
+dimensions = Vector2i(4, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37nh1"]
+size = Vector2(24, 7)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2, -1)
+y_sort_enabled = true
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+position = Vector2(-2, 1)
+color = Color(0.388235, 0.478431, 0.466667, 1)
+polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D4"]
+color = Color(0.145098, 0.180392, 0.172549, 1)
+polygon = PackedVector2Array(483, 436, 483, 645, -73, 644, -73, 307)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D4/Polygon2D"]
+color = Color(0.0941176, 0.117647, 0.129412, 1)
+polygon = PackedVector2Array(667, 242, 483, 436, 483, 645, 669, 645)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+build_mode = 1
+polygon = PackedVector2Array(482, 438, 666, 241, 529, 68, 303, 10, -2, 55, -74, 308)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer"]
+position = Vector2(0, 35)
+scale = Vector2(0.28512, 0.28512)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
+
+[node name="Polygon2D3" type="Polygon2D" parent="CanvasLayer"]
+position = Vector2(0, 35)
+scale = Vector2(0.28512, 0.28512)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
+position = Vector2(0, 6.74988)
+scale = Vector2(0.716669, 0.716669)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 9, 86.5556, 1.51852, 75.9577, 25.6917, 71, 37, 0, 45)
+
+[node name="Poses" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(37.7753, 25.4287)
+scale = Vector2(0.0324389, 0.0324389)
+texture = ExtResource( "1_pnk4p" )
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 42.0
+offset_bottom = 39.0
+script = ExtResource( "2_3e81i" )
+player_path = NodePath("../../Player")
+health = ExtResource( "3_1fw8h" )
+
+[node name="MenuBackdrop" type="ColorRect" parent="CanvasLayer/HUD"]
+visible = false
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 639.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 0.345098)
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+visible = false
+offset_left = 6.0
+offset_top = 13.0
+offset_right = 114.0
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource( "Font_yepoo" )
+max_value = 3.0
+step = 1.0
+value = 3.0
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Button" type="Button" parent="CanvasLayer/HUD"]
+visible = false
+offset_left = 5.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 55.0
+theme_override_fonts/font = SubResource( "Font_5ak5i" )
+text = "Deal damage to Player"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Button2" type="Button" parent="CanvasLayer/HUD"]
+visible = false
+offset_left = 5.0
+offset_top = 58.0
+offset_right = 100.0
+offset_bottom = 79.0
+theme_override_fonts/font = SubResource( "Font_5ak5i" )
+text = "Heal Player"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Prompt" type="Label" parent="CanvasLayer/HUD"]
+anchor_right = 15.948
+anchor_bottom = 8.99
+offset_left = 262.0
+offset_top = 324.0
+offset_right = -248.92
+offset_bottom = -9.59998
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource( "Font_eq35c" )
+text = "Press \"E\" to open the storage"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(261, 210)
+rotation = 1.57079
+scale = Vector2(25.2304, 25.2304)
+texture = SubResource( "GradientTexture2D_wd150" )
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
-position = Vector2(320, 272)
+position = Vector2(238, 157)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(165, 125)
+collision_layer = 257
+collision_mask = 257
+script = ExtResource( "6_q5f8a" )
+storage = SubResource( "Resource_p8ufu" )
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, -10)
+texture = ExtResource( "12_lw73r" )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/Sprite2D"]
+position = Vector2(0, 4)
+scale = Vector2(0.253983, 0.256821)
+z_index = -1
+color = Color(0, 0, 0, 0.196078)
+polygon = PackedVector2Array(-30.5381, -4.36258, -39.2633, 4.36259, -30.5381, 13.0878, -13.0878, 21.8129, 13.0878, 21.8129, 30.5381, 13.0878, 39.2633, 4.36259, 30.5381, -4.36258, 13.0878, -13.0878, -13.0878, -13.0878)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+modulate = Color(0, 0.917647, 1, 1)
+position = Vector2(0, -0.5)
+shape = SubResource( "RectangleShape2D_37nh1" )
+
+[connection signal="pressed" from="CanvasLayer/HUD/Button" to="CanvasLayer/HUD" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/Button2" to="CanvasLayer/HUD" method="_on_button_2_pressed"]

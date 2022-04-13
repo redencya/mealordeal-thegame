@@ -1,3 +1,8 @@
+SpriteFrames
+Texture2DArray
+ImageTexture
+CanvasTexture
+AtlasTexture
 Storage (Storage.gd)
 CurveTexture
 Curve2D

@@ -5,5 +5,5 @@
 [resource]
 resource_name = "Health"
 script = ExtResource( "1_j2awi" )
-base = 3
+base = 5
 invulnerable = false

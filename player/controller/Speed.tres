@@ -4,9 +4,7 @@
 
 [resource]
 script = ExtResource( "1_ke1wm" )
-base = 180.0
-run_modifier = 85.0
-acceleration = 0.15
-deceleration = 0.12
-run_acceleration = 0.1
-run_deceleration = 0.065
+base = 95.0
+run_modifier = 0.87
+acceleration = 0.035
+deceleration = 0.035

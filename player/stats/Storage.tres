@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource( "1_aofqq" )
-dimensions = Vector2i(1, 1)
+items = []
+dimensions = Vector2i(5, 3)

@@ -1,10 +1,12 @@
 @tool
-extends Control
+extends GridContainer
 
 # TODO:  Change the exports to ranges on integers
 
 @export var storage : Resource
 @onready var saved_size : int = storage.dimensions.x * storage.dimensions.y
+const INVENTORY_SLOT_DISPLAY = preload("res://items/item_display.tscn")
+
 
 func delete_children(node):
 	for n in node.get_children():
@@ -13,19 +15,18 @@ func delete_children(node):
 
 # If the amount changes, clear the children and re-render.
 func render_table(table_size: int) -> void:
-	if $Grid.get_child_count() > 0:
-		delete_children($Grid)
+	if get_child_count() > 0:
+		delete_children(self)
 	for i in range(table_size):
-		var button = Button.new()
-		button.minimum_size = Vector2(80, 80)
-		$Grid.add_child(button)
-		button.set_owner(get_tree().edited_scene_root)
+		var slot = INVENTORY_SLOT_DISPLAY.instantiate()
+		add_child(slot)
+		slot.set_owner(get_tree().edited_scene_root)
 		# Render a button on base Grid
 	# If the size changes, re-render the grid
 # All of this should be previewable from the editor (thanks to @tool)
 
 func run() -> void:
-	$Grid.set_columns(storage.dimensions.x)
+	set_columns(storage.dimensions.x)
 	render_table(storage.dimensions.x * storage.dimensions.y)
 
 func _ready():
@@ -37,4 +38,3 @@ func _process(_delta : float):
 		if saved_size != storage.dimensions.x * storage.dimensions.y:
 			run()
 			saved_size = storage.dimensions.x * storage.dimensions.y
-

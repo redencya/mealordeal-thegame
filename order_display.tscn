@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://3gvcwdkmnv2g"]
+
+[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="1_667yl"]
+
+[node name="OrderDisplay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1024.0
+offset_bottom = -600.0
+
+[node name="CenterWrapper" type="CenterContainer" parent="."]
+use_top_left = true
+
+[node name="OrderDetails" type="PanelContainer" parent="CenterWrapper"]
+minimum_size = Vector2(420, 128)
+offset_left = -210.0
+offset_top = -69.0
+offset_right = 210.0
+offset_bottom = 69.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterWrapper/OrderDetails"]
+offset_right = 420.0
+offset_bottom = 138.0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CenterWrapper/OrderDetails/MarginContainer"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 410.0
+offset_bottom = 133.0
+split_offset = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer"]
+offset_right = 138.0
+offset_bottom = 128.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/CenterContainer"]
+minimum_size = Vector2(128, 128)
+offset_left = 5.0
+offset_right = 133.0
+offset_bottom = 128.0
+texture = ExtResource( "1_667yl" )
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer"]
+offset_left = 150.0
+offset_right = 400.0
+offset_bottom = 128.0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VerticalData" type="VBoxContainer" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 118.0
+
+[node name="VerticalText" type="VBoxContainer" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData"]
+offset_right = 230.0
+offset_bottom = 45.0
+theme_override_constants/separation = -1
+
+[node name="OrderName" type="Label" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData/VerticalText"]
+offset_right = 230.0
+offset_bottom = 26.0
+text = "Name"
+
+[node name="OrderDescription" type="Label" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData/VerticalText"]
+offset_top = 25.0
+offset_right = 230.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 12
+text = "Description"
+
+[node name="Separator" type="HSeparator" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData"]
+offset_top = 49.0
+offset_right = 230.0
+offset_bottom = 53.0
+
+[node name="MarginWrapper" type="MarginContainer" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData"]
+offset_top = 57.0
+offset_right = 230.0
+offset_bottom = 93.0
+theme_override_constants/margin_top = 5
+
+[node name="HorizontalButton" type="HBoxContainer" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData/MarginWrapper"]
+offset_top = 5.0
+offset_right = 230.0
+offset_bottom = 36.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Accept" type="Button" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData/MarginWrapper/HorizontalButton"]
+offset_left = 7.0
+offset_right = 114.0
+offset_bottom = 31.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Accept order"
+language = "English"
+
+[node name="Skip" type="Button" parent="CenterWrapper/OrderDetails/MarginContainer/HSplitContainer/MarginContainer/VerticalData/MarginWrapper/HorizontalButton"]
+offset_left = 134.0
+offset_right = 222.0
+offset_bottom = 31.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Skip order"

@@ -2,22 +2,17 @@ extends Resource
 class_name Health
 
 signal health_empty
-signal health_changed(amount)
+signal health_changed(new_health)
 
 @export var base : int
-@onready var current := base
+var current : int:
+  get: return current
+  set(v): 
+    var previous = current
+    current = clamp(v, 0, base)
+    if current != previous:
+      emit_signal("health_changed", current)
+      if current == 0 && !invulnerable:
+        emit_signal("health_empty")
+
 @export var invulnerable : bool = false
-
-func heal(amount: int = base) -> void:
-  current = min(current + amount, base)
-  emit_signal("health_changed", amount)
-
-func take_damage(amount: int) -> void:
-  if invulnerable: return
-
-  if current - amount <= 0:
-    emit_signal("health_empty")
-    return
-
-  current -= amount
-  emit_signal("health_changed", amount)

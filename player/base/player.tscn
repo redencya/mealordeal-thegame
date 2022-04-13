@@ -1,48 +1,111 @@
-[gd_scene load_steps=8 format=3 uid="uid://ti565g01ddc7"]
+[gd_scene load_steps=13 format=3 uid="uid://ti565g01ddc7"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
 [ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_xcu3p"]
 [ext_resource type="Resource" uid="uid://cncmsugg8xixs" path="res://player/controller/Controller.tres" id="4_kxk8i"]
 [ext_resource type="Script" path="res://player/states/Idle.gd" id="5_eko4w"]
+[ext_resource type="SpriteFrames" uid="uid://d2ula3fgwrduk" path="res://player/animation/front.tres" id="5_i7yt0"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://M3X6.TTF" id="5_ov6ac"]
 [ext_resource type="Script" path="res://player/states/Run.gd" id="6_kiesq"]
 [ext_resource type="Script" path="res://player/states/Walk.gd" id="7_2jkl4"]
+[ext_resource type="Script" path="res://player/states/Dodge.gd" id="8_weq04"]
+
+[sub_resource type="Font" id="Font_k4wjv"]
+data/0 = ExtResource( "5_ov6ac" )
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_hries"]
+length = 30.0
 
 [node name="Player" instance=ExtResource( "1_2wee3" )]
+process_mode = 1
+position = Vector2(0, 0)
 script = ExtResource( "2_vrh4i" )
-__meta__ = {
-"_edit_vertical_guides_": []
-}
 health = ExtResource( "3_xcu3p" )
 controller = ExtResource( "4_kxk8i" )
 loadout = null
 
-[node name="StateName" parent="." index="0"]
-offset_top = -75.0
-offset_bottom = -52.0
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+scale = Vector2(0.520001, 0.360003)
+color = Color(0, 0, 0, 0.392157)
+polygon = PackedVector2Array(10, -4, 7, -6, 2, -7, 0, -7, -2, -7, -6, -6, -10, -4, -12, -2, -13, 0, -12, 2, -10, 4, -6, 6, -2, 7, 0, 7, 2, 7, 6, 6, 10, 4, 12, 2, 13, 0, 12, -2)
+
+[node name="StateName" parent="." index="1"]
+offset_left = -24.0
+offset_top = -50.0
+offset_right = 24.0
+offset_bottom = -34.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource( "Font_k4wjv" )
+theme_override_font_sizes/font_size = 16
+text = "CurrentState"
 horizontal_alignment = 1
 
-[node name="Sprite" parent="." index="1"]
+[node name="Hitbox" parent="." index="2"]
 position = Vector2(0, -19)
 
-[node name="Collider" parent="." index="2"]
-position = Vector2(-0.499996, -19)
+[node name="Collider" parent="Hitbox" index="0"]
+modulate = Color(1, 0, 0.231373, 1)
+position = Vector2(0, 1)
 
-[node name="Hitbox" parent="." index="3"]
-position = Vector2(-0.499996, -19)
+[node name="Collider" parent="." index="3"]
+modulate = Color(0, 0.969695, 1, 1)
+position = Vector2(0, -2)
+rotation = 1.57079
 
-[node name="BaseSM" parent="." index="6"]
+[node name="Sprite" parent="." index="6"]
+texture_filter = 1
+position = Vector2(0, -24)
+frames = ExtResource( "5_i7yt0" )
+animation = &"Idle"
+frame = 3
+playing = true
+
+[node name="BaseSM" parent="." index="7"]
 default_state_path = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="BaseSM" index="0"]
 script = ExtResource( "5_eko4w" )
 walk = "Walk"
+dodge = "Dodge"
 
-[node name="Run" type="Node" parent="BaseSM" index="1"]
-script = ExtResource( "6_kiesq" )
-walk = "Walk"
-
-[node name="Walk" type="Node" parent="BaseSM" index="2"]
+[node name="Walk" type="Node" parent="BaseSM" index="1"]
 script = ExtResource( "7_2jkl4" )
 idle = "Idle"
+dodge = "Dodge"
 run = "Run"
+
+[node name="Run" type="Node" parent="BaseSM" index="2"]
+script = ExtResource( "6_kiesq" )
+walk = "Walk"
+dodge = "Dodge"
+
+[node name="Dodge" type="Node" parent="BaseSM" index="3"]
+script = ExtResource( "8_weq04" )
+idle = "Idle"
+
+[node name="Timer" type="Timer" parent="BaseSM/Dodge" index="0"]
+
+[node name="Camera2D" type="Camera2D" parent="." index="8"]
+current = true
+process_callback = 0
+smoothing_enabled = true
+smoothing_speed = 6.5
+drag_horizontal_offset = 0.25
+drag_vertical_offset = -0.15
+drag_bottom_margin = 0.55
+
+[node name="Position2D" type="Position2D" parent="." index="9"]
+position = Vector2(0, -19)
+scale = Vector2(50.3288, -34.6849)
+gizmo_extents = 0.5
+
+[node name="Interact" type="Area2D" parent="." index="10"]
+
+[node name="Collider" type="CollisionShape2D" parent="Interact" index="0"]
+shape = SubResource( "SeparationRayShape2D_hries" )
+
+[connection signal="timeout" from="BaseSM/Dodge/Timer" to="BaseSM/Dodge" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]

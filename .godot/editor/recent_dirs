@@ -1,7 +1,11 @@
-res://player/stats
 res://
-C:/Windows/Fonts
+D:/
+res://player/animation
 res://items
+res://.godot/imported
+res://items/ingredient
+res://player/stats
+C:/Windows/Fonts
 res://player
 res://world
 C:/Users/redka/AppData/Local/Programs/Microsoft VS Code

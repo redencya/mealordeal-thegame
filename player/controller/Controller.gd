@@ -1,22 +1,24 @@
 extends Resource
 class_name Controller
 
-var final_speed : float
+@export var stamina : Resource
+@export var speed : Resource
 
-@export var stamina : Resource = Stamina.new()
-@export var speed : Resource = Speed.new()
+func compute_velocity(direction: Vector2) -> Vector2:
+	return speed.current * direction
 
-func computed_limit() -> float:
-	if stamina.active:
-		return speed.base + speed.run_modifier
-	return speed.base
+func burn_stamina(_amount = stamina.drain):
+	speed.running = true
+	#stamina.current -= amount
+
+func restore_stamina(_amount = stamina.gain):
+	speed.running = false
+	#stamina.current = stamina.current + amount
 
 func move():
-	#if stamina.active:
-	#	stamina.burn()
-	#stamina.restore()
-	speed.current = min(speed.current + speed.acceleration, computed_limit())
+	speed.current += speed.acceleration
 
 func stop():
-	#stamina.restore()
-	speed.current = max(speed.current - speed.deceleration, 0)
+	if speed.current == 0: return
+
+	speed.current += speed.deceleration

@@ -1,6 +1,7 @@
 extends PlayerState
 
 @export var walk : String
+@export var dodge : String
 
 func physics_update(_delta: float) -> void:
 	player.direction = (player.direction 
@@ -12,8 +13,11 @@ func physics_update(_delta: float) -> void:
 		|| Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO):
 		state_machine.change_state(walk)
 
-func exit() -> void:
-	player.controller.toggle_run()
+	if Input.is_action_just_pressed("dodge"):
+		state_machine.change_state(dodge)
 
-func enter(_msg := {}) -> void:
-	player.controller.toggle_run()
+func enter(_msg := {}):
+	player.sprite.animation = "Run"
+
+func update(_delta : float):
+	player.controller.burn_stamina()
