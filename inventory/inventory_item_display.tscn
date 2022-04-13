@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cox4a4ao44qjh"]
+
+[ext_resource type="Script" path="res://inventory/InventorySlotDisplay.gd" id="1_52h6m"]
+[ext_resource type="Theme" uid="uid://ck48p57pww0xs" path="res://ui_theme.tres" id="1_fsfup"]
+[ext_resource type="Texture2D" uid="uid://csmirxeg4okqn" path="res://inventory/empty.png" id="2_0kcd8"]
+
+[node name="InventoryItemDisplay" type="CenterContainer"]
+editor_description = "This node displays a single item based on inventory data. 
+
+It is used in InventoryDisplay node in large quantities, and stores references to single items.
+Those references can be accessed by clicking on the item displays.
+
+For debug purposes, setting a texture manually is also supported.
+"
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( "1_52h6m" )
+metadata/_edit_use_custom_anchors = false
+
+[node name="ItemTextureRect" type="TextureRect" parent="."]
+minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+theme = ExtResource( "1_fsfup" )
+texture = ExtResource( "2_0kcd8" )
+stretch_mode = 3

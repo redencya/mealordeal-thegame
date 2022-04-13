@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ti565g01ddc7"]
 
-[ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
+[ext_resource type="PackedScene" path="res://actor/base/actor.tscn" id="1_2wee3"]
 [ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_xcu3p"]
 [ext_resource type="Resource" uid="uid://cncmsugg8xixs" path="res://player/controller/Controller.tres" id="4_kxk8i"]
@@ -59,7 +59,7 @@ texture_filter = 1
 position = Vector2(0, -24)
 frames = ExtResource( "5_i7yt0" )
 animation = &"Idle"
-frame = 3
+frame = 4
 playing = true
 
 [node name="BaseSM" parent="." index="7"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d3yjlcqrscfac"]
+
+[ext_resource type="Resource" uid="uid://dy4v10yjwa6c8" path="res://inventory/Cheese.tres" id="1_4ipv1"]
+[ext_resource type="Script" path="res://inventory/Inventory.gd" id="1_7a2li"]
+[ext_resource type="Resource" uid="uid://didq4eli1kanr" path="res://inventory/Bread.tres" id="1_o70t4"]
+[ext_resource type="Resource" uid="uid://0rt7n23456om" path="res://inventory/GrilledCheese.tres" id="2_leu5o"]
+
+[resource]
+script = ExtResource( "1_7a2li" )
+items = [null, ExtResource( "1_4ipv1" ), null, null, ExtResource( "1_o70t4" ), null, ExtResource( "1_4ipv1" ), ExtResource( "2_leu5o" ), ExtResource( "1_4ipv1" )]

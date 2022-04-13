@@ -49,6 +49,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://core/Hitbox.gd"
 }, {
+"base": "Resource",
+"class": &"Inventory",
+"language": &"GDScript",
+"path": "res://inventory/Inventory.gd"
+}, {
+"base": "Resource",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://inventory/Item.gd"
+}, {
 "base": "Actor",
 "class": &"NonPlayer",
 "language": &"GDScript",
@@ -93,6 +103,8 @@ _global_script_class_icons={
 "Hazard": "",
 "Health": "",
 "Hitbox": "",
+"Inventory": "",
+"Item": "",
 "NonPlayer": "",
 "Player": "",
 "PlayerState": "",
@@ -105,7 +117,6 @@ _global_script_class_icons={
 [application]
 
 config/name="mealordeal-thegame"
-run/main_scene="res://testing/demo_game.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
@@ -117,7 +128,6 @@ shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/borderless=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/subwindows/embed_subwindows=false
