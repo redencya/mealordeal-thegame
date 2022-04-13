@@ -29,11 +29,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://testing/Entity.gd"
 }, {
-"base": "Item",
-"class": &"Food",
-"language": &"GDScript",
-"path": "res://core/item/Food.gd"
-}, {
 "base": "Node2D",
 "class": &"Gun",
 "language": &"GDScript",
@@ -52,12 +47,7 @@ _global_script_classes=[{
 "base": "Area2D",
 "class": &"Hitbox",
 "language": &"GDScript",
-"path": "res://core/item/Hitbox.gd"
-}, {
-"base": "Resource",
-"class": &"Item",
-"language": &"GDScript",
-"path": "res://core/item/Item.gd"
+"path": "res://core/Hitbox.gd"
 }, {
 "base": "Actor",
 "class": &"NonPlayer",
@@ -73,11 +63,6 @@ _global_script_classes=[{
 "class": &"PlayerState",
 "language": &"GDScript",
 "path": "res://player/states/Base.gd"
-}, {
-"base": "Food",
-"class": &"Sandwich",
-"language": &"GDScript",
-"path": "res://core/item/Sandwich.gd"
 }, {
 "base": "Resource",
 "class": &"Speed",
@@ -98,50 +83,23 @@ _global_script_classes=[{
 "class": &"StateMachine",
 "language": &"GDScript",
 "path": "res://actor/states/StateMachine.gd"
-}, {
-"base": "Resource",
-"class": &"Storage",
-"language": &"GDScript",
-"path": "res://core/item/Storage.gd"
-}, {
-"base": "Item",
-"class": &"Weapon",
-"language": &"GDScript",
-"path": "res://core/item/Weapon.gd"
-}, {
-"base": "Weapon",
-"class": &"WeaponMelee",
-"language": &"GDScript",
-"path": "res://core/item/WeaponMelee.gd"
-}, {
-"base": "Weapon",
-"class": &"WeaponRanged",
-"language": &"GDScript",
-"path": "res://core/item/WeaponRanged.gd"
 }]
 _global_script_class_icons={
 "Actor": "",
 "Bullet": "res://svg/bullet.svg",
 "Controller": "",
 "Entity": "",
-"Food": "",
 "Gun": "res://svg/gun.svg",
 "Hazard": "",
 "Health": "",
 "Hitbox": "",
-"Item": "",
 "NonPlayer": "",
 "Player": "",
 "PlayerState": "",
-"Sandwich": "",
 "Speed": "",
 "Stamina": "",
 "State": "",
-"StateMachine": "",
-"Storage": "res://svg/storage.svg",
-"Weapon": "",
-"WeaponMelee": "",
-"WeaponRanged": ""
+"StateMachine": ""
 }
 
 [application]

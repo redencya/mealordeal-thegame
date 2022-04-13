@@ -1,5 +1,6 @@
 res://actor/states/StateMachine.gd
 res://core/Bullet.gd
+res://core/Gun.gd
 res://core/Hazard.gd
 res://core/State.gd
 res://core/item/Food.gd

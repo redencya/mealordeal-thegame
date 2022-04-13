@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://40npssfr32h3"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://actor/base/Actor.gd" id="1_wff5v"]
-[ext_resource type="Script" path="res://core/item/Hitbox.gd" id="3_50l0b"]
+[ext_resource type="Script" path="res://core/Hitbox.gd" id="3_50l0b"]
 [ext_resource type="Script" path="res://actor/states/StateMachine.gd" id="5_kvian"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64x2r"]
