@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctxbacx75rj6j"]
+[gd_scene load_steps=21 format=3 uid="uid://bipy5d0awf7p5"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://ti565g01ddc7" path="res://player/base/player.tscn" id="1_qxtgh"]
 [ext_resource type="Script" path="res://testing/HUD.gd" id="2_3e81i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_1fw8h"]
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://M3X6.TTF" id="3_pjw5a"]
+[ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
 [ext_resource type="Resource" uid="uid://bfx474530kkv1" path="res://items/ingredient/Bread.tres" id="7_hmq03"]
 [ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
@@ -19,8 +20,8 @@ data/0 = ExtResource( "3_pjw5a" )
 [sub_resource type="Font" id="Font_5ak5i"]
 data/0 = ExtResource( "3_pjw5a" )
 
-[sub_resource type="Font" id="Font_eq35c"]
-data/0 = ExtResource( "3_pjw5a" )
+[sub_resource type="Font" id="Font_k5pxy"]
+data/0 = ExtResource( "5_hvkdx" )
 
 [sub_resource type="Gradient" id="Gradient_cgpnl"]
 interpolation_mode = 2
@@ -142,16 +143,18 @@ metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
 [node name="Prompt" type="Label" parent="CanvasLayer/HUD"]
-anchor_right = 15.948
-anchor_bottom = 8.99
-offset_left = 262.0
-offset_top = 324.0
-offset_right = -248.92
-offset_bottom = -9.59998
+anchor_right = 15.936
+anchor_bottom = 9.073
+offset_top = 293.0
+offset_right = -0.440063
+offset_bottom = -0.919983
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = SubResource( "Font_eq35c" )
+theme_override_fonts/font = SubResource( "Font_k5pxy" )
+theme_override_font_sizes/font_size = 11
 text = "Press \"E\" to open the storage"
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
@@ -168,25 +171,25 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
 position = Vector2(238, 157)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(165, 125)
+[node name="Chest" type="StaticBody2D" parent="."]
+position = Vector2(207, 37)
 collision_layer = 257
 collision_mask = 257
 script = ExtResource( "6_q5f8a" )
 storage = SubResource( "Resource_p8ufu" )
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Chest"]
 position = Vector2(0, -10)
 texture = ExtResource( "12_lw73r" )
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/Sprite2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Chest/Sprite2D"]
 position = Vector2(0, 4)
 scale = Vector2(0.253983, 0.256821)
 z_index = -1
 color = Color(0, 0, 0, 0.196078)
 polygon = PackedVector2Array(-30.5381, -4.36258, -39.2633, 4.36259, -30.5381, 13.0878, -13.0878, 21.8129, 13.0878, 21.8129, 30.5381, 13.0878, 39.2633, 4.36259, 30.5381, -4.36258, 13.0878, -13.0878, -13.0878, -13.0878)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
 modulate = Color(0, 0.917647, 1, 1)
 position = Vector2(0, -0.5)
 shape = SubResource( "RectangleShape2D_37nh1" )

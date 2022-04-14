@@ -1,3 +1,7 @@
+GunState (Base.gd)
+StateMachine (StateMachine.gd)
+Gun (Gun.gd)
+Position2D
 WorldEnvironment
 CollisionPolygon2D
 StaticBody2D
@@ -26,7 +30,3 @@ AnimatedSprite2D
 ItemList
 MarginContainer
 TextureRect
-Panel
-HBoxContainer
-HSeparator
-HFlowContainer

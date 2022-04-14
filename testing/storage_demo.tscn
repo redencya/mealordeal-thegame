@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3b3hmf1ov4l2"]
+[gd_scene load_steps=3 format=3 uid="uid://djfje6x5u2o2w"]
 
 [ext_resource type="Script" path="res://storage/base/TransactionManager.gd" id="2_2ndxb"]
 [ext_resource type="PackedScene" uid="uid://bobksr0orlc4g" path="res://storage/ui/grabber.tscn" id="2_sokri"]
