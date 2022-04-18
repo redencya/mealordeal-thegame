@@ -32,5 +32,5 @@ func _physics_process(delta: float):
 
 func _on_hazard_body_entered(body: Node2D):
 	print("Test!")
-	if body is Actor:
+	if body is Enemy:
 		print("Target hit!")

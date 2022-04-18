@@ -19,10 +19,10 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://core/Bullet.gd"
 }, {
-"base": "Resource",
-"class": &"Controller",
+"base": "Actor",
+"class": &"Enemy",
 "language": &"GDScript",
-"path": "res://player/controller/Controller.gd"
+"path": "res://npc/base/NonPlayer.gd"
 }, {
 "base": "StaticBody2D",
 "class": &"Entity",
@@ -65,11 +65,6 @@ _global_script_classes=[{
 "path": "res://core/item/Item.gd"
 }, {
 "base": "Actor",
-"class": &"NonPlayer",
-"language": &"GDScript",
-"path": "res://npc/base/NonPlayer.gd"
-}, {
-"base": "Actor",
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://player/base/Player.gd"
@@ -83,11 +78,6 @@ _global_script_classes=[{
 "class": &"Sandwich",
 "language": &"GDScript",
 "path": "res://core/item/Sandwich.gd"
-}, {
-"base": "Resource",
-"class": &"Speed",
-"language": &"GDScript",
-"path": "res://player/controller/Speed.gd"
 }, {
 "base": "Resource",
 "class": &"Stamina",
@@ -127,7 +117,7 @@ _global_script_classes=[{
 _global_script_class_icons={
 "Actor": "",
 "Bullet": "res://svg/bullet.svg",
-"Controller": "",
+"Enemy": "",
 "Entity": "",
 "Food": "",
 "Gun": "",
@@ -136,11 +126,9 @@ _global_script_class_icons={
 "Health": "",
 "Hitbox": "",
 "Item": "",
-"NonPlayer": "",
 "Player": "",
 "PlayerState": "",
 "Sandwich": "",
-"Speed": "",
 "Stamina": "",
 "State": "",
 "StateMachine": "",

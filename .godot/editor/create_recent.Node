@@ -1,3 +1,18 @@
+TabBar
+Control
+CenterContainer
+AnimationPlayer
+Label
+ColorRect
+TextureRect
+GPUParticles2D
+CollisionShape2D
+RayCast2D
+HSlider
+State (State.gd)
+NavigationRegion2D
+Sprite2D
+AnimationTree
 GunState (Base.gd)
 StateMachine (StateMachine.gd)
 Gun (Gun.gd)
@@ -6,27 +21,12 @@ WorldEnvironment
 CollisionPolygon2D
 StaticBody2D
 Polygon2D
-Control
 Container
-CenterContainer
 TabContainer
-TabBar
 Button
 VBoxContainer
-Sprite2D
 Area2D
-CollisionShape2D
-ColorRect
-Label
-RayCast2D
 PanelContainer
 Line2D
 ProgressBar
 GridContainer
-ShapeCast2D
-CanvasLayer
-Camera2D
-AnimatedSprite2D
-ItemList
-MarginContainer
-TextureRect

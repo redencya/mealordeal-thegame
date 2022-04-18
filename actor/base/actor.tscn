@@ -9,8 +9,8 @@ radius = 7.0
 height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5i6eo"]
-radius = 3.0
-height = 16.0
+radius = 2.0
+height = 8.0
 
 [node name="Actor" type="CharacterBody2D"]
 position = Vector2(1, 0)
@@ -24,6 +24,9 @@ offset_right = 39.0
 offset_bottom = -65.0
 theme_override_font_sizes/font_size = 14
 text = "state_name"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(-0.499998, -32)
@@ -40,9 +43,6 @@ shape = SubResource( "CapsuleShape2D_5i6eo" )
 [node name="Animation" type="AnimationPlayer" parent="."]
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
 
 [node name="BaseSM" type="Node" parent="."]
 script = ExtResource( "5_kvian" )

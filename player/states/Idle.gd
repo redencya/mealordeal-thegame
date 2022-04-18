@@ -4,7 +4,8 @@ extends PlayerState
 @export var dodge : String
 
 func physics_update(_delta: float) -> void:
-	player.controller.stop()
+	
+	player.stop()
 
 	if Input.is_action_just_pressed("dodge"):
 		state_machine.change_state(dodge)
@@ -13,7 +14,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.change_state(walk)
 
 func enter(_msg := {}):
-	player.sprite.animation = "Idle"
+	player.animation_state_machine.travel("Idle")
 
 func update(_delta : float):
-	player.controller.restore_stamina()
+	pass

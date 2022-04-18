@@ -1,6 +1,6 @@
 class_name StateMachine extends Node
 
-signal transitioned_to(state_name)
+signal transitioned_to(state_name: StringName)
 
 @export_node_path(Node) var default_state_path
 @onready var current_state = get_node(default_state_path)

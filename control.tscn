@@ -1,0 +1,399 @@
+[gd_scene load_steps=31 format=3 uid="uid://bc8iyydxmtrx2"]
+
+[ext_resource type="Texture2D" uid="uid://dh7tvc2mjsobg" path="res://player/ui/inventory_sprites.png" id="1_1m51e"]
+[ext_resource type="Material" uid="uid://b0se2wm7tlmh5" path="res://GridPatternMaterial.tres" id="1_5bvss"]
+[ext_resource type="Shader" path="res://dodge_color.gdshader" id="1_n2h6d"]
+[ext_resource type="Texture2D" uid="uid://ci5ykvaddgs3n" path="res://bg.png" id="2_ag5vu"]
+[ext_resource type="Shader" path="res://softlightr.gdshader" id="3_f6te2"]
+[ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://M5X7.TTF" id="6_3tdqi"]
+[ext_resource type="Texture2D" uid="uid://dcuw3bq3ked5i" path="res://overlay.png" id="6_ohcao"]
+[ext_resource type="Material" uid="uid://dmyng0t0dgw33" path="res://GradientSoftLightBlend.tres" id="8_gs4ij"]
+
+[sub_resource type="Animation" id="Animation_io02k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bars:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory/GradientBlue:material:shader_param/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_hqatp"]
+resource_name = "Summon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bars:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.392292, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1.003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(0.615573, 1),
+"update": 0,
+"values": [Vector2(-360, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Inventory:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.9),
+"transitions": PackedFloat32Array(0.406126, 1.10957),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.0185813, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GridPattern:material:shader_param/alpha")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GradientRed:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(1.93187, 0.170755),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GradientPink:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(2.92817, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FadeBackground:modulate")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.210224, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Inventory/GradientBlue:material:shader_param/alpha")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akqac"]
+shader = ExtResource( "3_f6te2" )
+shader_param/alpha = null
+
+[sub_resource type="Gradient" id="Gradient_3218m"]
+interpolation_mode = 2
+colors = PackedColorArray(0.0703125, 0, 0.0303931, 0, 0.140625, 0, 0.0153428, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmdhw"]
+gradient = SubResource( "Gradient_3218m" )
+width = 256
+height = 256
+use_hdr = true
+fill_from = Vector2(0, 0.6)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_h4qtq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.79646, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.0386257, 0, 0.00908558, 0.234513, 0.164706, 0, 0.0387423, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g04tv"]
+gradient = SubResource( "Gradient_h4qtq" )
+width = 256
+height = 256
+use_hdr = true
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Font" id="Font_lb5x3"]
+data/0 = ExtResource( "6_3tdqi" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w51nm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiyan"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpaie"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpida"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fc15a"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vm8p2"]
+shader = ExtResource( "1_n2h6d" )
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbdvt"]
+atlas = ExtResource( "1_1m51e" )
+region = Rect2(16, 64, 240, 128)
+
+[sub_resource type="Gradient" id="Gradient_4rcig"]
+offsets = PackedFloat32Array(0.553097, 0.982301)
+colors = PackedColorArray(0.0465815, 0, 0.247059, 0, 0.0507813, 0, 0.148438, 0.576471)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_00ggo"]
+gradient = SubResource( "Gradient_4rcig" )
+width = 128
+height = 128
+fill_from = Vector2(0, 0.6)
+fill_to = Vector2(1, 0.995726)
+
+[sub_resource type="Gradient" id="Gradient_cx66y"]
+offsets = PackedFloat32Array(0.0132743, 0.995575)
+colors = PackedColorArray(0, 0.287009, 0.328125, 0, 0, 0.205882, 0.5, 0.27451)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d102c"]
+gradient = SubResource( "Gradient_cx66y" )
+width = 128
+height = 128
+fill_from = Vector2(0.452991, 0.623932)
+fill_to = Vector2(0.995726, 0.987179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upmbq"]
+atlas = ExtResource( "1_1m51e" )
+region = Rect2(16, 48, 240, 16)
+
+[sub_resource type="Font" id="Font_24u04"]
+data/0 = ExtResource( "6_3tdqi" )
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fomaa"]
+atlas = ExtResource( "1_1m51e" )
+region = Rect2(16, 192, 208, 32)
+
+[node name="Control" type="Control"]
+modulate = Color(1, 1, 1, 0)
+anchor_right = 1.0
+anchor_bottom = 1.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(320, 180)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( "Animation_io02k" )
+anims/Summon = SubResource( "Animation_hqatp" )
+
+[node name="FadeBackground" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.012, 0, 0.04, 0.843137)
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="GridPattern" type="TextureRect" parent="."]
+material = ExtResource( "1_5bvss" )
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource( "2_ag5vu" )
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="GradientRed" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource( "ShaderMaterial_akqac" )
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(1.00081, 1)
+texture = SubResource( "GradientTexture2D_dmdhw" )
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="GradientPink" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource( "ShaderMaterial_akqac" )
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(1.00081, 1)
+texture = SubResource( "GradientTexture2D_g04tv" )
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Bars" type="TextureRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+pivot_offset = Vector2(320, 176)
+texture = ExtResource( "6_ohcao" )
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="TabBar" type="TabBar" parent="Bars"]
+offset_left = 16.0
+offset_top = 304.0
+offset_right = 320.0
+offset_bottom = 328.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = SubResource( "Font_lb5x3" )
+theme_override_styles/button_highlight = SubResource( "StyleBoxEmpty_w51nm" )
+theme_override_styles/tab_disabled = SubResource( "StyleBoxEmpty_oiyan" )
+theme_override_styles/tab_selected = SubResource( "StyleBoxFlat_tpaie" )
+theme_override_styles/button_pressed = SubResource( "StyleBoxEmpty_hpida" )
+theme_override_styles/tab_unselected = SubResource( "StyleBoxEmpty_fc15a" )
+scrolling_enabled = false
+tab_count = 4
+tab_0/title = "Armament"
+tab_1/title = "Cookbook"
+tab_2/title = "Vitals"
+tab_3/title = "Map"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Inventory" type="Control" parent="."]
+offset_left = -360.0
+offset_right = -120.0
+offset_bottom = 359.999
+scale = Vector2(1e-05, 1)
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="InventoryPanel" type="TextureRect" parent="Inventory"]
+material = SubResource( "ShaderMaterial_vm8p2" )
+offset_top = 63.0
+offset_right = 240.0
+offset_bottom = 191.0
+texture = SubResource( "AtlasTexture_qbdvt" )
+stretch_mode = 4
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="GradientBlue" type="TextureRect" parent="Inventory"]
+material = ExtResource( "8_gs4ij" )
+offset_top = 1.0
+offset_right = 640.0
+offset_bottom = 361.0
+scale = Vector2(1.0013, 1.00471)
+texture = SubResource( "GradientTexture2D_00ggo" )
+flip_h = true
+flip_v = true
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="GradientBlue2" type="TextureRect" parent="Inventory"]
+material = ExtResource( "8_gs4ij" )
+offset_top = 63.0
+offset_right = 202.0
+offset_bottom = 205.0
+scale = Vector2(1.0013, 1.00471)
+texture = SubResource( "GradientTexture2D_d102c" )
+flip_h = true
+flip_v = true
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="InventoryTop" type="TextureRect" parent="Inventory"]
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 64.0
+texture = SubResource( "AtlasTexture_upmbq" )
+stretch_mode = 2
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="InventoryLabel" type="Label" parent="Inventory/InventoryTop"]
+offset_left = 16.0
+offset_top = -7.0
+offset_right = 68.0
+offset_bottom = 16.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource( "Font_24u04" )
+text = "Inventory"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Inventory Bottom" type="TextureRect" parent="Inventory"]
+offset_top = 191.0
+offset_right = 240.0
+offset_bottom = 223.0
+texture = SubResource( "AtlasTexture_fomaa" )
+stretch_mode = 2
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false

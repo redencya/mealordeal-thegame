@@ -1,6 +1,7 @@
 extends Resource
 class_name Health
 
+# When this signal is called to the Actor, the actor is DESTROYED
 signal health_empty
 signal health_changed(new_health)
 

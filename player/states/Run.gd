@@ -4,10 +4,8 @@ extends PlayerState
 @export var dodge : String
 
 func physics_update(_delta: float) -> void:
-	player.direction = (player.direction 
-	if Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO
-	else Input.get_vector("go_left", "go_right", "go_up", "go_down"))
-	player.controller.move()
+	player.update_direction()
+	player.move()
 
 	if (Input.is_action_just_released("run") 
 		|| Input.get_vector("go_left", "go_right", "go_up", "go_down") == Vector2.ZERO):
@@ -17,7 +15,11 @@ func physics_update(_delta: float) -> void:
 		state_machine.change_state(dodge)
 
 func enter(_msg := {}):
-	player.sprite.animation = "Run"
+	player.running = true
+	player.animation_state_machine.travel("Run")
+
+func exit():
+	player.running = false
 
 func update(_delta : float):
-	player.controller.burn_stamina()
+	pass

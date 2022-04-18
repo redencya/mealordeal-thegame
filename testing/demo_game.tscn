@@ -1,18 +1,21 @@
-[gd_scene load_steps=21 format=3 uid="uid://bipy5d0awf7p5"]
+[gd_scene load_steps=29 format=3 uid="uid://8ts52aoadsoi"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://ti565g01ddc7" path="res://player/base/player.tscn" id="1_qxtgh"]
 [ext_resource type="Script" path="res://testing/HUD.gd" id="2_3e81i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_1fw8h"]
+[ext_resource type="PackedScene" uid="uid://bc8iyydxmtrx2" path="res://control.tscn" id="3_f4cue"]
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://M3X6.TTF" id="3_pjw5a"]
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
-[ext_resource type="Resource" uid="uid://bfx474530kkv1" path="res://items/ingredient/Bread.tres" id="7_hmq03"]
+[ext_resource type="Script" path="res://actor/stats/Health.gd" id="7_hclvl"]
+[ext_resource type="Resource" uid="uid://bt7w3w0e7ko6s" path="res://items/ingredient/Bread.tres" id="7_hmq03"]
 [ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
-[ext_resource type="Resource" uid="uid://bn54u2kh8jkgt" path="res://items/ingredient/Greens.tres" id="8_jskgi"]
-[ext_resource type="Resource" uid="uid://dgwo5vn2sund" path="res://items/ingredient/Cheese.tres" id="9_omd21"]
-[ext_resource type="Resource" uid="uid://byxnuixhrfufi" path="res://items/ingredient/Meat.tres" id="10_jahhy"]
+[ext_resource type="Resource" uid="uid://bqv34pij1xmfn" path="res://items/ingredient/Greens.tres" id="8_jskgi"]
+[ext_resource type="Resource" uid="uid://bhh3vnb6ueu68" path="res://items/ingredient/Cheese.tres" id="9_omd21"]
+[ext_resource type="Resource" uid="uid://bphjh8a7mtpfr" path="res://items/ingredient/Meat.tres" id="10_jahhy"]
 [ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
+[ext_resource type="PackedScene" uid="uid://cjllujv51y0b5" path="res://npc/base/enemy.tscn" id="14_vknrk"]
 
 [sub_resource type="Font" id="Font_yepoo"]
 data/0 = ExtResource( "3_pjw5a" )
@@ -32,6 +35,13 @@ gradient = SubResource( "Gradient_cgpnl" )
 fill = 1
 fill_to = Vector2(1, 1)
 
+[sub_resource type="Resource" id="Resource_13pxl"]
+resource_local_to_scene = true
+resource_name = "Health"
+script = ExtResource( "7_hclvl" )
+base = 5
+invulnerable = false
+
 [sub_resource type="Resource" id="Resource_p8ufu"]
 script = ExtResource( "7_iwg3t" )
 items = [ExtResource( "7_hmq03" ), ExtResource( "7_hmq03" ), null, null, ExtResource( "8_jskgi" ), ExtResource( "9_omd21" ), null, ExtResource( "10_jahhy" ), null, null, null, ExtResource( "9_omd21" )]
@@ -40,9 +50,122 @@ dimensions = Vector2i(4, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37nh1"]
 size = Vector2(24, 7)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lquqi"]
+vertices = PackedVector2Array(-3, 55, 300, 9, 529, 69, 666, 240, 481, 437, -75, 307)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5)]
+outlines = [PackedVector2Array(-75, 307, 481, 437, 666, 240, 529, 69, 300, 9, -3, 55)]
+
+[sub_resource type="Resource" id="Resource_d47id"]
+resource_local_to_scene = true
+resource_name = "Health"
+script = ExtResource( "7_hclvl" )
+base = 5
+invulnerable = false
+
+[sub_resource type="Resource" id="Resource_w3x05"]
+resource_local_to_scene = true
+resource_name = "Health"
+script = ExtResource( "7_hclvl" )
+base = 5
+invulnerable = false
+
+[sub_resource type="Resource" id="Resource_n4l8t"]
+resource_local_to_scene = true
+resource_name = "Health"
+script = ExtResource( "7_hclvl" )
+base = 5
+invulnerable = false
+
 [node name="Node2D" type="Node2D"]
-position = Vector2(2, -1)
 y_sort_enabled = true
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Polygon2D2" type="Polygon2D" parent="Interface"]
+position = Vector2(0, 35)
+scale = Vector2(0.28512, 0.28512)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Interface"]
+position = Vector2(0, 35)
+scale = Vector2(0.28512, 0.28512)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
+
+[node name="Polygon2D" type="Polygon2D" parent="Interface"]
+position = Vector2(0, 6)
+scale = Vector2(0.716669, 0.716669)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 9, 86.5556, 1.51852, 75.9577, 25.6917, 71, 37, 0, 45)
+
+[node name="Poses" type="Sprite2D" parent="Interface"]
+position = Vector2(37.7753, 25.4287)
+scale = Vector2(0.0324389, 0.0324389)
+texture = ExtResource( "1_pnk4p" )
+
+[node name="HUD" type="Control" parent="Interface"]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 42.0
+offset_bottom = 39.0
+script = ExtResource( "2_3e81i" )
+player_path = NodePath("../../Player")
+health = ExtResource( "3_1fw8h" )
+
+[node name="ProgressBar" type="ProgressBar" parent="Interface/HUD"]
+visible = false
+offset_left = 6.0
+offset_top = 13.0
+offset_right = 114.0
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource( "Font_yepoo" )
+max_value = 3.0
+step = 1.0
+value = 3.0
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Button" type="Button" parent="Interface/HUD"]
+visible = false
+offset_left = 5.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 55.0
+theme_override_fonts/font = SubResource( "Font_5ak5i" )
+text = "Deal damage to Player"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Button2" type="Button" parent="Interface/HUD"]
+visible = false
+offset_left = 5.0
+offset_top = 58.0
+offset_right = 100.0
+offset_bottom = 79.0
+theme_override_fonts/font = SubResource( "Font_5ak5i" )
+text = "Heal Player"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Prompt" type="Label" parent="Interface/HUD"]
+anchor_right = 15.936
+anchor_bottom = 9.073
+offset_top = 293.0
+offset_right = -0.440063
+offset_bottom = -0.919983
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource( "Font_k5pxy" )
+theme_override_font_sizes/font_size = 11
+text = "Press \"E\" to open the storage"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="MenuBackdrop" parent="Interface/HUD" instance=ExtResource( "3_f4cue" )]
+top_level = true
 
 [node name="Polygon2D4" type="Polygon2D" parent="."]
 position = Vector2(-2, 1)
@@ -63,103 +186,6 @@ polygon = PackedVector2Array(667, 242, 483, 436, 483, 645, 669, 645)
 build_mode = 1
 polygon = PackedVector2Array(482, 438, 666, 241, 529, 68, 303, 10, -2, 55, -74, 308)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer"]
-position = Vector2(0, 35)
-scale = Vector2(0.28512, 0.28512)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
-
-[node name="Polygon2D3" type="Polygon2D" parent="CanvasLayer"]
-position = Vector2(0, 35)
-scale = Vector2(0.28512, 0.28512)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
-
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
-position = Vector2(0, 6.74988)
-scale = Vector2(0.716669, 0.716669)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 9, 86.5556, 1.51852, 75.9577, 25.6917, 71, 37, 0, 45)
-
-[node name="Poses" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(37.7753, 25.4287)
-scale = Vector2(0.0324389, 0.0324389)
-texture = ExtResource( "1_pnk4p" )
-
-[node name="HUD" type="Control" parent="CanvasLayer"]
-offset_left = 2.0
-offset_top = -1.0
-offset_right = 42.0
-offset_bottom = 39.0
-script = ExtResource( "2_3e81i" )
-player_path = NodePath("../../Player")
-health = ExtResource( "3_1fw8h" )
-
-[node name="MenuBackdrop" type="ColorRect" parent="CanvasLayer/HUD"]
-visible = false
-offset_left = -2.0
-offset_top = 1.0
-offset_right = 639.0
-offset_bottom = 360.0
-color = Color(0, 0, 0, 0.345098)
-metadata/_edit_layout_mode = 0
-metadata/_edit_use_custom_anchors = false
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD"]
-visible = false
-offset_left = 6.0
-offset_top = 13.0
-offset_right = 114.0
-offset_bottom = 30.0
-theme_override_fonts/font = SubResource( "Font_yepoo" )
-max_value = 3.0
-step = 1.0
-value = 3.0
-metadata/_edit_layout_mode = 0
-metadata/_edit_use_custom_anchors = false
-
-[node name="Button" type="Button" parent="CanvasLayer/HUD"]
-visible = false
-offset_left = 5.0
-offset_top = 34.0
-offset_right = 100.0
-offset_bottom = 55.0
-theme_override_fonts/font = SubResource( "Font_5ak5i" )
-text = "Deal damage to Player"
-metadata/_edit_layout_mode = 0
-metadata/_edit_use_custom_anchors = false
-
-[node name="Button2" type="Button" parent="CanvasLayer/HUD"]
-visible = false
-offset_left = 5.0
-offset_top = 58.0
-offset_right = 100.0
-offset_bottom = 79.0
-theme_override_fonts/font = SubResource( "Font_5ak5i" )
-text = "Heal Player"
-metadata/_edit_layout_mode = 0
-metadata/_edit_use_custom_anchors = false
-
-[node name="Prompt" type="Label" parent="CanvasLayer/HUD"]
-anchor_right = 15.936
-anchor_bottom = 9.073
-offset_top = 293.0
-offset_right = -0.440063
-offset_bottom = -0.919983
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = SubResource( "Font_k5pxy" )
-theme_override_font_sizes/font_size = 11
-text = "Press \"E\" to open the storage"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_layout_mode = 1
-metadata/_edit_use_custom_anchors = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(261, 210)
@@ -170,6 +196,11 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
 position = Vector2(238, 157)
+health = SubResource( "Resource_13pxl" )
+speed_base = 118.0
+run_modifier = 0.62
+acceleration = 0.019
+deceleration = 0.04
 
 [node name="Chest" type="StaticBody2D" parent="."]
 position = Vector2(207, 37)
@@ -194,5 +225,21 @@ modulate = Color(0, 0.917647, 1, 1)
 position = Vector2(0, -0.5)
 shape = SubResource( "RectangleShape2D_37nh1" )
 
-[connection signal="pressed" from="CanvasLayer/HUD/Button" to="CanvasLayer/HUD" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HUD/Button2" to="CanvasLayer/HUD" method="_on_button_2_pressed"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navpoly = SubResource( "NavigationPolygon_lquqi" )
+enabled = false
+
+[node name="Enemy" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(382, 252)
+health = SubResource( "Resource_d47id" )
+
+[node name="Enemy2" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(121, 220)
+health = SubResource( "Resource_w3x05" )
+
+[node name="Enemy3" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(305, 72)
+health = SubResource( "Resource_n4l8t" )
+
+[connection signal="pressed" from="Interface/HUD/Button" to="Interface/HUD" method="_on_button_pressed"]
+[connection signal="pressed" from="Interface/HUD/Button2" to="Interface/HUD" method="_on_button_2_pressed"]
