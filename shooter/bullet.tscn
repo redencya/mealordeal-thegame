@@ -11,14 +11,15 @@ radius = 6.0
 radius = 5.0
 
 [node name="Bullet" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 8
+collision_layer = 16384
+collision_mask = 32768
 floor_block_on_wall = false
 script = ExtResource( "1_8pbcd" )
 
 [node name="Hazard" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
-collision_mask = 8
+collision_mask = 32768
 monitorable = false
 script = ExtResource( "2_vmc75" )
 
@@ -31,5 +32,3 @@ shape = SubResource( "CircleShape2D_o5hka" )
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
 texture = ExtResource( "3_aajip" )
-
-[connection signal="body_entered" from="Hazard" to="." method="_on_hazard_body_entered"]

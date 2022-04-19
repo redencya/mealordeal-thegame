@@ -6,9 +6,7 @@ signal send_damage
 const LINEAR_SPEED : float = 275.0
 const LIFESPAN : float = 1.666
 var   age_left : float = LIFESPAN
-var   damage : int = 10
 var   direction : Vector2 = Vector2.ZERO
-
 
 func on_any_collision():
 	if move_and_slide():
@@ -23,11 +21,6 @@ func die():
 	queue_free()
 
 func _physics_process(delta: float):
+	move_and_slide()
 	calc_age(delta)
-	on_any_collision()
 	velocity = direction * LINEAR_SPEED
-
-func _on_hazard_body_entered(body: Node2D):
-	print("Test!")
-	if body is Enemy:
-		print("Target hit!")

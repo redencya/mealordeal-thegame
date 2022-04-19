@@ -1,3 +1,4 @@
+ProgressBar
 TabBar
 Control
 CenterContainer
@@ -28,5 +29,4 @@ VBoxContainer
 Area2D
 PanelContainer
 Line2D
-ProgressBar
 GridContainer

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=31 format=3 uid="uid://bxx65elegw62v"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
@@ -59,21 +59,35 @@ outlines = [PackedVector2Array(-75, 307, 289, 396, 242, 571, 794, 694, 983, 504,
 resource_local_to_scene = true
 resource_name = "Health"
 script = ExtResource( "7_hclvl" )
-base = 5
+base = 7
+invulnerable = false
+
+[sub_resource type="Resource" id="Resource_uroh2"]
+resource_local_to_scene = true
+resource_name = "Health"
+script = ExtResource( "7_hclvl" )
+base = 12
+invulnerable = false
+
+[sub_resource type="Resource" id="Resource_btvgo"]
+resource_local_to_scene = true
+resource_name = "Health"
+script = ExtResource( "7_hclvl" )
+base = 3
 invulnerable = false
 
 [sub_resource type="Resource" id="Resource_w3x05"]
 resource_local_to_scene = true
 resource_name = "Health"
 script = ExtResource( "7_hclvl" )
-base = 5
+base = 9
 invulnerable = false
 
 [sub_resource type="Resource" id="Resource_n4l8t"]
 resource_local_to_scene = true
 resource_name = "Health"
 script = ExtResource( "7_hclvl" )
-base = 5
+base = 8
 invulnerable = false
 
 [node name="Node2D" type="Node2D"]
@@ -228,6 +242,21 @@ navpoly = SubResource( "NavigationPolygon_lquqi" )
 [node name="Enemy" parent="." instance=ExtResource( "14_vknrk" )]
 position = Vector2(382, 252)
 health = SubResource( "Resource_d47id" )
+speed_base = 80.0
+
+[node name="Enemy4" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(672, 401)
+health = SubResource( "Resource_uroh2" )
+speed_base = 80.0
+
+[node name="Enemy5" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(389, 445)
+health = SubResource( "Resource_d47id" )
+speed_base = 80.0
+
+[node name="Enemy6" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(605, 554)
+health = SubResource( "Resource_btvgo" )
 speed_base = 80.0
 
 [node name="Enemy2" parent="." instance=ExtResource( "14_vknrk" )]

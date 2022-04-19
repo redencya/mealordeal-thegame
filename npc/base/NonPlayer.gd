@@ -6,6 +6,9 @@ var point : Vector2
 const VISION_MARGIN := Vector2(0, -20)
 
 func _ready():
+	health.current = health.base
+	$ProgressBar.max_value = health.base
+	$ProgressBar.value = health.current
 	super._ready()
 
 # AI Programming
@@ -60,6 +63,21 @@ func chase():
 		var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
 		$NavAgent.set_velocity(new_velocity)
 
+# Debug function, to be replaced with actual damage reaction later on.
+func debug_hurt(new_health: int):
+	var tween : Tween = get_tree().create_tween().bind_node(self)
+
+	const COLOR_REGULAR = Color("ffffff")
+	const COLOR_HURT = Color("ffabab")
+
+	tween.tween_property($ProgressBar, "value", float(new_health), 0.25).set_trans(Tween.TRANS_SINE)
+	tween.parallel().tween_property($Sprite, "modulate", COLOR_HURT, 0.15).set_trans(Tween.TRANS_EXPO)
+	tween.parallel().tween_property($Sprite, "scale", Vector2(1.1, 1.1), 0.1).set_trans(Tween.TRANS_LINEAR)
+	tween.parallel().tween_property($Sprite, "rotation", deg2rad(float(randi_range(-10, 10))), 0.1).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property($Sprite, "modulate", COLOR_REGULAR, 0.25).set_trans(Tween.TRANS_EXPO)
+	tween.parallel().tween_property($Sprite, "scale", Vector2(1, 1), 0.1).set_trans(Tween.TRANS_LINEAR)
+	tween.parallel().tween_property($Sprite, "rotation", deg2rad(0), 0.1).set_trans(Tween.TRANS_LINEAR)
+
 # Processing
 
 func _physics_process(_delta):
@@ -67,9 +85,26 @@ func _physics_process(_delta):
 
 # Signals
 
+func _on_health_changed(new_health : int):
+	print("hurt!")
+
+	debug_hurt(new_health)
+
 func _on_health_empty():
+	var tween : Tween = get_tree().create_tween().bind_node(self)
+
+	const COLOR_HURT = Color("ffabab")
+	tween.tween_property($Sprite, "rotation", deg2rad(100), 0.45).set_trans(Tween.TRANS_LINEAR)
+	tween.parallel().tween_property($Sprite, "modulate", COLOR_HURT, 0.2).set_trans(Tween.TRANS_EXPO)
+
+	await tween.finished
 	queue_free()
 
 func _on_nav_agent_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	move_and_slide()
+
+func _on_hitbox_body_entered(body:Node2D):
+	if body is Bullet:
+		health.current -= 1
+		body.queue_free()

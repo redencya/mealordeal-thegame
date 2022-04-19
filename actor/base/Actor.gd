@@ -15,5 +15,5 @@ func _ready():
 func _on_health_empty():
 	queue_free()
 
-func _on_health_changed():
+func _on_health_changed(_new_health : int):
 	print(str(self.name) + " has been hurt!")
