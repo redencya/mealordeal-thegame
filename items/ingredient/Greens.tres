@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" path="res://core/item/Food.gd" id="1_q7c08"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d8hbm"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hfi27"]
 load_path = "res://.godot/imported/item_atlas.png-2424abc86eda0e5a18d03ab4bcc9d87f.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ilt6d"]
-atlas = SubResource( "CompressedTexture2D_d8hbm" )
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoj7q"]
+atlas = SubResource( "CompressedTexture2D_hfi27" )
 region = Rect2(64, 0, 16, 16)
 
 [resource]
 script = ExtResource( "1_q7c08" )
 name = "Green Lettuce"
 stack_amount = 8
-texture = SubResource( "AtlasTexture_ilt6d" )
+texture = SubResource( "AtlasTexture_aoj7q" )
 description = null
 expiry_time = null
 consumable = null

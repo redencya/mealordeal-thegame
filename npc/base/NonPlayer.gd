@@ -5,10 +5,8 @@ var target : Player = null
 var point : Vector2
 const VISION_MARGIN := Vector2(0, -20)
 
-
 func _ready():
 	super._ready()
-	point = draw_trajectory_vector()
 
 # AI Programming
 # Technically, this is Breadator behavior, but it shouldn't matter because this will end up in state logic regardless

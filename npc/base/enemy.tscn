@@ -60,5 +60,4 @@ default_state_path = NodePath("State")
 [node name="State" type="Node" parent="BaseSM" index="0"]
 script = ExtResource( "4_ur2x4" )
 
-[connection signal="target_reached" from="NavAgent" to="." method="_on_nav_agent_target_reached"]
 [connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]

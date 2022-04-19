@@ -1,19 +1,17 @@
-[gd_scene load_steps=57 format=3 uid="uid://ti565g01ddc7"]
+[gd_scene load_steps=55 format=3 uid="uid://c7vmhgofkpp8g"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
 [ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_xcu3p"]
 [ext_resource type="Resource" uid="uid://b38nn7j3bymjy" path="res://player/controller/Stamina.tres" id="4_ar46m"]
 [ext_resource type="Script" path="res://player/states/Idle.gd" id="5_eko4w"]
-[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://M3X6.TTF" id="5_ov6ac"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="5_ov6ac"]
 [ext_resource type="Texture2D" uid="uid://dgk8xxu432nxc" path="res://player/animation/animation_matrix.png" id="6_buojl"]
 [ext_resource type="Shader" path="res://player/base/player.gdshader" id="6_gnsxj"]
 [ext_resource type="Script" path="res://player/states/Run.gd" id="6_kiesq"]
 [ext_resource type="Script" path="res://player/states/Walk.gd" id="7_2jkl4"]
 [ext_resource type="Script" path="res://player/states/Dodge.gd" id="8_weq04"]
 [ext_resource type="Script" path="res://player/base/Gun.gd" id="11_kxxwn"]
-[ext_resource type="Script" path="res://actor/states/StateMachine.gd" id="12_w8j61"]
-[ext_resource type="Script" path="res://player/states/gun/Usable.gd" id="13_h4tqt"]
 
 [sub_resource type="Curve" id="Curve_qmxjy"]
 min_value = -200.0
@@ -421,16 +419,13 @@ vframes = 12
 frame = 1
 
 [node name="Hitbox" parent="." index="4"]
-visible = false
 position = Vector2(0, -19)
 
 [node name="Collider" parent="Hitbox" index="0"]
-visible = false
 modulate = Color(1, 0, 0.231373, 1)
 position = Vector2(0, 1)
 
 [node name="Collider" parent="." index="5"]
-visible = false
 modulate = Color(0, 0.969695, 1, 1)
 position = Vector2(0, -2)
 rotation = 1.57079
@@ -440,7 +435,7 @@ tree_root = SubResource( "AnimationNodeStateMachine_0r4gd" )
 anim_player = NodePath("../Animation")
 active = true
 parameters/playback = SubResource( "AnimationNodeStateMachinePlayback_tvhr0" )
-parameters/Idle/blend_position = Vector2(0.010407, 0.402985)
+parameters/Idle/blend_position = Vector2(-0.120494, 0.641921)
 parameters/Run/blend_position = Vector2(-0.3395, -0.282089)
 parameters/Walk/blend_position = Vector2(-0.29291, 0.371166)
 
@@ -495,7 +490,6 @@ drag_bottom_margin = 0.55
 editor_draw_screen = false
 
 [node name="Interact" type="Area2D" parent="." index="11"]
-visible = false
 
 [node name="Collider" type="CollisionShape2D" parent="Interact" index="0"]
 shape = SubResource( "SeparationRayShape2D_hries" )
@@ -503,13 +497,6 @@ shape = SubResource( "SeparationRayShape2D_hries" )
 [node name="Gun" type="Position2D" parent="." index="12"]
 position = Vector2(0, -21)
 script = ExtResource( "11_kxxwn" )
-
-[node name="StateMachine" type="Node" parent="Gun" index="0"]
-script = ExtResource( "12_w8j61" )
-default_state_path = NodePath("GunState")
-
-[node name="GunState" type="Node" parent="Gun/StateMachine" index="0"]
-script = ExtResource( "13_h4tqt" )
 
 [connection signal="transitioned_to" from="BaseSM" to="." method="_on_base_sm_transitioned_to"]
 [connection signal="timeout" from="BaseSM/Dodge/Timer" to="BaseSM/Dodge" method="_on_timer_timeout"]

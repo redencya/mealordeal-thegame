@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" path="res://core/item/Food.gd" id="1_rk6ke"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8fp2d"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lpjms"]
 load_path = "res://.godot/imported/item_atlas.png-2424abc86eda0e5a18d03ab4bcc9d87f.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0vkc4"]
-atlas = SubResource( "CompressedTexture2D_8fp2d" )
+[sub_resource type="AtlasTexture" id="AtlasTexture_od3p6"]
+atlas = SubResource( "CompressedTexture2D_lpjms" )
 region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource( "1_rk6ke" )
 name = "Slice of Cheese"
 stack_amount = 16
-texture = SubResource( "AtlasTexture_0vkc4" )
+texture = SubResource( "AtlasTexture_od3p6" )
 description = "This thinly sliced, mild cheese melts in your mouth.
 Perfect for sandwiches, burgers, and throwing at babies."
 expiry_time = 3

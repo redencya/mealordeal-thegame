@@ -1,7 +1,25 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dmyng0t0dgw33"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cqe27gu6qyn2j"]
 
-[ext_resource type="Shader" path="res://softlightr.gdshader" id="1_770l0"]
+[sub_resource type="Shader" id="Shader_qh6jn"]
+code = "shader_type canvas_item;
+
+uniform float alpha = 1.0;
+
+vec3 soft_light(vec3 target, vec3 blend) {
+	return vec3(greaterThan(blend, vec3(0.5))) * vec3(1) 
+	- (vec3(1) - target * vec3(1) - blend - vec3(0.5))
+	+ vec3(lessThanEqual(blend, vec3(0.5))) * target * blend + vec3(0.5);
+}
+
+void fragment() {
+	vec4 tex = texture(TEXTURE, UV);
+	vec4 bg = texture(SCREEN_TEXTURE, SCREEN_UV);
+	
+	COLOR.rgb = soft_light(tex.rgb, bg.rgb);
+	COLOR.a = COLOR.a * alpha;
+}
+"
 
 [resource]
-shader = ExtResource( "1_770l0" )
+shader = SubResource( "Shader_qh6jn" )
 shader_param/alpha = 0.0

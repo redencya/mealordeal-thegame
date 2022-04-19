@@ -7,13 +7,13 @@ signal health_changed(new_health)
 
 @export var base : int
 var current : int:
-  get: return current
-  set(v): 
-    var previous = current
-    current = clamp(v, 0, base)
-    if current != previous:
-      emit_signal("health_changed", current)
-      if current == 0 && !invulnerable:
-        emit_signal("health_empty")
+	get: return current
+	set(v): 
+		var previous = current
+		current = clamp(v, 0, base)
+		if current != previous:
+			emit_signal("health_changed", current)
+			if current == 0 && !invulnerable:
+				emit_signal("health_empty")
 
 @export var invulnerable : bool = false

@@ -1,11 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://8ts52aoadsoi"]
+[gd_scene load_steps=29 format=3 uid="uid://bxx65elegw62v"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
-[ext_resource type="PackedScene" uid="uid://ti565g01ddc7" path="res://player/base/player.tscn" id="1_qxtgh"]
+[ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
 [ext_resource type="Script" path="res://testing/HUD.gd" id="2_3e81i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_1fw8h"]
-[ext_resource type="PackedScene" uid="uid://bc8iyydxmtrx2" path="res://control.tscn" id="3_f4cue"]
-[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://M3X6.TTF" id="3_pjw5a"]
+[ext_resource type="PackedScene" uid="uid://njuaolex8eyn" path="res://ui/control.tscn" id="3_f4cue"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="3_pjw5a"]
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
 [ext_resource type="Script" path="res://actor/stats/Health.gd" id="7_hclvl"]
@@ -51,9 +51,9 @@ dimensions = Vector2i(4, 3)
 size = Vector2(24, 7)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lquqi"]
-vertices = PackedVector2Array(-3, 55, 300, 9, 529, 69, 666, 240, 481, 437, -75, 307)
-polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5)]
-outlines = [PackedVector2Array(-75, 307, 481, 437, 666, 240, 529, 69, 300, 9, -3, 55)]
+vertices = PackedVector2Array(794, 694, 242, 571, 289, 396, 635, 276, 844, 333, 983, 504, -75, 307, -3, 55, 300, 9, 529, 69, 666, 240)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 7, 8, 9, 10, 3)]
+outlines = [PackedVector2Array(-75, 307, 289, 396, 242, 571, 794, 694, 983, 504, 844, 333, 635, 276, 666, 240, 529, 69, 300, 9, -3, 55)]
 
 [sub_resource type="Resource" id="Resource_d47id"]
 resource_local_to_scene = true
@@ -172,19 +172,16 @@ position = Vector2(-2, 1)
 color = Color(0.388235, 0.478431, 0.466667, 1)
 polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
 
-[node name="Polygon2D" type="Polygon2D" parent="Polygon2D4"]
-color = Color(0.145098, 0.180392, 0.172549, 1)
-polygon = PackedVector2Array(483, 436, 483, 645, -73, 644, -73, 307)
-
-[node name="Polygon2D" type="Polygon2D" parent="Polygon2D4/Polygon2D"]
-color = Color(0.0941176, 0.117647, 0.129412, 1)
-polygon = PackedVector2Array(667, 242, 483, 436, 483, 645, 669, 645)
+[node name="Polygon2D5" type="Polygon2D" parent="."]
+position = Vector2(314, 263)
+color = Color(0.388235, 0.478431, 0.466667, 1)
+polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 build_mode = 1
-polygon = PackedVector2Array(482, 438, 666, 241, 529, 68, 303, 10, -2, 55, -74, 308)
+polygon = PackedVector2Array(242, 570, 797, 699, 981, 508, 849, 333, 635, 278, 666, 241, 529, 68, 303, 10, -2, 55, -74, 308, 287, 397)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -227,19 +224,21 @@ shape = SubResource( "RectangleShape2D_37nh1" )
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navpoly = SubResource( "NavigationPolygon_lquqi" )
-enabled = false
 
 [node name="Enemy" parent="." instance=ExtResource( "14_vknrk" )]
 position = Vector2(382, 252)
 health = SubResource( "Resource_d47id" )
+speed_base = 80.0
 
 [node name="Enemy2" parent="." instance=ExtResource( "14_vknrk" )]
 position = Vector2(121, 220)
 health = SubResource( "Resource_w3x05" )
+speed_base = 80.0
 
 [node name="Enemy3" parent="." instance=ExtResource( "14_vknrk" )]
 position = Vector2(305, 72)
 health = SubResource( "Resource_n4l8t" )
+speed_base = 80.0
 
 [connection signal="pressed" from="Interface/HUD/Button" to="Interface/HUD" method="_on_button_pressed"]
 [connection signal="pressed" from="Interface/HUD/Button2" to="Interface/HUD" method="_on_button_2_pressed"]

@@ -8,8 +8,12 @@ func _ready() -> void:
 	player = owner as Player
 	assert(player != null)
 
-func fire() -> void:
+func fire(target: Vector2) -> void:
 	var bullet : Bullet = BULLET.instantiate()
 	get_tree().get_root().add_child(bullet)
+	bullet.direction = target
 	bullet.global_position = global_position
-	bullet.set_course_to(player.direction)
+
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		fire(global_position.direction_to(get_global_mouse_position()))

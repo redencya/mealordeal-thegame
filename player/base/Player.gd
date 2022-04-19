@@ -56,7 +56,8 @@ func stop() -> void:
 func _process(_delta: float) -> void:
 	set_current_blend_space()
 
-	# I have absolutely no idea why this operation needs that random 90 degree angle, but it's the only thing that works.
+	# I have absolutely no idea why this operation needs that random 
+	# 90 degree angle, but it's the only thing that works.
 	$Interact/Collider.rotation = direction.angle() - deg2rad(90)
 
 func _physics_process(_delta: float) -> void:

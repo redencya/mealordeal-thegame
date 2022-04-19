@@ -1,13 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://bc8iyydxmtrx2"]
+[gd_scene load_steps=31 format=3 uid="uid://njuaolex8eyn"]
 
-[ext_resource type="Texture2D" uid="uid://dh7tvc2mjsobg" path="res://player/ui/inventory_sprites.png" id="1_1m51e"]
-[ext_resource type="Material" uid="uid://b0se2wm7tlmh5" path="res://GridPatternMaterial.tres" id="1_5bvss"]
-[ext_resource type="Shader" path="res://dodge_color.gdshader" id="1_n2h6d"]
-[ext_resource type="Texture2D" uid="uid://ci5ykvaddgs3n" path="res://bg.png" id="2_ag5vu"]
-[ext_resource type="Shader" path="res://softlightr.gdshader" id="3_f6te2"]
-[ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://M5X7.TTF" id="6_3tdqi"]
-[ext_resource type="Texture2D" uid="uid://dcuw3bq3ked5i" path="res://overlay.png" id="6_ohcao"]
-[ext_resource type="Material" uid="uid://dmyng0t0dgw33" path="res://GradientSoftLightBlend.tres" id="8_gs4ij"]
+[ext_resource type="Material" uid="uid://b0se2wm7tlmh5" path="res://GridPatternMaterial.tres" id="1_3pi20"]
+[ext_resource type="Texture2D" uid="uid://ci5ykvaddgs3n" path="res://bg.png" id="2_wvcmw"]
+[ext_resource type="Shader" path="res://shaders/softlightr.gdshader" id="3_hc2w2"]
+[ext_resource type="Texture2D" uid="uid://dcuw3bq3ked5i" path="res://overlay.png" id="4_0a3db"]
+[ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://ui/M5X7.TTF" id="5_vscal"]
+[ext_resource type="Shader" path="res://shaders/dodge_color.gdshader" id="6_y0sl8"]
+[ext_resource type="Texture2D" uid="uid://dh7tvc2mjsobg" path="res://player/ui/inventory_sprites.png" id="7_mh7f4"]
+[ext_resource type="Material" uid="uid://cqe27gu6qyn2j" path="res://GradientSoftLightBlend.tres" id="8_03p3y"]
 
 [sub_resource type="Animation" id="Animation_io02k"]
 length = 0.001
@@ -160,7 +160,7 @@ tracks/9/keys = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akqac"]
-shader = ExtResource( "3_f6te2" )
+shader = ExtResource( "3_hc2w2" )
 shader_param/alpha = null
 
 [sub_resource type="Gradient" id="Gradient_3218m"]
@@ -189,7 +189,7 @@ fill_from = Vector2(1, 0)
 fill_to = Vector2(1, 1)
 
 [sub_resource type="Font" id="Font_lb5x3"]
-data/0 = ExtResource( "6_3tdqi" )
+data/0 = ExtResource( "5_vscal" )
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w51nm"]
 
@@ -210,10 +210,10 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vm8p2"]
-shader = ExtResource( "1_n2h6d" )
+shader = ExtResource( "6_y0sl8" )
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbdvt"]
-atlas = ExtResource( "1_1m51e" )
+atlas = ExtResource( "7_mh7f4" )
 region = Rect2(16, 64, 240, 128)
 
 [sub_resource type="Gradient" id="Gradient_4rcig"]
@@ -239,14 +239,14 @@ fill_from = Vector2(0.452991, 0.623932)
 fill_to = Vector2(0.995726, 0.987179)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upmbq"]
-atlas = ExtResource( "1_1m51e" )
+atlas = ExtResource( "7_mh7f4" )
 region = Rect2(16, 48, 240, 16)
 
 [sub_resource type="Font" id="Font_24u04"]
-data/0 = ExtResource( "6_3tdqi" )
+data/0 = ExtResource( "5_vscal" )
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fomaa"]
-atlas = ExtResource( "1_1m51e" )
+atlas = ExtResource( "7_mh7f4" )
 region = Rect2(16, 192, 208, 32)
 
 [node name="Control" type="Control"]
@@ -269,10 +269,10 @@ metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
 [node name="GridPattern" type="TextureRect" parent="."]
-material = ExtResource( "1_5bvss" )
+material = ExtResource( "1_3pi20" )
 offset_right = 640.0
 offset_bottom = 360.0
-texture = ExtResource( "2_ag5vu" )
+texture = ExtResource( "2_wvcmw" )
 metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
@@ -300,7 +300,7 @@ metadata/_edit_use_custom_anchors = false
 offset_right = 640.0
 offset_bottom = 360.0
 pivot_offset = Vector2(320, 176)
-texture = ExtResource( "6_ohcao" )
+texture = ExtResource( "4_0a3db" )
 metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
@@ -344,7 +344,7 @@ metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
 [node name="GradientBlue" type="TextureRect" parent="Inventory"]
-material = ExtResource( "8_gs4ij" )
+material = ExtResource( "8_03p3y" )
 offset_top = 1.0
 offset_right = 640.0
 offset_bottom = 361.0
@@ -356,7 +356,7 @@ metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
 [node name="GradientBlue2" type="TextureRect" parent="Inventory"]
-material = ExtResource( "8_gs4ij" )
+material = ExtResource( "8_03p3y" )
 offset_top = 63.0
 offset_right = 202.0
 offset_bottom = 205.0
