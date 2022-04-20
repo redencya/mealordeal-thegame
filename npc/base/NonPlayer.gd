@@ -87,3 +87,7 @@ func _on_hitbox_body_entered(body:Node2D):
 		target = body.parent 
 		health.current -= 1
 		body.queue_free()
+
+func _on_hitbox_area_entered(area):
+	if area.owner is Player:
+		area.owner.health.current -= 1

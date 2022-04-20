@@ -98,5 +98,6 @@ theme_override_fonts/font = SubResource( "Font_sjot6" )
 text = "321"
 horizontal_alignment = 1
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]

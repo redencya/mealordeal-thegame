@@ -272,12 +272,15 @@ speed_base = 80.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource( "17_mkovx" )]
 position = Vector2(39, 257)
+target_path = NodePath("../Player")
 
 [node name="EnemySpawner3" parent="." instance=ExtResource( "17_mkovx" )]
 position = Vector2(427, 142)
+target_path = NodePath("../Player")
 
 [node name="EnemySpawner4" parent="." instance=ExtResource( "17_mkovx" )]
 position = Vector2(805, 567)
+target_path = NodePath("../Player")
 
 [connection signal="pressed" from="Interface/HUD/Button" to="Interface/HUD" method="_on_button_pressed"]
 [connection signal="pressed" from="Interface/HUD/Button2" to="Interface/HUD" method="_on_button_2_pressed"]
