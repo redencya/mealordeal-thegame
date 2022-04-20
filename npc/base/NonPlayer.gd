@@ -9,6 +9,8 @@ var point : Vector2
 const VISION_MARGIN := Vector2(0, -20)
 
 func _ready():
+	point = draw_trajectory_vector()
+	print(point)
 	$Label.text = str(health.base)
 	health.current = health.base
 	$ProgressBar.max_value = health.base
@@ -20,12 +22,12 @@ func _ready():
 # TODO:  Optimize the behavior using polymorphism with Actor
 
 func draw_trajectory_vector() -> Vector2:
-	const RADIUS := 50.0
+	const RADIUS := 25.0
 	const STRAIGHT_ANGLE := 180.0
 	var determined_angle : float = deg2rad(randf_range(-STRAIGHT_ANGLE, STRAIGHT_ANGLE))
 	var determined_radius : float = randf_range(RADIUS/3, RADIUS)
-
-	return Vector2.RIGHT.rotated(determined_angle) * determined_radius
+	
+	return Vector2.DOWN.rotated(determined_angle) * determined_radius
 
 func chase():
 	if $Vision.get_collider() is Player:
@@ -39,6 +41,18 @@ func chase():
 		var current_agent_position : Vector2 = global_transform.origin
 		var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
 		$NavAgent.set_velocity(new_velocity)
+	
+	else:
+		idle()
+
+func idle():
+	$NavAgent.set_target_location(global_transform.origin + point)
+	if !$NavAgent.is_target_reachable():
+		point = draw_trajectory_vector()
+	var next_path_position : Vector2 = $NavAgent.get_next_location()
+	var current_agent_position : Vector2 = global_transform.origin
+	var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
+	$NavAgent.set_velocity(new_velocity)
 
 # Debug function, to be replaced with actual damage reaction later on.
 func debug_hurt(new_health: int):
@@ -60,6 +74,7 @@ func debug_hurt(new_health: int):
 func _physics_process(_delta):
 	print(str(self.name), target)
 	chase()
+	$Sprite.flip_h = point.x > 0
 
 # Signals
 
@@ -91,3 +106,8 @@ func _on_hitbox_body_entered(body:Node2D):
 func _on_hitbox_area_entered(area):
 	if area.owner is Player:
 		area.owner.health.current -= 1
+
+
+func _on_nav_agent_target_reached():
+	if !target:
+		point = draw_trajectory_vector()

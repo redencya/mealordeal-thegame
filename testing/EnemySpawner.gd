@@ -18,7 +18,7 @@ func _on_timer_timeout():
 	enemy.health.base = randi_range(3, 6)
 	enemy.health.current = enemy.health.base
 	enemy.global_position = global_position 
-	enemy.target = get_node(target_path)
+	#enemy.target = get_node(target_path)
 	get_tree().get_root().add_child(enemy)
 	
 	$Timer.start()
