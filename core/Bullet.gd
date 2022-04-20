@@ -5,8 +5,9 @@ signal send_damage
 
 const LINEAR_SPEED : float = 275.0
 const LIFESPAN : float = 1.666
-var   age_left : float = LIFESPAN
-var   direction : Vector2 = Vector2.ZERO
+var age_left : float = LIFESPAN
+var direction : Vector2 = Vector2.ZERO
+var parent : Node = null
 
 func on_any_collision():
 	if move_and_slide():

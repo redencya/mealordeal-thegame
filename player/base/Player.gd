@@ -21,6 +21,7 @@ var speed_current : float = 0.0:
 # The Ready method on the player should just have some signal connections and debug stuff.
 # There's no real reason to use any more often.
 func _ready():
+	$ProgressBar.max_value = $Gun/Timer.wait_time
 	super._ready()
 
 # This function exists to simplify the process of setting the direction on the base of the AnimationTree blend space.
@@ -54,6 +55,7 @@ func stop() -> void:
 # Processing
 
 func _process(_delta: float) -> void:
+	$ProgressBar.value = $Gun/Timer.time_left
 	set_current_blend_space()
 
 	# I have absolutely no idea why this operation needs that random 
@@ -65,6 +67,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # Signals
+
+func _on_health_changed(new_health: int):
+	var tween = get_tree().create_tween().bind_node(self)
+	tween.tween_property($Sprite, "modulate", Color("ffabab"), 0.15).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property($Sprite, "modulate", Color("ffffff"), 0.05).set_trans(Tween.TRANS_LINEAR)
 
 func _on_health_empty():
 	# Lock the physics
@@ -84,3 +91,7 @@ func _on_interact_body_exited(body:Node2D):
 # THIS IS A DEBUG FEATURE!! IT WILL BE DELETED LATER ON
 func _on_base_sm_transitioned_to(state_name: StringName):
 	$StateName.set_text(str(state_name))
+
+func _on_hitbox_body_entered(body):
+	print(self, body)
+	health.current -= 1

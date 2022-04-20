@@ -1,45 +1,21 @@
 extends Actor
 class_name Enemy
 
+# Health preference
+# 5 HP : 1 person
+
 var target : Player = null
 var point : Vector2
 const VISION_MARGIN := Vector2(0, -20)
 
 func _ready():
+	$Label.text = str(health.base)
 	health.current = health.base
 	$ProgressBar.max_value = health.base
 	$ProgressBar.value = health.current
 	super._ready()
 
 # AI Programming
-# Technically, this is Breadator behavior, but it shouldn't matter because this will end up in state logic regardless
-
-# TODO:  Idle state (Wandering)
-			# draw trajectory vector
-			# if not valid, try again
-		# travel to the point
-		# when destination is reached, repeat
-
-		# if Enemy sees player:
-			# state_machine.change_state("Alert")
-
-# TODO:  Alert state (Choosing attack)
-		# func enter():
-		# 	play_animation("angry_animation")
-
-		# if the Enemy still sees player:
-			# choose between Chase, Pounce and Charge
-		# else:
-			# state_machine.change_state("Idle")
-
-# TODO:  Chase state [halfway]
-	# continuously track the player
-
-# TODO:  Charge state
-
-# TODO:  Pounce state
-
-
 # TODO:  Should be moved into a Chase State later on
 # TODO:  Optimize the behavior using polymorphism with Actor
 
@@ -54,9 +30,10 @@ func draw_trajectory_vector() -> Vector2:
 func chase():
 	if $Vision.get_collider() is Player:
 		target = $Vision.get_collider()
-		$Vision.target_position = (target.global_transform.origin - global_transform.origin) + VISION_MARGIN
 
 	if target:
+		$Vision.target_position = target.global_transform.origin - global_transform.origin
+		
 		$NavAgent.set_target_location(target.global_transform.origin)
 		var next_path_position : Vector2 = $NavAgent.get_next_location()
 		var current_agent_position : Vector2 = global_transform.origin
@@ -81,13 +58,14 @@ func debug_hurt(new_health: int):
 # Processing
 
 func _physics_process(_delta):
+	print(str(self.name), target)
 	chase()
 
 # Signals
 
 func _on_health_changed(new_health : int):
 	print("hurt!")
-
+	$Label.text = str(new_health)
 	debug_hurt(new_health)
 
 func _on_health_empty():
@@ -106,5 +84,6 @@ func _on_nav_agent_velocity_computed(safe_velocity):
 
 func _on_hitbox_body_entered(body:Node2D):
 	if body is Bullet:
+		target = body.parent 
 		health.current -= 1
 		body.queue_free()

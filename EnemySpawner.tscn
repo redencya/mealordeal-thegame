@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccb3eixagypli"]
+
+[ext_resource type="Script" path="res://testing/EnemySpawner.gd" id="1_5t51p"]
+[ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://ui/M5X7.TTF" id="2_lasl8"]
+
+[sub_resource type="Font" id="Font_7hgg8"]
+data/0 = ExtResource( "2_lasl8" )
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource( "1_5t51p" )
+
+[node name="Label" type="Label" parent="."]
+offset_left = -59.0
+offset_top = -50.0
+offset_right = 58.0
+offset_bottom = -18.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource( "Font_7hgg8" )
+text = "Enemy Spawner
+Next enemy in: 100"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

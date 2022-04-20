@@ -1,9 +1,9 @@
+res://EnemySpawner.tscn
 res://GradientSoftLightBlend.tres
 res://GridPatternMaterial.tres
-res://actor/base/Actor.gd
-res://actor/stats/Health.gd
+res://actor/base/actor.tscn
 res://core/Bullet.gd
-res://core/item/Hitbox.gd
+res://core/Hazard.gd
 res://items/ingredient/Bread.tres
 res://items/ingredient/Cheese.tres
 res://items/ingredient/Greens.tres
@@ -11,9 +11,12 @@ res://items/ingredient/Meat.tres
 res://items/item_atlas.tres
 res://npc/base/NonPlayer.gd
 res://npc/base/enemy.tscn
+res://player/base/Gun.gd
+res://player/base/Player.gd
 res://player/base/player.tscn
 res://player/stats/Health.tres
 res://shooter/bullet.tscn
+res://testing/EnemySpawner.gd
 res://testing/demo_game.tscn
 res://ui/Menu.tscn
 res://ui/control.tscn

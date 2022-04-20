@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjllujv51y0b5"]
+[gd_scene load_steps=13 format=3 uid="uid://cjllujv51y0b5"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_430no"]
 [ext_resource type="Script" path="res://npc/base/NonPlayer.gd" id="2_snow6"]
 [ext_resource type="Script" path="res://actor/stats/Health.gd" id="3_kgrph"]
 [ext_resource type="Texture2D" uid="uid://bt5oigefhqte7" path="res://npc/base/breadator.png" id="3_x3kj1"]
 [ext_resource type="Script" path="res://core/State.gd" id="4_ur2x4"]
+[ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://ui/M5X7.TTF" id="6_3ox0e"]
 
 [sub_resource type="Resource" id="Resource_kmveo"]
 resource_local_to_scene = true
@@ -25,17 +26,22 @@ bg_color = Color(0.427451, 0.839216, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yww6n"]
 bg_color = Color(0, 0.313726, 0.0823529, 1)
 
+[sub_resource type="Font" id="Font_sjot6"]
+data/0 = ExtResource( "6_3ox0e" )
+
 [node name="Enemy" instance=ExtResource( "1_430no" )]
 position = Vector2(0, 0)
-collision_layer = 12
-collision_mask = 12
+collision_layer = 4104
+collision_mask = 8196
 script = ExtResource( "2_snow6" )
 health = SubResource( "Resource_kmveo" )
 speed_base = 70.0
 
 [node name="Vision" type="RayCast2D" parent="." index="0"]
 position = Vector2(0, -12)
-target_position = Vector2(0, 100)
+target_position = Vector2(0, 300)
+collision_mask = 2097153
+collide_with_areas = true
 
 [node name="StateName" parent="." index="1"]
 visible = false
@@ -61,6 +67,7 @@ shape = SubResource( "RectangleShape2D_4kvrw" )
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." index="7"]
 target_desired_distance = 10.0
+max_neighbors = 1
 
 [node name="BaseSM" parent="." index="8"]
 default_state_path = NodePath("State")
@@ -79,6 +86,17 @@ theme_override_styles/bg = SubResource( "StyleBoxFlat_yww6n" )
 max_value = 5.0
 value = 3.0
 percent_visible = false
+
+[node name="Label" type="Label" parent="." index="10"]
+offset_left = -20.0
+offset_top = -45.0
+offset_right = 20.0
+offset_bottom = -29.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource( "Font_sjot6" )
+text = "321"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]

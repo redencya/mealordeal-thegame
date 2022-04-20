@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=32 format=3 uid="uid://bxx65elegw62v"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
@@ -16,9 +16,19 @@
 [ext_resource type="Resource" uid="uid://bphjh8a7mtpfr" path="res://items/ingredient/Meat.tres" id="10_jahhy"]
 [ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
 [ext_resource type="PackedScene" uid="uid://cjllujv51y0b5" path="res://npc/base/enemy.tscn" id="14_vknrk"]
+[ext_resource type="PackedScene" uid="uid://ccb3eixagypli" path="res://EnemySpawner.tscn" id="17_mkovx"]
 
-[sub_resource type="Font" id="Font_yepoo"]
-data/0 = ExtResource( "3_pjw5a" )
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47v5v"]
+bg_color = Color(0.494118, 0.909804, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.905882, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rup2w"]
+bg_color = Color(0, 0.435294, 0.227451, 1)
 
 [sub_resource type="Font" id="Font_5ak5i"]
 data/0 = ExtResource( "3_pjw5a" )
@@ -55,11 +65,11 @@ vertices = PackedVector2Array(794, 694, 242, 571, 289, 396, 635, 276, 844, 333, 
 polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 7, 8, 9, 10, 3)]
 outlines = [PackedVector2Array(-75, 307, 289, 396, 242, 571, 794, 694, 983, 504, 844, 333, 635, 276, 666, 240, 529, 69, 300, 9, -3, 55)]
 
-[sub_resource type="Resource" id="Resource_d47id"]
+[sub_resource type="Resource" id="Resource_lbt1h"]
 resource_local_to_scene = true
 resource_name = "Health"
 script = ExtResource( "7_hclvl" )
-base = 7
+base = 5
 invulnerable = false
 
 [sub_resource type="Resource" id="Resource_uroh2"]
@@ -67,13 +77,6 @@ resource_local_to_scene = true
 resource_name = "Health"
 script = ExtResource( "7_hclvl" )
 base = 12
-invulnerable = false
-
-[sub_resource type="Resource" id="Resource_btvgo"]
-resource_local_to_scene = true
-resource_name = "Health"
-script = ExtResource( "7_hclvl" )
-base = 3
 invulnerable = false
 
 [sub_resource type="Resource" id="Resource_w3x05"]
@@ -96,24 +99,28 @@ y_sort_enabled = true
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="Polygon2D2" type="Polygon2D" parent="Interface"]
+visible = false
 position = Vector2(0, 35)
 scale = Vector2(0.28512, 0.28512)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
 
 [node name="Polygon2D3" type="Polygon2D" parent="Interface"]
+visible = false
 position = Vector2(0, 35)
 scale = Vector2(0.28512, 0.28512)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 9, 57.62, 2.5052, 35.073, 30.0626, -1.01185e-27, 37.5782)
 
 [node name="Polygon2D" type="Polygon2D" parent="Interface"]
+visible = false
 position = Vector2(0, 6)
 scale = Vector2(0.716669, 0.716669)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 9, 86.5556, 1.51852, 75.9577, 25.6917, 71, 37, 0, 45)
 
 [node name="Poses" type="Sprite2D" parent="Interface"]
+visible = false
 position = Vector2(37.7753, 25.4287)
 scale = Vector2(0.0324389, 0.0324389)
 texture = ExtResource( "1_pnk4p" )
@@ -130,13 +137,16 @@ health = ExtResource( "3_1fw8h" )
 [node name="ProgressBar" type="ProgressBar" parent="Interface/HUD"]
 visible = false
 offset_left = 6.0
-offset_top = 13.0
+offset_top = 9.0
 offset_right = 114.0
-offset_bottom = 30.0
-theme_override_fonts/font = SubResource( "Font_yepoo" )
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/fg = SubResource( "StyleBoxFlat_47v5v" )
+theme_override_styles/bg = SubResource( "StyleBoxFlat_rup2w" )
 max_value = 3.0
 step = 1.0
-value = 3.0
+value = 2.0
+percent_visible = false
 metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
@@ -163,6 +173,7 @@ metadata/_edit_layout_mode = 0
 metadata/_edit_use_custom_anchors = false
 
 [node name="Prompt" type="Label" parent="Interface/HUD"]
+visible = false
 anchor_right = 15.936
 anchor_bottom = 9.073
 offset_top = 293.0
@@ -239,24 +250,14 @@ shape = SubResource( "RectangleShape2D_37nh1" )
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navpoly = SubResource( "NavigationPolygon_lquqi" )
 
-[node name="Enemy" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(382, 252)
-health = SubResource( "Resource_d47id" )
+[node name="Enemy7" parent="." instance=ExtResource( "14_vknrk" )]
+position = Vector2(393, 451)
+health = SubResource( "Resource_lbt1h" )
 speed_base = 80.0
 
 [node name="Enemy4" parent="." instance=ExtResource( "14_vknrk" )]
 position = Vector2(672, 401)
 health = SubResource( "Resource_uroh2" )
-speed_base = 80.0
-
-[node name="Enemy5" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(389, 445)
-health = SubResource( "Resource_d47id" )
-speed_base = 80.0
-
-[node name="Enemy6" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(605, 554)
-health = SubResource( "Resource_btvgo" )
 speed_base = 80.0
 
 [node name="Enemy2" parent="." instance=ExtResource( "14_vknrk" )]
@@ -265,9 +266,18 @@ health = SubResource( "Resource_w3x05" )
 speed_base = 80.0
 
 [node name="Enemy3" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(305, 72)
+position = Vector2(401, 257)
 health = SubResource( "Resource_n4l8t" )
 speed_base = 80.0
+
+[node name="EnemySpawner" parent="." instance=ExtResource( "17_mkovx" )]
+position = Vector2(39, 257)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource( "17_mkovx" )]
+position = Vector2(427, 142)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource( "17_mkovx" )]
+position = Vector2(805, 567)
 
 [connection signal="pressed" from="Interface/HUD/Button" to="Interface/HUD" method="_on_button_pressed"]
 [connection signal="pressed" from="Interface/HUD/Button2" to="Interface/HUD" method="_on_button_2_pressed"]

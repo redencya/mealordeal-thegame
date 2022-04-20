@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c7vmhgofkpp8g"]
+[gd_scene load_steps=56 format=3 uid="uid://c7vmhgofkpp8g"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
 [ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
@@ -372,8 +372,12 @@ tracks/0/keys = {
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_hries"]
 length = 30.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg5o0"]
+
 [node name="Player" instance=ExtResource( "1_2wee3" )]
 process_mode = 1
+collision_layer = 2097153
+collision_mask = 1048577
 script = ExtResource( "2_vrh4i" )
 health = ExtResource( "3_xcu3p" )
 speed_base = 95.0
@@ -420,10 +424,13 @@ frame = 1
 
 [node name="Hitbox" parent="." index="4"]
 position = Vector2(0, -19)
+collision_layer = 8192
+collision_mask = 4096
+script = null
 
 [node name="Collider" parent="Hitbox" index="0"]
 modulate = Color(1, 0, 0.231373, 1)
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 
 [node name="Collider" parent="." index="5"]
 modulate = Color(0, 0.969695, 1, 1)
@@ -498,7 +505,22 @@ shape = SubResource( "SeparationRayShape2D_hries" )
 position = Vector2(0, -21)
 script = ExtResource( "11_kxxwn" )
 
+[node name="Timer" type="Timer" parent="Gun" index="0"]
+wait_time = 0.66
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="." index="13"]
+offset_left = -18.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 7.0
+theme_override_styles/fg = SubResource( "StyleBoxFlat_fg5o0" )
+value = 30.0
+percent_visible = false
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="transitioned_to" from="BaseSM" to="." method="_on_base_sm_transitioned_to"]
 [connection signal="timeout" from="BaseSM/Dodge/Timer" to="BaseSM/Dodge" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
 [connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]
+[connection signal="timeout" from="Gun/Timer" to="Gun" method="_on_timer_timeout"]
