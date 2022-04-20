@@ -1,8 +1,8 @@
+CollisionShape2D
 ProgressBar
 Label
 Timer
 Node2D
-CollisionShape2D
 ShapeCast2D
 Hazard (Hazard.gd)
 NavigationObstacle2D

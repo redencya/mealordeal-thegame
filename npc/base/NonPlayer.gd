@@ -6,11 +6,9 @@ class_name Enemy
 
 var target : Player = null
 var point : Vector2
-const VISION_MARGIN := Vector2(0, -20)
 
 func _ready():
 	point = draw_trajectory_vector()
-	print(point)
 	$Label.text = str(health.base)
 	health.current = health.base
 	$ProgressBar.max_value = health.base
@@ -32,20 +30,21 @@ func draw_trajectory_vector() -> Vector2:
 func chase():
 	if $Vision.get_collider() is Player:
 		target = $Vision.get_collider()
-
+	
 	if target:
-		$Vision.target_position = target.global_transform.origin - global_transform.origin
-		
+		$Vision.target_position = (target.global_position - global_position).limit_length(200.0)
 		$NavAgent.set_target_location(target.global_transform.origin)
 		var next_path_position : Vector2 = $NavAgent.get_next_location()
 		var current_agent_position : Vector2 = global_transform.origin
 		var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
 		$NavAgent.set_velocity(new_velocity)
-	
+
 	else:
 		idle()
 
 func idle():
+	$Vision.target_position = point.normalized() * 140
+
 	$NavAgent.set_target_location(global_transform.origin + point)
 	if !$NavAgent.is_target_reachable():
 		point = draw_trajectory_vector()
@@ -74,7 +73,7 @@ func debug_hurt(new_health: int):
 func _physics_process(_delta):
 	print(str(self.name), target)
 	chase()
-	$Sprite.flip_h = point.x > 0
+	$Sprite.flip_h = velocity.x > 0
 
 # Signals
 
@@ -106,7 +105,6 @@ func _on_hitbox_body_entered(body:Node2D):
 func _on_hitbox_area_entered(area):
 	if area.owner is Player:
 		area.owner.health.current -= 1
-
 
 func _on_nav_agent_target_reached():
 	if !target:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=27 format=3 uid="uid://bxx65elegw62v"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
@@ -15,7 +15,6 @@
 [ext_resource type="Resource" uid="uid://bhh3vnb6ueu68" path="res://items/ingredient/Cheese.tres" id="9_omd21"]
 [ext_resource type="Resource" uid="uid://bphjh8a7mtpfr" path="res://items/ingredient/Meat.tres" id="10_jahhy"]
 [ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
-[ext_resource type="PackedScene" uid="uid://cjllujv51y0b5" path="res://npc/base/enemy.tscn" id="14_vknrk"]
 [ext_resource type="PackedScene" uid="uid://ccb3eixagypli" path="res://EnemySpawner.tscn" id="17_mkovx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47v5v"]
@@ -64,34 +63,6 @@ size = Vector2(24, 7)
 vertices = PackedVector2Array(794, 694, 242, 571, 289, 396, 635, 276, 844, 333, 983, 504, -75, 307, -3, 55, 300, 9, 529, 69, 666, 240)
 polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 7, 8, 9, 10, 3)]
 outlines = [PackedVector2Array(-75, 307, 289, 396, 242, 571, 794, 694, 983, 504, 844, 333, 635, 276, 666, 240, 529, 69, 300, 9, -3, 55)]
-
-[sub_resource type="Resource" id="Resource_lbt1h"]
-resource_local_to_scene = true
-resource_name = "Health"
-script = ExtResource( "7_hclvl" )
-base = 5
-invulnerable = false
-
-[sub_resource type="Resource" id="Resource_uroh2"]
-resource_local_to_scene = true
-resource_name = "Health"
-script = ExtResource( "7_hclvl" )
-base = 12
-invulnerable = false
-
-[sub_resource type="Resource" id="Resource_w3x05"]
-resource_local_to_scene = true
-resource_name = "Health"
-script = ExtResource( "7_hclvl" )
-base = 9
-invulnerable = false
-
-[sub_resource type="Resource" id="Resource_n4l8t"]
-resource_local_to_scene = true
-resource_name = "Health"
-script = ExtResource( "7_hclvl" )
-base = 8
-invulnerable = false
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -249,26 +220,6 @@ shape = SubResource( "RectangleShape2D_37nh1" )
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navpoly = SubResource( "NavigationPolygon_lquqi" )
-
-[node name="Enemy7" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(393, 451)
-health = SubResource( "Resource_lbt1h" )
-speed_base = 80.0
-
-[node name="Enemy4" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(672, 401)
-health = SubResource( "Resource_uroh2" )
-speed_base = 80.0
-
-[node name="Enemy2" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(121, 220)
-health = SubResource( "Resource_w3x05" )
-speed_base = 80.0
-
-[node name="Enemy3" parent="." instance=ExtResource( "14_vknrk" )]
-position = Vector2(401, 257)
-health = SubResource( "Resource_n4l8t" )
-speed_base = 80.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource( "17_mkovx" )]
 position = Vector2(39, 257)

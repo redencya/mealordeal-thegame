@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://npc/base/NonPlayer.gd"
 }, {
+"base": "State",
+"class": &"EnemyState",
+"language": &"GDScript",
+"path": "res://npc/breadator/EnemyState.gd"
+}, {
 "base": "StaticBody2D",
 "class": &"Entity",
 "language": &"GDScript",
@@ -118,6 +123,7 @@ _global_script_class_icons={
 "Actor": "",
 "Bullet": "res://svg/bullet.svg",
 "Enemy": "",
+"EnemyState": "",
 "Entity": "",
 "Food": "",
 "Gun": "",
