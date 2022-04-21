@@ -21,8 +21,8 @@ var speed_current : float = 0.0:
 # The Ready method on the player should just have some signal connections and debug stuff.
 # There's no real reason to use any more often.
 func _ready():
-	$ProgressBar.max_value = $Gun/Timer.wait_time
 	super._ready()
+	$ProgressBar.max_value = $Gun/Timer.wait_time
 
 # This function exists to simplify the process of setting the direction on the base of the AnimationTree blend space.
 # Normally this would have to be handled manually, but by calling for the name of the node, it's possible to automate the process.
@@ -69,8 +69,9 @@ func _physics_process(_delta: float) -> void:
 # Signals
 
 func _on_health_changed(new_health: int):
+	print("I've been hit!")
 	var tween = get_tree().create_tween().bind_node(self)
-	tween.tween_property($Sprite, "modulate", Color("ffabab"), 0.15).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property($Sprite, "modulate", Color("ff0000"), 0.25).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property($Sprite, "modulate", Color("ffffff"), 0.05).set_trans(Tween.TRANS_LINEAR)
 
 func _on_health_empty():
@@ -78,7 +79,7 @@ func _on_health_empty():
 	# Play a blackout animation
 	# Skip ahead to the next day
 	# Charge the player with a fee
-	queue_free()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_interact_body_entered(body:Node2D):
 	if body is Entity:
@@ -91,7 +92,3 @@ func _on_interact_body_exited(body:Node2D):
 # THIS IS A DEBUG FEATURE!! IT WILL BE DELETED LATER ON
 func _on_base_sm_transitioned_to(state_name: StringName):
 	$StateName.set_text(str(state_name))
-
-func _on_hitbox_body_entered(body):
-	print(self, body)
-	health.current -= 1

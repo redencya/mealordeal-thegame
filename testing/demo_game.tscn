@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=25 format=3 uid="uid://bxx65elegw62v"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
@@ -8,7 +8,6 @@
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="3_pjw5a"]
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
-[ext_resource type="Script" path="res://actor/stats/Health.gd" id="7_hclvl"]
 [ext_resource type="Resource" uid="uid://bt7w3w0e7ko6s" path="res://items/ingredient/Bread.tres" id="7_hmq03"]
 [ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
 [ext_resource type="Resource" uid="uid://bqv34pij1xmfn" path="res://items/ingredient/Greens.tres" id="8_jskgi"]
@@ -43,13 +42,6 @@ colors = PackedColorArray(1, 0.486625, 0, 1, 0, 0, 0, 1)
 gradient = SubResource( "Gradient_cgpnl" )
 fill = 1
 fill_to = Vector2(1, 1)
-
-[sub_resource type="Resource" id="Resource_13pxl"]
-resource_local_to_scene = true
-resource_name = "Health"
-script = ExtResource( "7_hclvl" )
-base = 5
-invulnerable = false
 
 [sub_resource type="Resource" id="Resource_p8ufu"]
 script = ExtResource( "7_iwg3t" )
@@ -106,7 +98,6 @@ player_path = NodePath("../../Player")
 health = ExtResource( "3_1fw8h" )
 
 [node name="ProgressBar" type="ProgressBar" parent="Interface/HUD"]
-visible = false
 offset_left = 6.0
 offset_top = 9.0
 offset_right = 114.0
@@ -189,7 +180,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
 position = Vector2(238, 157)
-health = SubResource( "Resource_13pxl" )
 speed_base = 118.0
 run_modifier = 0.62
 acceleration = 0.019

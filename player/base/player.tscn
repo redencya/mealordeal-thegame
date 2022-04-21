@@ -514,6 +514,7 @@ offset_left = -18.0
 offset_top = 3.0
 offset_right = 18.0
 offset_bottom = 7.0
+scale = Vector2(1, 0.44)
 theme_override_styles/fg = SubResource( "StyleBoxFlat_fg5o0" )
 value = 30.0
 percent_visible = false

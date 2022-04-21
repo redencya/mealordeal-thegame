@@ -12,18 +12,13 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("inventory_open"):
-		open_inventory()
-
-func open_inventory():
-
-	if player.near_storage:
 		if $MenuBackdrop/AnimationPlayer.get_current_animation_position() > 0:
 			$MenuBackdrop/AnimationPlayer.play_backwards("Summon")
+			player.is_processing()
 		else:
 			$MenuBackdrop/AnimationPlayer.play("Summon")
+			player.set_process(true)
 
-func _process(_delta):
-	$Prompt.visible = player.near_storage
 
 func _on_button_pressed():
 	health.current -= 1

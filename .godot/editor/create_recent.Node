@@ -1,3 +1,4 @@
+ColorRect
 CollisionShape2D
 ProgressBar
 Label
@@ -12,7 +13,6 @@ TabBar
 Control
 CenterContainer
 AnimationPlayer
-ColorRect
 TextureRect
 GPUParticles2D
 RayCast2D

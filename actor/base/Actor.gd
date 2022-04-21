@@ -8,6 +8,7 @@ class_name Actor
 var direction: Vector2 = Vector2.DOWN
 
 func _ready():
+	health.current = health.base
 	health.connect("health_changed", _on_health_changed)
 	health.connect("health_empty", _on_health_empty)
 
