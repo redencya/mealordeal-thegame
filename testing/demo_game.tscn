@@ -176,7 +176,6 @@ position = Vector2(261, 210)
 rotation = 1.57079
 scale = Vector2(25.2304, 25.2304)
 texture = SubResource( "GradientTexture2D_wd150" )
-metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
 position = Vector2(238, 157)

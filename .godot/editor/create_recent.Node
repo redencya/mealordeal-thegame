@@ -1,5 +1,15 @@
-ColorRect
+AudioStreamPlayer
+AudioStreamPlayer2D
 CollisionShape2D
+Hitbox (Hitbox.gd)
+Sprite2D
+GPUParticles2D
+CPUParticles2D
+RigidDynamicBody2D
+CollisionShape3D
+StaticBody3D
+CSGMesh3D
+ColorRect
 ProgressBar
 Label
 Timer
@@ -14,19 +24,9 @@ Control
 CenterContainer
 AnimationPlayer
 TextureRect
-GPUParticles2D
 RayCast2D
 HSlider
 State (State.gd)
 NavigationRegion2D
-Sprite2D
 AnimationTree
 GunState (Base.gd)
-StateMachine (StateMachine.gd)
-Gun (Gun.gd)
-Position2D
-WorldEnvironment
-CollisionPolygon2D
-StaticBody2D
-Polygon2D
-Container

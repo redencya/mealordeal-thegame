@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjllujv51y0b5"]
+[gd_scene load_steps=15 format=3 uid="uid://cjllujv51y0b5"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_430no"]
 [ext_resource type="Script" path="res://npc/base/NonPlayer.gd" id="2_snow6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bt5oigefhqte7" path="res://npc/base/breadator.png" id="3_x3kj1"]
 [ext_resource type="Script" path="res://npc/breadator/Idle.gd" id="5_s8qik"]
 [ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://ui/M5X7.TTF" id="6_3ox0e"]
+[ext_resource type="AudioStream" uid="uid://dl7ycokg8ok0s" path="res://npc/enemy_death.wav" id="7_wesna"]
+[ext_resource type="AudioStream" uid="uid://bo2cbltry1ct" path="res://npc/enemy_hurt.wav" id="8_2cwk0"]
 
 [sub_resource type="Resource" id="Resource_kmveo"]
 resource_local_to_scene = true
@@ -97,6 +99,12 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = SubResource( "Font_sjot6" )
 text = "321"
 horizontal_alignment = 1
+
+[node name="Death" type="AudioStreamPlayer2D" parent="." index="11"]
+stream = ExtResource( "7_wesna" )
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="." index="12"]
+stream = ExtResource( "8_2cwk0" )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

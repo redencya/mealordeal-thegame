@@ -3,6 +3,9 @@ class_name Enemy
 
 # Health preference
 # 5 HP : 1 person
+const ITEM_DROP = preload("res://actor/base/entity.tscn")
+const SOUND_DIE = preload("res://npc/enemy_death.wav")
+const SOUND_HURT = preload("res://npc/enemy_hurt.wav")
 
 var target : Player = null
 var point : Vector2
@@ -78,7 +81,7 @@ func _physics_process(_delta):
 # Signals
 
 func _on_health_changed(new_health : int):
-	print("hurt!")
+	$Hurt.play()
 	$Label.text = str(new_health)
 	debug_hurt(new_health)
 
@@ -88,9 +91,17 @@ func _on_health_empty():
 	const COLOR_HURT = Color("ffabab")
 	tween.tween_property($Sprite, "rotation", deg2rad(100), 0.45).set_trans(Tween.TRANS_LINEAR)
 	tween.parallel().tween_property($Sprite, "modulate", COLOR_HURT, 0.2).set_trans(Tween.TRANS_EXPO)
-
-	await tween.finished
+	$Death.play()
+	
+	await tween.finished && $Death.finished
+	spawn_loot()
 	queue_free()
+
+func spawn_loot():
+	var item = ITEM_DROP.instantiate()
+	item.player = target
+	item.global_position = global_position
+	get_tree().get_root().add_child(item)
 
 func _on_nav_agent_velocity_computed(safe_velocity):
 	velocity = safe_velocity

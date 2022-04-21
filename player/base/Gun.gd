@@ -11,6 +11,7 @@ func _ready() -> void:
 	assert(player != null)
 
 func fire(target: Vector2) -> void:
+	$Shot.play()
 	$Timer.start()
 	can_shoot = false
 	var bullet : Bullet = BULLET.instantiate()

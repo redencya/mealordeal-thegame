@@ -1,5 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://iaudxa30ib68"]
+[gd_scene load_steps=4 format=3 uid="uid://iaudxa30ib68"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_c1eyo"]
+[ext_resource type="Script" path="res://actor/base/PhysicalItem.gd" id="2_iswrl"]
+[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="2_uwomq"]
 
 [node name="Actor" instance=ExtResource( "1_c1eyo" )]
+script = ExtResource( "2_iswrl" )
+speed_base = 160.0
+
+[node name="StateName" parent="." index="0"]
+visible = false
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2(0, 0)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource( "2_uwomq" )
+
+[node name="Hitbox" parent="." index="2"]
+position = Vector2(-0.499998, 0)
+
+[node name="Collider" parent="Hitbox" index="0"]
+position = Vector2(0.499998, 0)
+
+[node name="Collider" parent="." index="3"]
+position = Vector2(0, 0)

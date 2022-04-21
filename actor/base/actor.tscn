@@ -5,12 +5,11 @@
 [ext_resource type="Script" path="res://actor/states/StateMachine.gd" id="5_kvian"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64x2r"]
-radius = 7.0
-height = 18.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5i6eo"]
-radius = 2.0
-height = 8.0
+radius = 8.0
+height = 17.0
 
 [node name="Actor" type="CharacterBody2D"]
 position = Vector2(1, 0)

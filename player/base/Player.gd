@@ -69,7 +69,6 @@ func _physics_process(_delta: float) -> void:
 # Signals
 
 func _on_health_changed(new_health: int):
-	print("I've been hit!")
 	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property($Sprite, "modulate", Color("ff0000"), 0.25).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property($Sprite, "modulate", Color("ffffff"), 0.05).set_trans(Tween.TRANS_LINEAR)
@@ -80,14 +79,6 @@ func _on_health_empty():
 	# Skip ahead to the next day
 	# Charge the player with a fee
 	process_mode = Node.PROCESS_MODE_DISABLED
-
-func _on_interact_body_entered(body:Node2D):
-	if body is Entity:
-		near_storage = true
-
-func _on_interact_body_exited(body:Node2D):
-	if body is Entity:
-		near_storage = false
 
 # THIS IS A DEBUG FEATURE!! IT WILL BE DELETED LATER ON
 func _on_base_sm_transitioned_to(state_name: StringName):

@@ -27,5 +27,4 @@ func change_state(target_state: String, msg: Dictionary = {}) -> void:
 	current_state.exit()
 	current_state = get_node(target_state)
 	current_state.enter(msg)
-	print(current_state.name)
 	emit_signal("transitioned_to", current_state.name)

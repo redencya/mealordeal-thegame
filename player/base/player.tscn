@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c7vmhgofkpp8g"]
+[gd_scene load_steps=57 format=3 uid="uid://c7vmhgofkpp8g"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
 [ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://player/states/Walk.gd" id="7_2jkl4"]
 [ext_resource type="Script" path="res://player/states/Dodge.gd" id="8_weq04"]
 [ext_resource type="Script" path="res://player/base/Gun.gd" id="11_kxxwn"]
+[ext_resource type="AudioStream" uid="uid://covf6m16ugick" path="res://player/blaster_fire.wav" id="13_nrysi"]
 
 [sub_resource type="Curve" id="Curve_qmxjy"]
 min_value = -200.0
@@ -442,8 +443,8 @@ tree_root = SubResource( "AnimationNodeStateMachine_0r4gd" )
 anim_player = NodePath("../Animation")
 active = true
 parameters/playback = SubResource( "AnimationNodeStateMachinePlayback_tvhr0" )
-parameters/Idle/blend_position = Vector2(-0.120494, 0.641921)
-parameters/Run/blend_position = Vector2(-0.3395, -0.282089)
+parameters/Idle/blend_position = Vector2(0.00946176, 0.751073)
+parameters/Run/blend_position = Vector2(-0.108495, -0.379828)
 parameters/Walk/blend_position = Vector2(-0.29291, 0.371166)
 
 [node name="Animation" parent="." index="7"]
@@ -508,6 +509,10 @@ script = ExtResource( "11_kxxwn" )
 [node name="Timer" type="Timer" parent="Gun" index="0"]
 wait_time = 0.34
 one_shot = true
+
+[node name="Shot" type="AudioStreamPlayer" parent="Gun" index="1"]
+stream = ExtResource( "13_nrysi" )
+volume_db = -15.0
 
 [node name="ProgressBar" type="ProgressBar" parent="." index="13"]
 offset_left = -18.0

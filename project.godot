@@ -29,10 +29,10 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://npc/breadator/EnemyState.gd"
 }, {
-"base": "StaticBody2D",
+"base": "RigidDynamicBody2D",
 "class": &"Entity",
 "language": &"GDScript",
-"path": "res://testing/Entity.gd"
+"path": "res://actor/base/Entity.gd"
 }, {
 "base": "Item",
 "class": &"Food",
@@ -68,6 +68,11 @@ _global_script_classes=[{
 "class": &"Item",
 "language": &"GDScript",
 "path": "res://core/item/Item.gd"
+}, {
+"base": "Actor",
+"class": &"PhysicalItem",
+"language": &"GDScript",
+"path": "res://actor/base/PhysicalItem.gd"
 }, {
 "base": "Actor",
 "class": &"Player",
@@ -132,6 +137,7 @@ _global_script_class_icons={
 "Health": "",
 "Hitbox": "",
 "Item": "",
+"PhysicalItem": "",
 "Player": "",
 "PlayerState": "",
 "Sandwich": "",
