@@ -1,3 +1,4 @@
+Item (Item.gd)
 SpriteFrames
 Texture2DArray
 ImageTexture
@@ -8,10 +9,7 @@ CurveTexture
 Curve2D
 Sandwich (Sandwich.gd)
 WeaponRanged (WeaponRanged.gd)
-Item (Item.gd)
 Food (Food.gd)
-Speed (Speed.gd)
-Controller (Controller.gd)
 Stamina (Stamina.gd)
 Health (Health.gd)
 Resource

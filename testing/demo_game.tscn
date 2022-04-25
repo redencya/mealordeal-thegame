@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=22 format=3 uid="uid://d30wc0k75qnxf"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
@@ -8,11 +8,8 @@
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="3_pjw5a"]
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
-[ext_resource type="Resource" uid="uid://bt7w3w0e7ko6s" path="res://items/ingredient/Bread.tres" id="7_hmq03"]
 [ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
-[ext_resource type="Resource" uid="uid://bqv34pij1xmfn" path="res://items/ingredient/Greens.tres" id="8_jskgi"]
-[ext_resource type="Resource" uid="uid://bhh3vnb6ueu68" path="res://items/ingredient/Cheese.tres" id="9_omd21"]
-[ext_resource type="Resource" uid="uid://bphjh8a7mtpfr" path="res://items/ingredient/Meat.tres" id="10_jahhy"]
+[ext_resource type="Resource" uid="uid://d0ccsx1i17f3k" path="res://items/WhiteBread.tres" id="10_jahhy"]
 [ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
 [ext_resource type="PackedScene" uid="uid://ccb3eixagypli" path="res://EnemySpawner.tscn" id="17_mkovx"]
 
@@ -45,7 +42,7 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_p8ufu"]
 script = ExtResource( "7_iwg3t" )
-items = [ExtResource( "7_hmq03" ), ExtResource( "7_hmq03" ), null, null, ExtResource( "8_jskgi" ), ExtResource( "9_omd21" ), null, ExtResource( "10_jahhy" ), null, null, null, ExtResource( "9_omd21" )]
+items = [ExtResource( "10_jahhy" ), ExtResource( "10_jahhy" ), null, null, ExtResource( "10_jahhy" ), ExtResource( "10_jahhy" ), null, ExtResource( "10_jahhy" ), null, null, null, ExtResource( "10_jahhy" )]
 dimensions = Vector2i(4, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37nh1"]

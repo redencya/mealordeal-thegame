@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0ccsx1i17f3k"]
+
+[ext_resource type="Script" path="res://core/item/Item.gd" id="1_golrk"]
+
+[resource]
+script = ExtResource( "1_golrk" )
+name = null
+type = null
+max_stack_size = null
+stackable = null
