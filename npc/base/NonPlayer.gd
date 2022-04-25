@@ -8,53 +8,88 @@ const SOUND_DIE = preload("res://npc/enemy_death.wav")
 const SOUND_HURT = preload("res://npc/enemy_hurt.wav")
 
 var target : Player = null
-var point : Vector2
 
 func _ready():
-	point = draw_trajectory_vector()
-	$Label.text = str(health.base)
+	print("PREPARING %s" % str(name).to_upper())
+
 	health.current = health.base
-	$ProgressBar.max_value = health.base
-	$ProgressBar.value = health.current
+	generate_raycasts()
+	prepare_debug_interfaces()
 	super._ready()
 
+	print("\n")
+
+func prepare_debug_interfaces():
+	print("Preparing debug interfaces...")
+
+	$Label.text = str(health.base)
+	$ProgressBar.max_value = health.base
+	$ProgressBar.value = health.current
+
+	print("Debug interfaces prepared!")
+
+func generate_raycasts():
+	print("Generating raycasts...")
+
+	print("Raycasts generated!")
+
+# this function will return a TRUE value if navigation succeeded
+# and a FALSE value if the given location is impossible to reach
+func navigate_to(navigation_target: Vector2) -> bool:
+	var nav_agent : NavigationAgent2D = $NavAgent
+
+	# set a target, write changing code for fixing unreachable targets
+	nav_agent.set_target_location(navigation_target)
+	if !nav_agent.is_target_reachable(): return false
+
+	# this is here to make velocity calculations easier to read
+	var next_position : Vector2 = nav_agent.get_next_location()
+	var current_position : Vector2 = global_transform.origin
+
+	# make the enemies move in the new direction
+	var new_velocity : Vector2 = (next_position - current_position).normalized() * speed_base
+	nav_agent.set_velocity(new_velocity)
+
+	return true
+
+
 # AI Programming
-# TODO:  Should be moved into a Chase State later on
-# TODO:  Optimize the behavior using polymorphism with Actor
+#TODO:  Should be moved into a Chase State later on
+#TODO:  Optimize the behavior using polymorphism with Actor
 
-func draw_trajectory_vector() -> Vector2:
-	const RADIUS := 25.0
-	const STRAIGHT_ANGLE := 180.0
-	var determined_angle : float = deg2rad(randf_range(-STRAIGHT_ANGLE, STRAIGHT_ANGLE))
-	var determined_radius : float = randf_range(RADIUS/3, RADIUS)
+# func draw_trajectory_vector() -> Vector2:
+# 	const RADIUS := 25.0
+# 	const STRAIGHT_ANGLE := 180.0
+# 	var determined_angle : float = deg2rad(randf_range(-STRAIGHT_ANGLE, STRAIGHT_ANGLE))
+# 	var determined_radius : float = randf_range(RADIUS/3, RADIUS)
 	
-	return Vector2.DOWN.rotated(determined_angle) * determined_radius
+# 	return Vector2.DOWN.rotated(determined_angle) * determined_radius
 
-func chase():
-	if $Vision.get_collider() is Player:
-		target = $Vision.get_collider()
+# func chase():
+# 	if $Vision.get_collider() is Player:
+# 		target = $Vision.get_collider()
 	
-	if target:
-		$Vision.target_position = (target.global_position - global_position).limit_length(200.0)
-		$NavAgent.set_target_location(target.global_transform.origin)
-		var next_path_position : Vector2 = $NavAgent.get_next_location()
-		var current_agent_position : Vector2 = global_transform.origin
-		var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
-		$NavAgent.set_velocity(new_velocity)
+# 	if target:
+# 		$Vision.target_position = (target.global_position - global_position).limit_length(200.0)
+# 		$NavAgent.set_target_location(target.global_transform.origin)
+# 		var next_path_position : Vector2 = $NavAgent.get_next_location()
+# 		var current_agent_position : Vector2 = global_transform.origin
+# 		var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
+# 		$NavAgent.set_velocity(new_velocity)
 
-	else:
-		idle()
+# 	else:
+# 		idle()
 
-func idle():
-	$Vision.target_position = point.normalized() * 140
+# func idle():
+# 	$Vision.target_position = point.normalized() * 140
 
-	$NavAgent.set_target_location(global_transform.origin + point)
-	if !$NavAgent.is_target_reachable():
-		point = draw_trajectory_vector()
-	var next_path_position : Vector2 = $NavAgent.get_next_location()
-	var current_agent_position : Vector2 = global_transform.origin
-	var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
-	$NavAgent.set_velocity(new_velocity)
+# 	$NavAgent.set_target_location(global_transform.origin + point)
+# 	if !$NavAgent.is_target_reachable():
+# 		point = draw_trajectory_vector()
+# 	var next_path_position : Vector2 = $NavAgent.get_next_location()
+# 	var current_agent_position : Vector2 = global_transform.origin
+# 	var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
+# 	$NavAgent.set_velocity(new_velocity)
 
 # Debug function, to be replaced with actual damage reaction later on.
 func debug_hurt(new_health: int):
@@ -74,8 +109,7 @@ func debug_hurt(new_health: int):
 # Processing
 
 func _physics_process(_delta):
-	print(str(self.name), target)
-	chase()
+	# chase()
 	$Sprite.flip_h = velocity.x > 0
 
 # Signals
@@ -116,6 +150,6 @@ func _on_hitbox_body_entered(body:Node2D):
 	if body is Player:
 		body.health.current -= 1
 
-func _on_nav_agent_target_reached():
-	if !target:
-		point = draw_trajectory_vector()
+# func _on_nav_agent_target_reached():
+# 	if !target:
+# 		point = draw_trajectory_vector()

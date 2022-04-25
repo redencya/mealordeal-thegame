@@ -11,7 +11,6 @@ var current : int = base:
 	set(v): 
 		var previous = current
 		current = clamp(v, 0, base)
-		print(current)
 		if current != previous:
 			emit_signal("health_changed", current)
 			if current == 0 && !invulnerable:

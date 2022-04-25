@@ -70,8 +70,10 @@ func _physics_process(_delta: float) -> void:
 
 func _on_health_changed(new_health: int):
 	var tween = get_tree().create_tween().bind_node(self)
-	tween.tween_property($Sprite, "modulate", Color("ff0000"), 0.25).set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property($Sprite, "modulate", Color("ffffff"), 0.05).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(
+		$Sprite, "modulate", Color("ff0000"), 0.25).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(
+		$Sprite, "modulate", Color("ffffff"), 0.05).set_trans(Tween.TRANS_LINEAR)
 
 func _on_health_empty():
 	# Lock the physics
@@ -80,6 +82,6 @@ func _on_health_empty():
 	# Charge the player with a fee
 	process_mode = Node.PROCESS_MODE_DISABLED
 
-# THIS IS A DEBUG FEATURE!! IT WILL BE DELETED LATER ON
+# THIS IS A DEBUG FEATURE!!!!!!!! IT WILL BE DELETED LATER ON
 func _on_base_sm_transitioned_to(state_name: StringName):
 	$StateName.set_text(str(state_name))

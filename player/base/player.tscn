@@ -147,7 +147,7 @@ states/Walk/node = SubResource( "AnimationNodeBlendSpace2D_ac471" )
 states/Walk/position = Vector2(521, 81)
 transitions = [&"Idle", &"Walk", SubResource( "AnimationNodeStateMachineTransition_uexma" ), &"Walk", &"Idle", SubResource( "AnimationNodeStateMachineTransition_aixuo" ), &"Walk", &"Run", SubResource( "AnimationNodeStateMachineTransition_gd68s" ), &"Run", &"Walk", SubResource( "AnimationNodeStateMachineTransition_gcsst" )]
 start_node = "Idle"
-graph_offset = Vector2(-43, -93)
+graph_offset = Vector2(-74, -59)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_tvhr0"]
 

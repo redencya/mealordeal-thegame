@@ -3,18 +3,16 @@ class_name Inventory
 
 signal inventory_changed
 
-
 @export var _items : Array = Array():
 	get:
 		return _items
 	set(new_items):
 		_items = new_items
 
-
 func get_item(index: int) -> Item:
 	return _items[index]	
 
-
+	
 func add_item(item_name: String, quantity: int) -> void:
 	if quantity <= 0: return
 # @home: Remove the new() and make ItemDB a singleton

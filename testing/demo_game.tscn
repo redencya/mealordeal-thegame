@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d30wc0k75qnxf"]
+[gd_scene load_steps=22 format=3 uid="uid://bxx65elegw62v"]
 
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
