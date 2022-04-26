@@ -79,6 +79,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://inventory/ItemDatabase.gd"
 }, {
+"base": "CenterContainer",
+"class": &"ItemDisplay",
+"language": &"GDScript",
+"path": "res://inventory/item_display.gd"
+}, {
 "base": "Actor",
 "class": &"PhysicalItem",
 "language": &"GDScript",
@@ -149,6 +154,7 @@ _global_script_class_icons={
 "Inventory": "",
 "Item": "",
 "ItemDB": "",
+"ItemDisplay": "",
 "PhysicalItem": "",
 "Player": "",
 "PlayerState": "",
@@ -169,6 +175,10 @@ run/main_scene="res://testing/demo_game.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
+[autoload]
+
+ItemDatabase="*res://inventory/ItemDatabase.gd"
+
 [debug]
 
 shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
@@ -177,9 +187,6 @@ shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/borderless=true
-window/size/window_width_override=1920
-window/size/window_height_override=1080
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 

@@ -9,14 +9,14 @@ signal inventory_changed
 	set(new_items):
 		_items = new_items
 
-func get_item(index: int) -> Item:
-	return _items[index]	
-
+func get_item(index: int):
+	if index >= _items.size(): return null
+	return _items[index]
 	
 func add_item(item_name: String, quantity: int) -> void:
 	if quantity <= 0: return
 # @home: Remove the new() and make ItemDB a singleton
-	var item : Item = ItemDB.new().get_item(item_name)
+	var item : Item = ItemDatabase.get_item(item_name)
 	if !is_instance_valid(item):
 		return
 		
@@ -27,7 +27,7 @@ func add_item(item_name: String, quantity: int) -> void:
 		for i in range(_items.size()):
 			if remaining_quantity == 0: break
 			
-			var inventory_item : Item = _items[i]
+			var inventory_item = _items[i]
 			if inventory_item.item_reference.name != item_name: continue
 			
 			if inventory_item.quantity < max_stack_size:

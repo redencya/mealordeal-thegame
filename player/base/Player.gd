@@ -1,6 +1,7 @@
 extends Actor
 class_name Player
 
+@export var inventory : Resource
 @export var stamina : Resource
 @onready var animation_state_machine = $AnimationTree.get("parameters/playback")
 

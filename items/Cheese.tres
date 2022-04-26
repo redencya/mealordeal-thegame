@@ -1,18 +1,18 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d0ccsx1i17f3k"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d7oavsxn73h0"]
 
 [ext_resource type="Script" path="res://core/item/Item.gd" id="1_golrk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_35htg"]
 load_path = "res://.godot/imported/item_atlas.png-2424abc86eda0e5a18d03ab4bcc9d87f.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ml4ss"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sleoo"]
 atlas = SubResource( "CompressedTexture2D_35htg" )
-region = Rect2(0, 0, 16, 16)
+region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource( "1_golrk" )
-name = "White Bread"
-texture = SubResource( "AtlasTexture_ml4ss" )
+name = "Cheese Slice"
+texture = SubResource( "AtlasTexture_sleoo" )
 type = null
 sell_value = 10
 max_stack_size = 8

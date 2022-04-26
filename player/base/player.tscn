@@ -382,6 +382,7 @@ collision_mask = 1048577
 script = ExtResource( "2_vrh4i" )
 health = ExtResource( "3_xcu3p" )
 speed_base = 95.0
+inventory = null
 stamina = ExtResource( "4_ar46m" )
 run_modifier = 0.8
 acceleration = 0.35

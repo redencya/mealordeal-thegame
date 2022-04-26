@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc5evj7ansmob"]
+
+[ext_resource type="Script" path="res://inventory/item_display.gd" id="1_d6fyo"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="3_jfmrn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rjddk"]
+blend_mode = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u32hp"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[sub_resource type="Font" id="Font_qypg7"]
+data/0 = ExtResource( "3_jfmrn" )
+
+[node name="ItemDisplay" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+use_top_left = true
+script = ExtResource( "1_d6fyo" )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+material = SubResource( "CanvasItemMaterial_rjddk" )
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_u32hp" )
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+minimum_size = Vector2(16, 16)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="Label" type="Label" parent="PanelContainer/TextureRect"]
+offset_left = -3.0
+offset_top = 6.0
+offset_right = 19.0
+offset_bottom = 19.0
+theme_override_fonts/font = SubResource( "Font_qypg7" )
+horizontal_alignment = 2
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false

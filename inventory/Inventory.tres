@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cdow4kx2buwsx"]
+
+[ext_resource type="Script" path="res://inventory/Inventory.gd" id="1_uh7qf"]
+
+[resource]
+script = ExtResource( "1_uh7qf" )
+_items = null

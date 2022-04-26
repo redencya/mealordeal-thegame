@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=24 format=3 uid="uid://bxx65elegw62v"]
 
+[ext_resource type="Script" path="res://testing/GameManager.gd" id="1_8gwyf"]
 [ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
 [ext_resource type="Script" path="res://testing/HUD.gd" id="2_3e81i"]
@@ -9,6 +10,7 @@
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
 [ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
+[ext_resource type="Resource" uid="uid://cdow4kx2buwsx" path="res://inventory/Inventory.tres" id="9_1xf8d"]
 [ext_resource type="Resource" uid="uid://d0ccsx1i17f3k" path="res://items/WhiteBread.tres" id="10_jahhy"]
 [ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
 [ext_resource type="PackedScene" uid="uid://ccb3eixagypli" path="res://EnemySpawner.tscn" id="17_mkovx"]
@@ -55,6 +57,8 @@ outlines = [PackedVector2Array(-75, 307, 289, 396, 242, 571, 794, 694, 983, 504,
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource( "1_8gwyf" )
+player_path = NodePath("Player")
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -177,6 +181,7 @@ texture = SubResource( "GradientTexture2D_wd150" )
 [node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
 position = Vector2(238, 157)
 speed_base = 118.0
+inventory = ExtResource( "9_1xf8d" )
 run_modifier = 0.62
 acceleration = 0.019
 deceleration = 0.04

@@ -1,3 +1,4 @@
+Inventory (Inventory.gd)
 Item (Item.gd)
 SpriteFrames
 Texture2DArray

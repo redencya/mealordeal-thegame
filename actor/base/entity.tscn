@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://csda3eqwetcfn"]
+[gd_scene load_steps=7 format=3 uid="uid://csda3eqwetcfn"]
 
 [ext_resource type="Script" path="res://actor/base/Entity.gd" id="1_1xctf"]
-[ext_resource type="Texture2D" uid="uid://crm5op0reol8v" path="res://icon.png" id="2_5foyv"]
 [ext_resource type="Script" path="res://core/item/Hitbox.gd" id="3_eaioc"]
 [ext_resource type="AudioStream" uid="uid://crkdvo0vsh6w2" path="res://player/item_pickup.wav" id="4_xbqup"]
 
@@ -29,8 +28,6 @@ script = ExtResource( "1_1xctf" )
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource( "2_5foyv" )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 modulate = Color(0, 0.996078, 1, 1)
