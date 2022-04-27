@@ -12,7 +12,7 @@ radius = 5.0
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 16384
-collision_mask = 32768
+collision_mask = 16384
 floor_block_on_wall = false
 script = ExtResource( "1_8pbcd" )
 

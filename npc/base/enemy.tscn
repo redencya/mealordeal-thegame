@@ -53,7 +53,7 @@ texture = ExtResource( "3_x3kj1" )
 
 [node name="Hitbox" parent="." index="3"]
 position = Vector2(0, -6)
-collision_layer = 32768
+collision_layer = 16384
 collision_mask = 16385
 monitorable = false
 
