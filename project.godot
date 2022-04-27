@@ -181,6 +181,10 @@ ItemDatabase="*res://inventory/ItemDatabase.gd"
 
 [debug]
 
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
 shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 [display]
@@ -244,6 +248,7 @@ inventory_open={
 2d_physics/layer_7="Hitboxes"
 2d_physics/layer_9="Interaction Zones"
 2d_physics/layer_10="Interaction Objects"
+2d_physics/layer_16="Player Detection"
 
 [physics]
 

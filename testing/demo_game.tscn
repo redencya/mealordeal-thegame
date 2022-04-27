@@ -33,6 +33,11 @@ data/0 = ExtResource( "3_pjw5a" )
 [sub_resource type="Font" id="Font_k5pxy"]
 data/0 = ExtResource( "5_hvkdx" )
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lquqi"]
+vertices = PackedVector2Array(303, 387, -63, 303, 8, 66, 304, 21, 524, 74, 661, 240, 627, 279, 795, 685, 253, 564, 841, 338, 974, 504)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 0, 6, 9, 10)]
+outlines = [PackedVector2Array(-63, 303, 303, 387, 253, 564, 795, 685, 974, 504, 841, 338, 627, 279, 661, 240, 524, 74, 304, 21, 8, 66)]
+
 [sub_resource type="Gradient" id="Gradient_cgpnl"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 0.486625, 0, 1, 0, 0, 0, 1)
@@ -49,11 +54,6 @@ dimensions = Vector2i(4, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37nh1"]
 size = Vector2(24, 7)
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_lquqi"]
-vertices = PackedVector2Array(794, 694, 242, 571, 289, 396, 635, 276, 844, 333, 983, 504, -75, 307, -3, 55, 300, 9, 529, 69, 666, 240)
-polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 7, 8, 9, 10, 3)]
-outlines = [PackedVector2Array(-75, 307, 289, 396, 242, 571, 794, 694, 983, 504, 844, 333, 635, 276, 666, 240, 529, 69, 300, 9, -3, 55)]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -155,19 +155,27 @@ metadata/_edit_use_custom_anchors = true
 [node name="MenuBackdrop" parent="Interface/HUD" instance=ExtResource( "3_f4cue" )]
 top_level = true
 
-[node name="Polygon2D4" type="Polygon2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+top_level = true
 position = Vector2(-2, 1)
+navpoly = SubResource( "NavigationPolygon_lquqi" )
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+position = Vector2(286, 18)
 color = Color(0.388235, 0.478431, 0.466667, 1)
+offset = Vector2(-288, -17)
 polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
 
 [node name="Polygon2D5" type="Polygon2D" parent="."]
-position = Vector2(314, 263)
+position = Vector2(635, 14)
 color = Color(0.388235, 0.478431, 0.466667, 1)
+offset = Vector2(-321, 249)
 polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Limits" type="StaticBody2D" parent="."]
+collision_layer = 32769
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits"]
 build_mode = 1
 polygon = PackedVector2Array(242, 570, 797, 699, 981, 508, 849, 333, 635, 278, 666, 241, 529, 68, 303, 10, -2, 55, -74, 308, 287, 397)
 
@@ -208,9 +216,6 @@ polygon = PackedVector2Array(-30.5381, -4.36258, -39.2633, 4.36259, -30.5381, 13
 modulate = Color(0, 0.917647, 1, 1)
 position = Vector2(0, -0.5)
 shape = SubResource( "RectangleShape2D_37nh1" )
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource( "NavigationPolygon_lquqi" )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( "17_mkovx" )]
 position = Vector2(39, 257)

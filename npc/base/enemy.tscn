@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjllujv51y0b5"]
+[gd_scene load_steps=17 format=3 uid="uid://cjllujv51y0b5"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_430no"]
 [ext_resource type="Script" path="res://npc/base/NonPlayer.gd" id="2_snow6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bt5oigefhqte7" path="res://npc/base/breadator.png" id="3_x3kj1"]
 [ext_resource type="Script" path="res://npc/breadator/Idle.gd" id="5_s8qik"]
 [ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://ui/M5X7.TTF" id="6_3ox0e"]
+[ext_resource type="Script" path="res://npc/breadator/EnemyState.gd" id="6_q8adv"]
+[ext_resource type="Script" path="res://npc/breadator/Chase.gd" id="7_d4l0f"]
 [ext_resource type="AudioStream" uid="uid://dl7ycokg8ok0s" path="res://npc/enemy_death.wav" id="7_wesna"]
 [ext_resource type="AudioStream" uid="uid://bo2cbltry1ct" path="res://npc/enemy_hurt.wav" id="8_2cwk0"]
 
@@ -39,11 +41,7 @@ script = ExtResource( "2_snow6" )
 health = SubResource( "Resource_kmveo" )
 speed_base = 70.0
 
-[node name="Vision" type="RayCast2D" parent="." index="0"]
-position = Vector2(0, -3)
-target_position = Vector2(0, 300)
-collision_mask = 2097153
-collide_with_areas = true
+[node name="RayCollection" type="Node2D" parent="." index="0"]
 
 [node name="StateName" parent="." index="1"]
 visible = false
@@ -77,6 +75,12 @@ default_state_path = NodePath("Idle")
 [node name="Idle" type="Node" parent="BaseSM" index="0"]
 script = ExtResource( "5_s8qik" )
 
+[node name="Alert" type="Node" parent="BaseSM" index="1"]
+script = ExtResource( "6_q8adv" )
+
+[node name="Chase" type="Node" parent="BaseSM" index="2"]
+script = ExtResource( "7_d4l0f" )
+
 [node name="ProgressBar" type="ProgressBar" parent="." index="9"]
 offset_left = -20.0
 offset_top = -22.0
@@ -108,6 +112,5 @@ stream = ExtResource( "8_2cwk0" )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="target_reached" from="NavAgent" to="." method="_on_nav_agent_target_reached"]
 [connection signal="target_reached" from="NavAgent" to="BaseSM/Idle" method="_on_nav_agent_target_reached"]
 [connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]

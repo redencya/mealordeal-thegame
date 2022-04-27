@@ -3,11 +3,17 @@ class_name Enemy
 
 # Health preference
 # 5 HP : 1 person
-const ITEM_DROP = preload("res://actor/base/entity.tscn")
-const SOUND_DIE = preload("res://npc/enemy_death.wav")
-const SOUND_HURT = preload("res://npc/enemy_hurt.wav")
+const PHYSICS_LAYER_PLAYER_DETECTION = 32768
 
+const ITEM_DROP : PackedScene = preload("res://actor/base/entity.tscn")
+const SOUND_DIE : AudioStreamSample = preload("res://npc/enemy_death.wav")
+const SOUND_HURT : AudioStreamSample = preload("res://npc/enemy_hurt.wav")
+# A cone of vision expressed in degrees. This is used for generating raycasts.
+const CONE_OF_VISION : float = deg2rad(90.0)
+const ANGLE_BETWEEN_RAYS : float = deg2rad(4.0)
+const VIEW_DISTANCE : float = 250.0
 var target : Player = null
+@onready var ray_collection = $RayCollection
 
 func _ready():
 	print("PREPARING %s" % str(name).to_upper())
@@ -19,77 +25,62 @@ func _ready():
 
 	print("\n")
 
+func set_params() -> void:
+	print("Setting entity parameters...")
+	health.current = health.base
+	print("Entity parameters set!")
+
 func prepare_debug_interfaces():
 	print("Preparing debug interfaces...")
-
 	$Label.text = str(health.base)
 	$ProgressBar.max_value = health.base
 	$ProgressBar.value = health.current
-
 	print("Debug interfaces prepared!")
 
 func generate_raycasts():
 	print("Generating raycasts...")
-
+	var ray_count : int = CONE_OF_VISION / ANGLE_BETWEEN_RAYS
+	for index in ray_count:
+		var ray : RayCast2D = RayCast2D.new()
+		var angle : float = ANGLE_BETWEEN_RAYS * (index - ray_count / 2.0)
+		ray.target_position = Vector2.UP.rotated(angle) * VIEW_DISTANCE
+		ray.collision_mask = PHYSICS_LAYER_PLAYER_DETECTION
+		ray_collection.add_child(ray)
+		ray.enabled = true
 	print("Raycasts generated!")
+
+func update_viewing_angle() -> void:
+	var direction = velocity.normalized()
+	for ray in ray_collection.get_children():
+		var current_index = ray.get_index()
+		var ray_count : int = CONE_OF_VISION / ANGLE_BETWEEN_RAYS
+		var angle = ANGLE_BETWEEN_RAYS * (current_index - ray_count / 2.0)
+		ray.target_position = direction.rotated(angle) * VIEW_DISTANCE
 
 # this function will return a TRUE value if navigation succeeded
 # and a FALSE value if the given location is impossible to reach
 func navigate_to(navigation_target: Vector2) -> bool:
 	var nav_agent : NavigationAgent2D = $NavAgent
-
 	# set a target, write changing code for fixing unreachable targets
 	nav_agent.set_target_location(navigation_target)
 	if !nav_agent.is_target_reachable(): return false
-
 	# this is here to make velocity calculations easier to read
 	var next_position : Vector2 = nav_agent.get_next_location()
 	var current_position : Vector2 = global_transform.origin
-
 	# make the enemies move in the new direction
 	var new_velocity : Vector2 = (next_position - current_position).normalized() * speed_base
 	nav_agent.set_velocity(new_velocity)
-
 	return true
 
+func detect() -> bool:
+	for ray in ray_collection.get_children():
+		ray = ray as RayCast2D
+		if ray.get_collider() is Player:
+			target = ray.get_collider()
+			return true
 
-# AI Programming
-#TODO:  Should be moved into a Chase State later on
-#TODO:  Optimize the behavior using polymorphism with Actor
-
-# func draw_trajectory_vector() -> Vector2:
-# 	const RADIUS := 25.0
-# 	const STRAIGHT_ANGLE := 180.0
-# 	var determined_angle : float = deg2rad(randf_range(-STRAIGHT_ANGLE, STRAIGHT_ANGLE))
-# 	var determined_radius : float = randf_range(RADIUS/3, RADIUS)
-	
-# 	return Vector2.DOWN.rotated(determined_angle) * determined_radius
-
-# func chase():
-# 	if $Vision.get_collider() is Player:
-# 		target = $Vision.get_collider()
-	
-# 	if target:
-# 		$Vision.target_position = (target.global_position - global_position).limit_length(200.0)
-# 		$NavAgent.set_target_location(target.global_transform.origin)
-# 		var next_path_position : Vector2 = $NavAgent.get_next_location()
-# 		var current_agent_position : Vector2 = global_transform.origin
-# 		var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
-# 		$NavAgent.set_velocity(new_velocity)
-
-# 	else:
-# 		idle()
-
-# func idle():
-# 	$Vision.target_position = point.normalized() * 140
-
-# 	$NavAgent.set_target_location(global_transform.origin + point)
-# 	if !$NavAgent.is_target_reachable():
-# 		point = draw_trajectory_vector()
-# 	var next_path_position : Vector2 = $NavAgent.get_next_location()
-# 	var current_agent_position : Vector2 = global_transform.origin
-# 	var new_velocity : Vector2 = (next_path_position - current_agent_position).normalized() * speed_base
-# 	$NavAgent.set_velocity(new_velocity)
+	if target != null : target == null
+	return false
 
 # Debug function, to be replaced with actual damage reaction later on.
 func debug_hurt(new_health: int):
@@ -106,10 +97,16 @@ func debug_hurt(new_health: int):
 	tween.parallel().tween_property($Sprite, "scale", Vector2(1, 1), 0.1).set_trans(Tween.TRANS_LINEAR)
 	tween.parallel().tween_property($Sprite, "rotation", deg2rad(0), 0.1).set_trans(Tween.TRANS_LINEAR)
 
+func spawn_loot():
+	var item = ITEM_DROP.instantiate()
+	item.player = target
+	item.global_position = global_position
+	get_tree().get_root().add_child(item)
+
 # Processing
 
 func _physics_process(_delta):
-	# chase()
+	update_viewing_angle() 
 	$Sprite.flip_h = velocity.x > 0
 
 # Signals
@@ -131,25 +128,16 @@ func _on_health_empty():
 	spawn_loot()
 	queue_free()
 
-func spawn_loot():
-	var item = ITEM_DROP.instantiate()
-	item.player = target
-	item.global_position = global_position
-	get_tree().get_root().add_child(item)
-
 func _on_nav_agent_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	move_and_slide()
 
 func _on_hitbox_body_entered(body:Node2D):
 	if body is Bullet:
-		target = body.parent 
+		target = body.parent
+		$BaseSM.change_state("Chase") 
 		health.current -= 1
 		body.queue_free()
 		
 	if body is Player:
 		body.health.current -= 1
-
-# func _on_nav_agent_target_reached():
-# 	if !target:
-# 		point = draw_trajectory_vector()

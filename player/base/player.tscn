@@ -377,7 +377,7 @@ length = 30.0
 
 [node name="Player" instance=ExtResource( "1_2wee3" )]
 process_mode = 1
-collision_layer = 2097153
+collision_layer = 2129921
 collision_mask = 1048577
 script = ExtResource( "2_vrh4i" )
 health = ExtResource( "3_xcu3p" )
