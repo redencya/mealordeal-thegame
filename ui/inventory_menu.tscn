@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://shaders/dodge_color.gdshader" id="6_y0sl8"]
 [ext_resource type="Resource" uid="uid://cdow4kx2buwsx" path="res://inventory/Inventory.tres" id="7_iqh5k"]
 [ext_resource type="Texture2D" uid="uid://dh7tvc2mjsobg" path="res://player/ui/inventory_sprites.png" id="7_mh7f4"]
-[ext_resource type="Material" uid="uid://cqe27gu6qyn2j" path="res://GradientSoftLightBlend.tres" id="8_03p3y"]
+[ext_resource type="Material" uid="uid://bo7n8vagqwcuu" path="res://GradientSoftLightBlend.tres" id="8_03p3y"]
 [ext_resource type="PackedScene" uid="uid://bc5evj7ansmob" path="res://inventory/item_display.tscn" id="10_yklui"]
 
 [sub_resource type="Animation" id="Animation_io02k"]

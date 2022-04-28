@@ -5,23 +5,21 @@ class_name Player
 @export var stamina : Resource
 @onready var animation_state_machine = $AnimationTree.get("parameters/playback")
 
-var near_storage : bool = false
-var running : bool = false
-
 @export_range(0, 2, 0.01) var run_modifier : float:
 	set(v): run_modifier = v * speed_base
 @export_range(0, 1, 0.001) var acceleration : float:
-	set(v): acceleration = v * compute_speed() 
+	set(v): acceleration = v * speed_base
 @export_range(0, 1, 0.001) var deceleration : float:
-	set(v): deceleration = -v * compute_speed() 
+	set(v): deceleration = -v * speed_base 
 
 var speed_current : float = 0.0:
 	set(v):
-		speed_current = clamp(v, 0, compute_speed())
+		speed_current = clamp(v, 0, speed_base)
 
 # The Ready method on the player should just have some signal connections and debug stuff.
 # There's no real reason to use any more often.
 func _ready():
+	stamina.current = stamina.base
 	super._ready()
 	$ProgressBar.max_value = $Gun/Timer.wait_time
 
@@ -31,12 +29,8 @@ func set_current_blend_space() -> void:
 	var current_node_name = str(animation_state_machine.get_current_node())
 	$AnimationTree.set("parameters/" + current_node_name + "/blend_position", direction)
 
-# Movement calculations
 
-func compute_speed() -> float:
-	if running:
-		return speed_base + run_modifier
-	return speed_base
+# Movement calculations
 
 func compute_velocity(dir: Vector2) -> Vector2:
 	return speed_current * dir
@@ -53,6 +47,7 @@ func stop() -> void:
 	if speed_current == 0: return
 	speed_current += deceleration
 
+
 # Processing
 
 func _process(_delta: float) -> void:
@@ -67,9 +62,10 @@ func _physics_process(_delta: float) -> void:
 	velocity = compute_velocity(direction)
 	move_and_slide()
 
+
 # Signals
 
-func _on_health_changed(new_health: int):
+func _on_health_changed(_new_health: int):
 	var tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(
 		$Sprite, "modulate", Color("ff0000"), 0.25).set_trans(Tween.TRANS_LINEAR)

@@ -1,17 +1,17 @@
 extends Actor
 class_name Enemy
 
-# Health preference
-# 5 HP : 1 person
 const PHYSICS_LAYER_PLAYER_DETECTION = 32768
 
 const ITEM_DROP : PackedScene = preload("res://actor/base/entity.tscn")
 const SOUND_DIE : AudioStreamSample = preload("res://npc/enemy_death.wav")
 const SOUND_HURT : AudioStreamSample = preload("res://npc/enemy_hurt.wav")
-# A cone of vision expressed in degrees. This is used for generating raycasts.
+
+# This is used for generating raycasts.
 const CONE_OF_VISION : float = deg2rad(90.0)
 const ANGLE_BETWEEN_RAYS : float = deg2rad(4.0)
 const VIEW_DISTANCE : float = 250.0
+
 var target : Player = null
 @onready var ray_collection = $RayCollection
 
@@ -39,7 +39,8 @@ func prepare_debug_interfaces():
 
 func generate_raycasts():
 	print("Generating raycasts...")
-	var ray_count : int = CONE_OF_VISION / ANGLE_BETWEEN_RAYS
+	var ray_count : int = int(CONE_OF_VISION / ANGLE_BETWEEN_RAYS)
+
 	for index in ray_count:
 		var ray : RayCast2D = RayCast2D.new()
 		var angle : float = ANGLE_BETWEEN_RAYS * (index - ray_count / 2.0)
@@ -47,6 +48,7 @@ func generate_raycasts():
 		ray.collision_mask = PHYSICS_LAYER_PLAYER_DETECTION
 		ray_collection.add_child(ray)
 		ray.enabled = true
+
 	print("Raycasts generated!")
 
 func update_viewing_angle() -> void:
@@ -99,7 +101,6 @@ func debug_hurt(new_health: int):
 
 func spawn_loot():
 	var item = ITEM_DROP.instantiate()
-	item.player = target
 	item.global_position = global_position
 	get_tree().get_root().add_child(item)
 

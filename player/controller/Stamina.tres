@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( "1_5p25v" )
-base = 200.0
+base = 150.0
 drain = 0.166
-gain = 0.153
+gain = 0.1

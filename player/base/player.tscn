@@ -1,9 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://c7vmhgofkpp8g"]
+[gd_scene load_steps=60 format=3 uid="uid://c7vmhgofkpp8g"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_2wee3"]
 [ext_resource type="Script" path="res://player/base/Player.gd" id="2_vrh4i"]
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_xcu3p"]
 [ext_resource type="Resource" uid="uid://b38nn7j3bymjy" path="res://player/controller/Stamina.tres" id="4_ar46m"]
+[ext_resource type="Resource" uid="uid://cdow4kx2buwsx" path="res://inventory/Inventory.tres" id="4_mdjxb"]
 [ext_resource type="Script" path="res://player/states/Idle.gd" id="5_eko4w"]
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="5_ov6ac"]
 [ext_resource type="Texture2D" uid="uid://dgk8xxu432nxc" path="res://player/animation/animation_matrix.png" id="6_buojl"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" path="res://player/states/Dodge.gd" id="8_weq04"]
 [ext_resource type="Script" path="res://player/base/Gun.gd" id="11_kxxwn"]
 [ext_resource type="AudioStream" uid="uid://covf6m16ugick" path="res://player/blaster_fire.wav" id="13_nrysi"]
+[ext_resource type="Script" path="res://player/base/DebugStaminaDisplay.gd" id="14_bp8lc"]
 
 [sub_resource type="Curve" id="Curve_qmxjy"]
 min_value = -200.0
@@ -374,6 +376,10 @@ tracks/0/keys = {
 length = 30.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg5o0"]
+bg_color = Color(0, 0.701961, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0tho"]
+bg_color = Color(0.729412, 0.388235, 0, 1)
 
 [node name="Player" instance=ExtResource( "1_2wee3" )]
 process_mode = 1
@@ -382,7 +388,7 @@ collision_mask = 1048577
 script = ExtResource( "2_vrh4i" )
 health = ExtResource( "3_xcu3p" )
 speed_base = 95.0
-inventory = null
+inventory = ExtResource( "4_mdjxb" )
 stamina = ExtResource( "4_ar46m" )
 run_modifier = 0.8
 acceleration = 0.35
@@ -468,17 +474,20 @@ default_state_path = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="BaseSM" index="0"]
 script = ExtResource( "5_eko4w" )
+stamina = ExtResource( "4_ar46m" )
 walk = "Walk"
 dodge = "Dodge"
 
 [node name="Walk" type="Node" parent="BaseSM" index="1"]
 script = ExtResource( "7_2jkl4" )
+stamina = ExtResource( "4_ar46m" )
 idle = "Idle"
 dodge = "Dodge"
 run = "Run"
 
 [node name="Run" type="Node" parent="BaseSM" index="2"]
 script = ExtResource( "6_kiesq" )
+stamina = ExtResource( "4_ar46m" )
 walk = "Walk"
 dodge = "Dodge"
 
@@ -487,6 +496,7 @@ script = ExtResource( "8_weq04" )
 idle = "Idle"
 
 [node name="Timer" type="Timer" parent="BaseSM/Dodge" index="0"]
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." index="10"]
 current = true
@@ -524,6 +534,19 @@ scale = Vector2(1, 0.44)
 theme_override_styles/fg = SubResource( "StyleBoxFlat_fg5o0" )
 value = 30.0
 percent_visible = false
+
+[node name="StaminaBar" type="ProgressBar" parent="." index="14"]
+offset_left = -18.0
+offset_top = 6.0
+offset_right = 18.0
+offset_bottom = 10.0
+scale = Vector2(1, 0.44)
+theme_override_styles/fg = SubResource( "StyleBoxFlat_j0tho" )
+step = 0.001
+value = 30.0
+percent_visible = false
+script = ExtResource( "14_bp8lc" )
+stamina = ExtResource( "4_ar46m" )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="transitioned_to" from="BaseSM" to="." method="_on_base_sm_transitioned_to"]

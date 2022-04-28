@@ -1,19 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://bxx65elegw62v"]
+[gd_scene load_steps=26 format=3 uid="uid://c65xwxdwhheu6"]
 
-[ext_resource type="Script" path="res://testing/GameManager.gd" id="1_8gwyf"]
-[ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="1_pnk4p"]
-[ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="1_qxtgh"]
-[ext_resource type="Script" path="res://testing/HUD.gd" id="2_3e81i"]
-[ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_1fw8h"]
-[ext_resource type="PackedScene" uid="uid://njuaolex8eyn" path="res://ui/control.tscn" id="3_f4cue"]
-[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="3_pjw5a"]
-[ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_hvkdx"]
-[ext_resource type="Script" path="res://testing/Entity.gd" id="6_q5f8a"]
-[ext_resource type="Script" path="res://core/item/Storage.gd" id="7_iwg3t"]
-[ext_resource type="Resource" uid="uid://cdow4kx2buwsx" path="res://inventory/Inventory.tres" id="9_1xf8d"]
-[ext_resource type="Resource" uid="uid://d0ccsx1i17f3k" path="res://items/WhiteBread.tres" id="10_jahhy"]
-[ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="12_lw73r"]
-[ext_resource type="PackedScene" uid="uid://ccb3eixagypli" path="res://EnemySpawner.tscn" id="17_mkovx"]
+[ext_resource type="Script" path="res://testing/GameManager.gd" id="1_srj35"]
+[ext_resource type="Texture2D" uid="uid://cnaaqpss432ws" path="res://testing/poses.png" id="2_jyqxn"]
+[ext_resource type="Script" path="res://testing/HUD.gd" id="3_u8sfw"]
+[ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="4_x5ln2"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="5_fy122"]
+[ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="6_44ecc"]
+[ext_resource type="PackedScene" uid="uid://njuaolex8eyn" path="res://ui/inventory_menu.tscn" id="7_oecsw"]
+[ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="8_8dvy8"]
+[ext_resource type="Script" path="res://testing/Entity.gd" id="10_1l6km"]
+[ext_resource type="Resource" uid="uid://d0ccsx1i17f3k" path="res://items/WhiteBread.tres" id="11_fd7ty"]
+[ext_resource type="Script" path="res://core/item/Storage.gd" id="12_f0uw4"]
+[ext_resource type="Texture2D" uid="uid://cjr1uby4mmqlm" path="res://storage/chest.png" id="13_mm1w0"]
+[ext_resource type="PackedScene" uid="uid://ccb3eixagypli" path="res://EnemySpawner.tscn" id="14_ca1fr"]
+[ext_resource type="Script" path="res://managers/ExitArea.gd" id="15_j1amt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47v5v"]
 bg_color = Color(0.494118, 0.909804, 0, 1)
@@ -28,15 +28,10 @@ border_blend = true
 bg_color = Color(0, 0.435294, 0.227451, 1)
 
 [sub_resource type="Font" id="Font_5ak5i"]
-data/0 = ExtResource( "3_pjw5a" )
+data/0 = ExtResource( "5_fy122" )
 
 [sub_resource type="Font" id="Font_k5pxy"]
-data/0 = ExtResource( "5_hvkdx" )
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_lquqi"]
-vertices = PackedVector2Array(303, 387, -63, 303, 8, 66, 304, 21, 524, 74, 661, 240, 627, 279, 795, 685, 253, 564, 841, 338, 974, 504)
-polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 0, 6, 9, 10)]
-outlines = [PackedVector2Array(-63, 303, 303, 387, 253, 564, 795, 685, 974, 504, 841, 338, 627, 279, 661, 240, 524, 74, 304, 21, 8, 66)]
+data/0 = ExtResource( "6_44ecc" )
 
 [sub_resource type="Gradient" id="Gradient_cgpnl"]
 interpolation_mode = 2
@@ -48,17 +43,28 @@ fill = 1
 fill_to = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_p8ufu"]
-script = ExtResource( "7_iwg3t" )
-items = [ExtResource( "10_jahhy" ), ExtResource( "10_jahhy" ), null, null, ExtResource( "10_jahhy" ), ExtResource( "10_jahhy" ), null, ExtResource( "10_jahhy" ), null, null, null, ExtResource( "10_jahhy" )]
+script = ExtResource( "12_f0uw4" )
+items = [ExtResource( "11_fd7ty" ), ExtResource( "11_fd7ty" ), null, null, ExtResource( "11_fd7ty" ), ExtResource( "11_fd7ty" ), null, ExtResource( "11_fd7ty" ), null, null, null, ExtResource( "11_fd7ty" )]
 dimensions = Vector2i(4, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37nh1"]
 size = Vector2(24, 7)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvqp5"]
+size = Vector2(15.9998, 64)
+
+[sub_resource type="Gradient" id="Gradient_t450a"]
+offsets = PackedFloat32Array(0.26699, 0.990291)
+colors = PackedColorArray(0.388235, 0.478431, 0.466667, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f5avq"]
+gradient = SubResource( "Gradient_t450a" )
+width = 128
+
+[node name="Game2" type="Node2D"]
+position = Vector2(0, -1)
 y_sort_enabled = true
-script = ExtResource( "1_8gwyf" )
-player_path = NodePath("Player")
+script = ExtResource( "1_srj35" )
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -87,16 +93,15 @@ polygon = PackedVector2Array(0, 9, 86.5556, 1.51852, 75.9577, 25.6917, 71, 37, 0
 visible = false
 position = Vector2(37.7753, 25.4287)
 scale = Vector2(0.0324389, 0.0324389)
-texture = ExtResource( "1_pnk4p" )
+texture = ExtResource( "2_jyqxn" )
 
 [node name="HUD" type="Control" parent="Interface"]
 offset_left = 2.0
 offset_top = -1.0
 offset_right = 42.0
 offset_bottom = 39.0
-script = ExtResource( "2_3e81i" )
-player_path = NodePath("../../Player")
-health = ExtResource( "3_1fw8h" )
+script = ExtResource( "3_u8sfw" )
+health = ExtResource( "4_x5ln2" )
 
 [node name="ProgressBar" type="ProgressBar" parent="Interface/HUD"]
 offset_left = 6.0
@@ -152,32 +157,25 @@ vertical_alignment = 1
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
-[node name="MenuBackdrop" parent="Interface/HUD" instance=ExtResource( "3_f4cue" )]
+[node name="MenuBackdrop" parent="Interface/HUD" instance=ExtResource( "7_oecsw" )]
 top_level = true
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-top_level = true
-position = Vector2(-2, 1)
-navpoly = SubResource( "NavigationPolygon_lquqi" )
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [node name="Polygon2D4" type="Polygon2D" parent="."]
 position = Vector2(286, 18)
 color = Color(0.388235, 0.478431, 0.466667, 1)
 offset = Vector2(-288, -17)
-polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
-
-[node name="Polygon2D5" type="Polygon2D" parent="."]
-position = Vector2(635, 14)
-color = Color(0.388235, 0.478431, 0.466667, 1)
-offset = Vector2(-321, 249)
-polygon = PackedVector2Array(530, 68, 305, 11, 1, 54, -73, 308, 483, 436, 668, 242)
+polygon = PackedVector2Array(495, -82, 305, 11, 1, 54, -73, 308, 483, 436, 812, 376, 875, 140, 714, 17)
 
 [node name="Limits" type="StaticBody2D" parent="."]
 collision_layer = 32769
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits"]
 build_mode = 1
-polygon = PackedVector2Array(242, 570, 797, 699, 981, 508, 849, 333, 635, 278, 666, 241, 529, 68, 303, 10, -2, 55, -74, 308, 287, 397)
+polygon = PackedVector2Array(-139, 101, -14, 101, 0, 55, 303, 12, 493, -81, 712, 17, 872, 140, 810, 378, 480, 437, -75, 309, -33, 165, -139, 165)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -186,24 +184,16 @@ rotation = 1.57079
 scale = Vector2(25.2304, 25.2304)
 texture = SubResource( "GradientTexture2D_wd150" )
 
-[node name="Player" parent="." instance=ExtResource( "1_qxtgh" )]
-position = Vector2(238, 157)
-speed_base = 118.0
-inventory = ExtResource( "9_1xf8d" )
-run_modifier = 0.62
-acceleration = 0.019
-deceleration = 0.04
-
 [node name="Chest" type="StaticBody2D" parent="."]
 position = Vector2(207, 37)
 collision_layer = 257
 collision_mask = 257
-script = ExtResource( "6_q5f8a" )
+script = ExtResource( "10_1l6km" )
 storage = SubResource( "Resource_p8ufu" )
 
 [node name="Sprite2D" type="Sprite2D" parent="Chest"]
 position = Vector2(0, -10)
-texture = ExtResource( "12_lw73r" )
+texture = ExtResource( "13_mm1w0" )
 
 [node name="Polygon2D" type="Polygon2D" parent="Chest/Sprite2D"]
 position = Vector2(0, 4)
@@ -217,17 +207,38 @@ modulate = Color(0, 0.917647, 1, 1)
 position = Vector2(0, -0.5)
 shape = SubResource( "RectangleShape2D_37nh1" )
 
-[node name="EnemySpawner" parent="." instance=ExtResource( "17_mkovx" )]
-position = Vector2(39, 257)
-target_path = NodePath("../Player")
+[node name="EnemySpawner" parent="." instance=ExtResource( "14_ca1fr" )]
+position = Vector2(317, 346)
+target_path = NodePath("")
 
-[node name="EnemySpawner3" parent="." instance=ExtResource( "17_mkovx" )]
-position = Vector2(427, 142)
-target_path = NodePath("../Player")
+[node name="EnemySpawner3" parent="." instance=ExtResource( "14_ca1fr" )]
+position = Vector2(499, 22)
+target_path = NodePath("")
 
-[node name="EnemySpawner4" parent="." instance=ExtResource( "17_mkovx" )]
-position = Vector2(805, 567)
-target_path = NodePath("../Player")
+[node name="EnemySpawner5" parent="." instance=ExtResource( "14_ca1fr" )]
+position = Vector2(499, 22)
+target_path = NodePath("")
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(-70.9998, 132)
+script = ExtResource( "15_j1amt" )
+target_scene = "res://world/demo_game.tscn"
+
+[node name="EntryPoint" type="Position2D" parent="ExitArea"]
+position = Vector2(10, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(-60.0001, 1)
+shape = SubResource( "RectangleShape2D_fvqp5" )
+
+[node name="TransitionExit" type="Sprite2D" parent="."]
+position = Vector2(-74.9998, 133)
+rotation = -3.14159
+texture = SubResource( "GradientTexture2D_f5avq" )
+
+[node name="Player" parent="." instance=ExtResource( "8_8dvy8" )]
+position = Vector2(-93, 142)
 
 [connection signal="pressed" from="Interface/HUD/Button" to="Interface/HUD" method="_on_button_pressed"]
 [connection signal="pressed" from="Interface/HUD/Button2" to="Interface/HUD" method="_on_button_2_pressed"]
+[connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_exit_area_body_entered"]

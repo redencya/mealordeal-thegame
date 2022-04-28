@@ -1,7 +1,12 @@
-RigidDynamicBody2D
-Polygon2D
+VBoxContainer
+Button
 CollisionPolygon2D
 CollisionShape2D
+Position2D
+Area2D
+Sprite2D
+RigidDynamicBody2D
+Polygon2D
 NavigationObstacle2D
 StaticBody2D
 Node2D
@@ -14,12 +19,8 @@ PanelContainer
 AudioStreamPlayer
 AudioStreamPlayer2D
 Hitbox (Hitbox.gd)
-Sprite2D
 GPUParticles2D
 CPUParticles2D
-CollisionShape3D
-StaticBody3D
-CSGMesh3D
 ColorRect
 ProgressBar
 Timer

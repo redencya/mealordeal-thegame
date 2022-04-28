@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjllujv51y0b5"]
+[gd_scene load_steps=17 format=3 uid="uid://dn7x7p66q0tgg"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_430no"]
 [ext_resource type="Script" path="res://npc/base/NonPlayer.gd" id="2_snow6"]

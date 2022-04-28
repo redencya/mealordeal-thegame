@@ -4,7 +4,7 @@ extends PlayerState
 @export var dodge : String
 
 func physics_update(_delta: float) -> void:
-	
+
 	player.stop()
 
 	if Input.is_action_just_pressed("dodge"):
@@ -15,6 +15,3 @@ func physics_update(_delta: float) -> void:
 
 func enter(_msg := {}):
 	player.animation_state_machine.travel("Idle")
-
-func update(_delta : float):
-	pass

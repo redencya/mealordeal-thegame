@@ -19,6 +19,6 @@ func _on_timer_timeout():
 	enemy.health.current = enemy.health.base
 	enemy.global_position = global_position 
 	#enemy.target = get_node(target_path)
-	get_tree().get_root().add_child(enemy)
+	owner.add_child(enemy)
 	
 	$Timer.start()

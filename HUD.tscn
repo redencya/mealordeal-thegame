@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmn8ik3smep5e"]
+
+[ext_resource type="Script" path="res://testing/HUD.gd" id="1_mk0rj"]
+[ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="2_iipje"]
+[ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="3_udh57"]
+[ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="4_4j86h"]
+[ext_resource type="PackedScene" uid="uid://njuaolex8eyn" path="res://ui/inventory_menu.tscn" id="5_v57l8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47v5v"]
+bg_color = Color(0.494118, 0.909804, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.905882, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rup2w"]
+bg_color = Color(0, 0.435294, 0.227451, 1)
+
+[sub_resource type="Font" id="Font_5ak5i"]
+data/0 = ExtResource( "3_udh57" )
+
+[sub_resource type="Font" id="Font_k5pxy"]
+data/0 = ExtResource( "4_4j86h" )
+
+[node name="HUD" type="Control"]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 42.0
+offset_bottom = 39.0
+script = ExtResource( "1_mk0rj" )
+player_path = NodePath("../../Player")
+health = ExtResource( "2_iipje" )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 114.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/fg = SubResource( "StyleBoxFlat_47v5v" )
+theme_override_styles/bg = SubResource( "StyleBoxFlat_rup2w" )
+max_value = 3.0
+step = 1.0
+value = 2.0
+percent_visible = false
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 5.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 55.0
+theme_override_fonts/font = SubResource( "Font_5ak5i" )
+text = "Deal damage to Player"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+offset_left = 5.0
+offset_top = 58.0
+offset_right = 100.0
+offset_bottom = 79.0
+theme_override_fonts/font = SubResource( "Font_5ak5i" )
+text = "Heal Player"
+metadata/_edit_layout_mode = 0
+metadata/_edit_use_custom_anchors = false
+
+[node name="Prompt" type="Label" parent="."]
+visible = false
+anchor_right = 15.936
+anchor_bottom = 9.073
+offset_top = 293.0
+offset_right = -0.440063
+offset_bottom = -0.919983
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource( "Font_k5pxy" )
+theme_override_font_sizes/font_size = 11
+text = "Press \"E\" to open the storage"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="MenuBackdrop" parent="." instance=ExtResource( "5_v57l8" )]
+top_level = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
