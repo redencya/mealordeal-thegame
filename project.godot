@@ -104,7 +104,12 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://player/states/Base.gd"
 }, {
-"base": "Food",
+"base": "PanelContainer",
+"class": &"RequirementDisplay",
+"language": &"GDScript",
+"path": "res://ui/Requirement.gd"
+}, {
+"base": "Item",
 "class": &"Sandwich",
 "language": &"GDScript",
 "path": "res://core/item/Sandwich.gd"
@@ -164,6 +169,7 @@ _global_script_class_icons={
 "PhysicalItem": "",
 "Player": "",
 "PlayerState": "",
+"RequirementDisplay": "",
 "Sandwich": "",
 "Stamina": "",
 "State": "",

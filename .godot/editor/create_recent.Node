@@ -1,5 +1,13 @@
+TileMap
 VBoxContainer
 Button
+CheckBox
+HBoxContainer
+PanelContainer
+Label
+Panel
+CenterContainer
+TabContainer
 CollisionPolygon2D
 CollisionShape2D
 Position2D
@@ -12,10 +20,7 @@ StaticBody2D
 Node2D
 EnemyState (EnemyState.gd)
 Control
-Label
 TextureRect
-CenterContainer
-PanelContainer
 AudioStreamPlayer
 AudioStreamPlayer2D
 Hitbox (Hitbox.gd)
@@ -26,8 +31,3 @@ ProgressBar
 Timer
 ShapeCast2D
 Hazard (Hazard.gd)
-VisibleOnScreenEnabler2D
-VisibleOnScreenNotifier2D
-TabBar
-AnimationPlayer
-RayCast2D

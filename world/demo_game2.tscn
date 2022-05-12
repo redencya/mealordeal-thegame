@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="4_x5ln2"]
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="5_fy122"]
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="6_44ecc"]
-[ext_resource type="PackedScene" uid="uid://njuaolex8eyn" path="res://ui/inventory_menu.tscn" id="7_oecsw"]
+[ext_resource type="PackedScene" uid="uid://ccjk77avxh7gw" path="res://ui/inventory_menu.tscn" id="7_oecsw"]
 [ext_resource type="PackedScene" uid="uid://c7vmhgofkpp8g" path="res://player/base/player.tscn" id="8_8dvy8"]
 [ext_resource type="Script" path="res://testing/Entity.gd" id="10_1l6km"]
 [ext_resource type="Resource" uid="uid://d0ccsx1i17f3k" path="res://items/WhiteBread.tres" id="11_fd7ty"]

@@ -1,3 +1,4 @@
+Sandwich (Sandwich.gd)
 Inventory (Inventory.gd)
 Item (Item.gd)
 SpriteFrames
@@ -8,7 +9,6 @@ AtlasTexture
 Storage (Storage.gd)
 CurveTexture
 Curve2D
-Sandwich (Sandwich.gd)
 WeaponRanged (WeaponRanged.gd)
 Food (Food.gd)
 Stamina (Stamina.gd)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ckfoy6kjjyayx"]
+
+[ext_resource type="Script" path="res://core/item/Sandwich.gd" id="1_jfnqt"]
+
+[resource]
+script = ExtResource( "1_jfnqt" )
+name = null
+max_stack_size = null
+stackable = null
+requirements = null
+sell_value = null
+heal_value = null

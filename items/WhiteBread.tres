@@ -13,7 +13,5 @@ region = Rect2(0, 0, 16, 16)
 script = ExtResource( "1_golrk" )
 name = "White Bread"
 texture = SubResource( "AtlasTexture_ml4ss" )
-type = null
-sell_value = 10
 max_stack_size = 8
 stackable = true

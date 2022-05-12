@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://ddoca6rlh1045" path="res://player/stats/Health.tres" id="3_og0fe"]
 [ext_resource type="FontData" uid="uid://rs6dj1ejsw0v" path="res://ui/M3X6.TTF" id="4_kv56r"]
 [ext_resource type="FontData" uid="uid://d1kcycdcre2yu" path="res://storage/ui/ReadexPro-Medium.ttf" id="5_e1p32"]
-[ext_resource type="PackedScene" uid="uid://njuaolex8eyn" path="res://ui/inventory_menu.tscn" id="6_5jcfr"]
+[ext_resource type="PackedScene" uid="uid://ccjk77avxh7gw" path="res://ui/inventory_menu.tscn" id="6_5jcfr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47v5v"]
 bg_color = Color(0.494118, 0.909804, 0, 1)
