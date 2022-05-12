@@ -13,7 +13,5 @@ region = Rect2(16, 0, 16, 16)
 script = ExtResource( "1_golrk" )
 name = "Cheese Slice"
 texture = SubResource( "AtlasTexture_sleoo" )
-type = null
-sell_value = 10
 max_stack_size = 8
 stackable = true

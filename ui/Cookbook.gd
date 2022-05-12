@@ -16,43 +16,43 @@ func get_sandwiches(items):
 	return items is Sandwich
 
 func _ready():
+	current_sandwich.hydrate(current_sandwich.requirements)
+	print(current_sandwich.requirements)
 	inventory.connect("inventory_changed", _on_inventory_changed)
 	connect("sandwich_changed", _on_sandwich_changed)
 
-#render_requirements(current_sandwich.requirements)
+	render_requirements(current_sandwich.requirements)
 
 func render_requirement(requirement: Dictionary) -> void:
-	var req : RequirementDisplay = requirement_display.instantiate()
-	req.set_color(
+	var display : RequirementDisplay = requirement_display.instantiate()
+	display.set_color(
 		inventory.validate_item_request(requirement)
 	)
-	req.set_data(
+	display.set_data(
 		requirement.item_reference.name,
 		inventory.get_largest_instance(requirement.item_reference).quantity,
 		requirement.quantity
 	)
-	$Requirements.add_child(req)
+	$VBoxContainer/Contents/Requirements.add_child(display)
 
 func render_requirements(requirements: Array[Dictionary]) -> void:
-	if $Requirements.get_children().size() > 0:
-		for i in $Requirements.get_children().size():
-			$Requirements.remove_child(i)
-
+	if $VBoxContainer/Contents/Requirements.get_children().size() > 0:
+		for child in $VBoxContainer/Contents/Requirements.get_children():
+			child.queue_free()
 	for requirement in requirements:
 		render_requirement(requirement)
-
-func update_crafting_status() -> bool:
-	return inventory.validate_order(current_sandwich.requirements)
 
 func _on_create_sandwich_pressed():
 	for requirement in current_sandwich.requirements:
 		inventory.remove_item(requirement)
+	inventory.add_item(current_sandwich.name, 1)
 
 func _on_sandwich_changed():
+	current_sandwich.hydrate(current_sandwich.requirements)
 	render_requirements(current_sandwich.requirements)
-	update_crafting_status()
+	$VBoxContainer/CreateSandwich.set_disabled(!inventory.validate_order(current_sandwich.requirements))
 
 func _on_inventory_changed():
-	#render_requirements(current_sandwich.requirements)
-	#update_crafting_status()
-	pass
+	render_requirements(current_sandwich.requirements)
+	$VBoxContainer/CreateSandwich.set_disabled(!inventory.validate_order(current_sandwich.requirements))
+	print(!inventory.validate_order(current_sandwich.requirements), $VBoxContainer/CreateSandwich.is_disabled())

@@ -21,7 +21,7 @@ func fire(target: Vector2) -> void:
 	bullet.global_position = global_position
 
 func _input(event):
-	if event.is_action_pressed("shoot") and can_shoot:
+	if Input.is_action_pressed("shoot") and can_shoot:
 		fire(global_position.direction_to(get_global_mouse_position()))
 
 func _on_timer_timeout():

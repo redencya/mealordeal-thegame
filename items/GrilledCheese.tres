@@ -1,12 +1,26 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ckfoy6kjjyayx"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ckfoy6kjjyayx"]
 
 [ext_resource type="Script" path="res://core/item/Sandwich.gd" id="1_jfnqt"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_35htg"]
+load_path = "res://.godot/imported/item_atlas.png-2424abc86eda0e5a18d03ab4bcc9d87f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6w06"]
+atlas = SubResource( "CompressedTexture2D_35htg" )
+region = Rect2(0, 16, 16, 16)
+
 [resource]
 script = ExtResource( "1_jfnqt" )
-name = null
-max_stack_size = null
-stackable = null
-requirements = null
-sell_value = null
-heal_value = null
+name = "Grilled Cheese"
+texture = SubResource( "AtlasTexture_w6w06" )
+max_stack_size = 8
+stackable = true
+requirements = [{
+"item_reference": "Cheese Slice",
+"quantity": 1
+}, {
+"item_reference": "White Bread",
+"quantity": 2
+}]
+sell_value = 50
+heal_value = 2

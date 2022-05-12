@@ -13,7 +13,5 @@ region = Rect2(48, 0, 16, 16)
 script = ExtResource( "1_golrk" )
 name = "Meat Slab"
 texture = SubResource( "AtlasTexture_cmlke" )
-type = null
-sell_value = 25
 max_stack_size = 8
 stackable = true

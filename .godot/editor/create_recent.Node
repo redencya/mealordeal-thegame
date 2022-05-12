@@ -1,6 +1,6 @@
+Button
 TileMap
 VBoxContainer
-Button
 CheckBox
 HBoxContainer
 PanelContainer
@@ -30,4 +30,3 @@ ColorRect
 ProgressBar
 Timer
 ShapeCast2D
-Hazard (Hazard.gd)

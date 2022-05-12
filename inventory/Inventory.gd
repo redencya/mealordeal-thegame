@@ -13,7 +13,6 @@ func get_item(index: int):
 	if index >= _items.size(): return null
 	return _items[index]
 
-
 func pool_valid_items(item_reference : Item) -> Array[Dictionary]:
 	var pool : Array[Dictionary] = []
 	for item in _items:
@@ -22,8 +21,13 @@ func pool_valid_items(item_reference : Item) -> Array[Dictionary]:
 	return pool
 
 func get_largest_instance(item_reference : Item) -> Dictionary:
-	var current_largest := {}
+	var current_largest := {
+		item_reference = item_reference,
+		quantity = 0
+	}
 	var pool := pool_valid_items(item_reference)
+	if pool.size() < 1:
+		return current_largest
 	for item in pool:
 		if (current_largest == null 
 			|| item.quantity > current_largest.quantity):
@@ -34,7 +38,7 @@ func validate_item_request(item_request: Dictionary) -> bool:
 	var pool : Array[Dictionary] = pool_valid_items(item_request.item_reference)
 	if pool.size() < 1: return false
 	for item in pool:
-		if item.quantity > item_request.quantity:
+		if item.quantity >= item_request.quantity:
 			return true
 	return false
 
@@ -47,6 +51,8 @@ func validate_order(request: Array[Dictionary]) -> bool:
 func remove_item(request: Dictionary) -> void:
 	var largest_valid_item = get_largest_instance(request.item_reference)
 	largest_valid_item.quantity -= request.quantity
+	if largest_valid_item.quantity <= 0:
+		_items.erase(largest_valid_item)
 	emit_signal("inventory_changed")
 
 func add_item(item_name: String, quantity: int) -> void:
