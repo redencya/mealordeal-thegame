@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ccjk77avxh7gw"]
+[gd_scene load_steps=43 format=3 uid="uid://ccjk77avxh7gw"]
 
 [ext_resource type="Material" uid="uid://b0se2wm7tlmh5" path="res://GridPatternMaterial.tres" id="1_3pi20"]
 [ext_resource type="Texture2D" uid="uid://ci5ykvaddgs3n" path="res://bg.png" id="2_wvcmw"]
@@ -163,6 +163,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cookbook:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.392292, 1),
+"update": 0,
+"values": [Vector2(439, 825), Vector2(439, 225)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uchkj"]
 _data = {
@@ -259,6 +271,9 @@ data/0 = ExtResource( "5_vscal" )
 [sub_resource type="AtlasTexture" id="AtlasTexture_fomaa"]
 atlas = ExtResource( "7_mh7f4" )
 region = Rect2(16, 192, 208, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ky6c5"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Font" id="Font_kiiif"]
 data/0 = ExtResource( "5_vscal" )
@@ -626,9 +641,11 @@ anchor_left = 0.686
 anchor_top = 0.631
 anchor_right = 0.987
 anchor_bottom = 0.975
-offset_left = -0.0400391
-offset_top = -2.16002
-offset_right = 0.319946
+offset_left = -0.039978
+offset_top = 597.84
+offset_right = 0.320068
+offset_bottom = 600.001
+theme_override_styles/panel = SubResource( "StyleBoxFlat_ky6c5" )
 script = ExtResource( "4_cb6un" )
 inventory_ref = ExtResource( "7_iqh5k" )
 metadata/_edit_layout_mode = 1
@@ -637,7 +654,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Cookbook"]
 offset_right = 193.0
-offset_bottom = 126.0
+offset_bottom = 126.001
 
 [node name="Contents" type="VBoxContainer" parent="Cookbook/VBoxContainer"]
 offset_right = 193.0

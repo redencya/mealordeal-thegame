@@ -14,25 +14,19 @@ func get_item(index: int):
 	return _items[index]
 
 func pool_valid_items(item_reference : Item) -> Array[Dictionary]:
-	var pool : Array[Dictionary] = []
-	for item in _items:
-		if item.item_reference == item_reference:
-			pool.append(item) 
+	var pool : Array[Dictionary] = _items.filter(
+		func(item): return item.item_reference == item_reference)
 	return pool
 
 func get_largest_instance(item_reference : Item) -> Dictionary:
-	var current_largest := {
-		item_reference = item_reference,
-		quantity = 0
-	}
 	var pool := pool_valid_items(item_reference)
 	if pool.size() < 1:
-		return current_largest
-	for item in pool:
-		if (current_largest == null 
-			|| item.quantity > current_largest.quantity):
-				current_largest = item
-	return current_largest
+		return {
+			item_reference = item_reference,
+			quantity = 0
+		}
+	pool.sort_custom(func(a, b): return a.quantity < b.quantity)
+	return pool[0]
 
 func validate_item_request(item_request: Dictionary) -> bool:
 	var pool : Array[Dictionary] = pool_valid_items(item_request.item_reference)
@@ -86,5 +80,5 @@ func add_item(item_name: String, quantity: int) -> void:
 		}
 		_items.append(new_item)
 		remaining_quantity -= new_item.quantity
-
+	
 	emit_signal("inventory_changed")

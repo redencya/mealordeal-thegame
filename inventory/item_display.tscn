@@ -8,8 +8,8 @@ blend_mode = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u32hp"]
 content_margin_left = 3.0
-content_margin_right = 3.0
 content_margin_top = 3.0
+content_margin_right = 3.0
 content_margin_bottom = 3.0
 bg_color = Color(0.756863, 0.756863, 0.756863, 1)
 

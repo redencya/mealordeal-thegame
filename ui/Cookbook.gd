@@ -6,21 +6,17 @@ signal sandwich_changed
 @export var inventory_ref : Resource
 @onready var inventory = inventory_ref as Inventory
 
-var sandwiches : Array[Sandwich] = ItemDatabase.items.filter(get_sandwiches)
+var sandwiches : Array[Sandwich] = ItemDatabase.items.filter(func(sandwich): return sandwich is Sandwich)
 var current_sandwich : Sandwich = sandwiches[0]:
 	set(v): 
 		current_sandwich = (v)
 		emit_signal("sandwich_changed")
 
-func get_sandwiches(items):
-	return items is Sandwich
-
 func _ready():
 	current_sandwich.hydrate(current_sandwich.requirements)
-	print(current_sandwich.requirements)
 	inventory.connect("inventory_changed", _on_inventory_changed)
 	connect("sandwich_changed", _on_sandwich_changed)
-
+	$VBoxContainer/CreateSandwich.set_disabled(!inventory.validate_order(current_sandwich.requirements))
 	render_requirements(current_sandwich.requirements)
 
 func render_requirement(requirement: Dictionary) -> void:
@@ -53,6 +49,7 @@ func _on_sandwich_changed():
 	$VBoxContainer/CreateSandwich.set_disabled(!inventory.validate_order(current_sandwich.requirements))
 
 func _on_inventory_changed():
+	print(inventory._items)
 	render_requirements(current_sandwich.requirements)
 	$VBoxContainer/CreateSandwich.set_disabled(!inventory.validate_order(current_sandwich.requirements))
 	print(!inventory.validate_order(current_sandwich.requirements), $VBoxContainer/CreateSandwich.is_disabled())

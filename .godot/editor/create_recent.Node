@@ -1,3 +1,6 @@
+MarginContainer
+ColorRect
+TextureRect
 Button
 TileMap
 VBoxContainer
@@ -20,13 +23,11 @@ StaticBody2D
 Node2D
 EnemyState (EnemyState.gd)
 Control
-TextureRect
 AudioStreamPlayer
 AudioStreamPlayer2D
 Hitbox (Hitbox.gd)
 GPUParticles2D
 CPUParticles2D
-ColorRect
 ProgressBar
 Timer
 ShapeCast2D

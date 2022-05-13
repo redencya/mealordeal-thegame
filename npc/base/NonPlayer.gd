@@ -16,29 +16,19 @@ var target : Player = null
 @onready var ray_collection = $RayCollection
 
 func _ready():
-	print("PREPARING %s" % str(name).to_upper())
-
 	health.current = health.base
 	generate_raycasts()
-	prepare_debug_interfaces()
+	prepare_interfaces()
 	super._ready()
 
-	print("\n")
-
 func set_params() -> void:
-	print("Setting entity parameters...")
 	health.current = health.base
-	print("Entity parameters set!")
 
-func prepare_debug_interfaces():
-	print("Preparing debug interfaces...")
-	$Label.text = str(health.base)
+func prepare_interfaces():
 	$ProgressBar.max_value = health.base
 	$ProgressBar.value = health.current
-	print("Debug interfaces prepared!")
 
 func generate_raycasts():
-	print("Generating raycasts...")
 	var ray_count : int = int(CONE_OF_VISION / ANGLE_BETWEEN_RAYS)
 
 	for index in ray_count:
@@ -48,8 +38,6 @@ func generate_raycasts():
 		ray.collision_mask = PHYSICS_LAYER_PLAYER_DETECTION
 		ray_collection.add_child(ray)
 		ray.enabled = true
-
-	print("Raycasts generated!")
 
 func update_viewing_angle() -> void:
 	var direction = velocity.normalized()
@@ -113,8 +101,9 @@ func _physics_process(_delta):
 # Signals
 
 func _on_health_changed(new_health : int):
+	if new_health != health.base:
+		$ProgressBar.visible = true
 	$Hurt.play()
-	$Label.text = str(new_health)
 	debug_hurt(new_health)
 
 func _on_health_empty():

@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dn7x7p66q0tgg"]
+[gd_scene load_steps=15 format=3 uid="uid://dn7x7p66q0tgg"]
 
 [ext_resource type="PackedScene" uid="uid://40npssfr32h3" path="res://actor/base/actor.tscn" id="1_430no"]
 [ext_resource type="Script" path="res://npc/base/NonPlayer.gd" id="2_snow6"]
 [ext_resource type="Script" path="res://actor/stats/Health.gd" id="3_kgrph"]
 [ext_resource type="Texture2D" uid="uid://bt5oigefhqte7" path="res://npc/base/breadator.png" id="3_x3kj1"]
 [ext_resource type="Script" path="res://npc/breadator/Idle.gd" id="5_s8qik"]
-[ext_resource type="FontData" uid="uid://eq0b16sgxcn7" path="res://ui/M5X7.TTF" id="6_3ox0e"]
 [ext_resource type="Script" path="res://npc/breadator/EnemyState.gd" id="6_q8adv"]
 [ext_resource type="Script" path="res://npc/breadator/Chase.gd" id="7_d4l0f"]
 [ext_resource type="AudioStream" uid="uid://dl7ycokg8ok0s" path="res://npc/enemy_death.wav" id="7_wesna"]
@@ -29,9 +28,6 @@ bg_color = Color(0.427451, 0.839216, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yww6n"]
 bg_color = Color(0, 0.313726, 0.0823529, 1)
-
-[sub_resource type="Font" id="Font_sjot6"]
-data/0 = ExtResource( "6_3ox0e" )
 
 [node name="Enemy" instance=ExtResource( "1_430no" )]
 position = Vector2(0, 0)
@@ -82,6 +78,7 @@ script = ExtResource( "6_q8adv" )
 script = ExtResource( "7_d4l0f" )
 
 [node name="ProgressBar" type="ProgressBar" parent="." index="9"]
+visible = false
 offset_left = -20.0
 offset_top = -22.0
 offset_right = 20.0
@@ -93,21 +90,10 @@ max_value = 5.0
 value = 3.0
 percent_visible = false
 
-[node name="Label" type="Label" parent="." index="10"]
-offset_left = -20.0
-offset_top = -36.0
-offset_right = 20.0
-offset_bottom = -20.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = SubResource( "Font_sjot6" )
-text = "321"
-horizontal_alignment = 1
-
-[node name="Death" type="AudioStreamPlayer2D" parent="." index="11"]
+[node name="Death" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource( "7_wesna" )
 
-[node name="Hurt" type="AudioStreamPlayer2D" parent="." index="12"]
+[node name="Hurt" type="AudioStreamPlayer2D" parent="." index="11"]
 stream = ExtResource( "8_2cwk0" )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
