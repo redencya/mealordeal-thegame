@@ -1,3 +1,8 @@
+# The entire premise of the inventory is to provide render data and information for crafting operations.
+# It stores the item references with quantities as key/value pairs. 
+
+# The inventory can be used to remove or add items to itself. 
+
 extends Resource
 class_name Inventory
 
@@ -12,12 +17,17 @@ signal inventory_changed
 func get_item(index: int):
 	if index >= _items.size(): return null
 	return _items[index]
-
+	
+# This method is used to narrow down the inventory to a single item type.
+# It exists to serve as a nice bit of abstraction for isolating the relevant elements, 
+# but there's nothing that would stop it from being a part of a larger anonymous function.
 func pool_valid_items(item_reference : Item) -> Array[Dictionary]:
 	var pool : Array[Dictionary] = _items.filter(
 		func(item): return item.item_reference == item_reference)
 	return pool
 
+# Sice the player can't physically drag items from the inventory to use them in crafting,
+# The code has to provide a reference itself.
 func get_largest_instance(item_reference : Item) -> Dictionary:
 	var pool := pool_valid_items(item_reference)
 	if pool.size() < 1:
